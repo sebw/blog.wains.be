@@ -76,7 +76,7 @@ title: Search
 
       $result.append($("<a>", {
         href: result.href,
-        text: "» " + result.title
+        text: "" + result.title
       }));
 
       $results.append($result);

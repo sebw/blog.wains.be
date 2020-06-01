@@ -46,11 +46,12 @@ I'm an [INTJ]: INTJs are known as the "Systems Builders" of the types, perhaps i
 
 This site has gone through five major design revisions:
 
-- [2005 (Wordpress)](https://blog.wains.be/Nostalgy/2005.png)
-- [2008 (Wordpress)](https://blog.wains.be/Nostalgy/2008.png)
-- [2011 (Wordpress)](https://blog.wains.be/Nostalgy/2011.png)
-- [2015 (Wikitten)](https://blog.wains.be/Nostalgy/2015.png)
-- [2017 (Mkdocs)](https://blog.wains.be/Nostalgy/2017.png)
+- [2005 (Wordpress)](https://blog.wains.be/images/nostalgy/2005.png)
+- [2008 (Wordpress)](https://blog.wains.be/images/nostalgy/2008.png)
+- [2011 (Wordpress)](https://blog.wains.be/images/nostalgy/2011.png)
+- [2015 (Wikitten)](https://blog.wains.be/images/nostalgy/2015.png)
+- [2017 (Mkdocs)](https://blog.wains.be/images/nostalgy/2017.png)
+- [2020 (Hugo)](https://blog.wains.be/images/nostalgy/2020.png)
 
 ## You found a mistake on this site?
 
