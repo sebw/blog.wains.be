@@ -1,17 +1,14 @@
 ---
-#layout: search
 title: Search
-permalink: /search/
-noToc: true
 ---
 
 <div>
-<p><input id="search" type="text" placeholder="type something here"></p>
+<p><input id="search" type="text" placeholder="Enter your query"></p>
 
 <ul id="results"></ul>
 
-<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script src="/js/jquery-2.1.3.min.js"></script>
+<script src="/js/lunr.js"></script>
 <script>
   var lunrIndex,
       $results,

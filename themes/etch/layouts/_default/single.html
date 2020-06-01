@@ -11,6 +11,10 @@
 
 <!-- start: only display comments box for blog posts -->
 {{ if eq .Type "posts" }}
+<h2>Page sources</h2>
+<a href="https://github.com/sebw/hugo.wains.be/blob/master/content/{{ .File.Path }}">https://github.com/sebw/hugo.wains.be/blob/master/content/{{ .File.Path }}</a>
+
+<h2>Have something to say?</h2>
 <script 
         data-isso="https://comment.wains.be/" 
         data-isso-css="true" 
