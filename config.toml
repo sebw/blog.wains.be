@@ -1,4 +1,4 @@
-baseURL = "https://hugo.wains.be"
+baseURL = "https://blog.wains.be"
 languageCode = "en-us"
 title = "Sebastien Wains"
 theme = "etch"
