@@ -44,7 +44,7 @@ I'm an [INTJ]: INTJs are known as the "Systems Builders" of the types, perhaps i
 
 ## Website iterations
 
-This site has gone through five major design revisions:
+This site has gone through six major design revisions:
 
 - [2005 (Wordpress)](https://blog.wains.be/images/nostalgy/2005.png)
 - [2008 (Wordpress)](https://blog.wains.be/images/nostalgy/2008.png)
