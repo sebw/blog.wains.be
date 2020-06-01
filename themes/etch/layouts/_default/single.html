@@ -1,0 +1,26 @@
+{{ define "main" }}
+<article>
+    <header id="post-header">
+        <h1>{{ .Title }}</h1>
+        {{- if isset .Params "date" -}}
+            <time>{{ .Date.Format "January 2, 2006" }}</time>
+        {{- end -}}
+    </header>
+    {{- .Content -}}
+</article>
+
+<!-- start: only display comments box for blog posts -->
+{{ if eq .Type "posts" }}
+<script 
+        data-isso="https://comment.wains.be/" 
+        data-isso-css="true" 
+        data-isso-require-author="true" 
+        data-isso-require-email="true" 
+        data-isso-reply-to-self="false"
+        src="https://comment.wains.be/js/embed.min.js">
+</script>
+<section id="isso-thread"></section>
+{{ end }}
+<!-- end: only display comments box for blog posts -->
+
+{{ end }}

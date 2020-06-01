@@ -1,0 +1,25 @@
+baseURL = "https://hugo.wains.be"
+languageCode = "en-us"
+title = "Sebastien Wains"
+theme = "etch"
+enableInlineShortcodes = true
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+
+[params]
+  description = "My notes about open source stuff."
+  copyright = "Copyright © Sebastien Wains"
+  dark = "off"
+  highlight = true
+
+[permalinks]
+  posts = "/:year/:filename/"
+
+[markup.goldmark.renderer]
+  # Allow HTML in Markdown
+  unsafe = true
+
+# Generate JSON for search function
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML", "RSS"]
