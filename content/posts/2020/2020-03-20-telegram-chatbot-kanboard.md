@@ -9,15 +9,15 @@ I've used a number of todo list applications over the years.
 
 I have recently decided to use a simple kanban with three columns (todo/wip/done) as my todo list, and it works wonders.
 
-I self-host a Kanboard instance, so I have full control over my lists.
+I self-host a Kanboard instance, so I have full control over my boards.
+
+I no longer depend on a company that could decide to shut down the service overnight (not looking at you, Microsoft [after purchasing Wunderlist]).
 
 In my article about my desktop environment, I cover how I even [integrated Kanboard in my i3 bar](https://blog.wains.be/2019/2019-12-11-my-linux-desktop-environment/#todo-list).
 
-I no longer depend on some vendor that could shut down the service as they please.
-
 Obviously, mobile apps are the strong point of proprietary solutions, while the [Android app for Kanboard](https://f-droid.org/en/packages/nl.patrickkostjens.kandroid/) is not as advanced.
 
-I wanted to implement an easy way to add tasks to my Kanboard, so how about using a Telegram bot?
+I wanted to implement an easy way to add tasks to my kanban boards, and since Kanboard has an API, how about using a Telegram bot?
 
 Here we go!
 
