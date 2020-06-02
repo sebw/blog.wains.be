@@ -11,11 +11,11 @@ docker run --name whoami --net userbridge containous/whoami
 
 Create the configuration file for Caddy, for example under `/opt/docker/caddy/Caddyfile`:
 
-```json
+```bash
 {
     # email to use on Let's Encrypt
     email youremail@example.org
-    
+
     #acme_ca https://acme-staging-v02.api.letsencrypt.org/directory
     #debug
 }
