@@ -135,8 +135,7 @@ title: Search
       return;
     }
 
-    // show first ten results
-    results.slice(0, 10).forEach(function(result) {
+    results.slice(0, 30).forEach(function(result) {
       var $result = $("<li>");
 
       $result.append($("<a>", {
@@ -183,11 +182,11 @@ We see the script is calling to javascript libraries:
 - https://blog.wains.be/js/jquery-2.1.3.min.js
 - https://blog.wains.be/js/lunr.js
 
-I host them so your web browser do not have to visit external websites.
+I host them (in my hugo folder under `/static/js/`) so your web browser does not have to visit external URLs.
 
-Now you can build your site, and if you visit the search page, you should be granted with a form.
+Now you can build your site (just type `hugo`), and if you visit the search page, you should be granted with a form.
 
-As soon as your start typing in the field, lunr will start query the content of `index.json` (that has been retrieved by your browser locally).
+As soon as your start typing in the field, lunr will start querying the content of `index.json` (that has been retrieved by your browser locally) and display the results.
 
 ## Bingo
 
