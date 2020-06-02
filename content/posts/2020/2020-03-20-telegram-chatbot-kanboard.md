@@ -49,7 +49,7 @@ The query to Kanboard API should be done with the http request node:
 
 `getAllTasks` node:
 
-```
+```js
 msg.chatId = msg.payload.chatId;
 var item = msg.payload.content.replace(/^\s+/g, '');
 msg.payload = "{\"jsonrpc\": \"2.0\", \"method\": \"getAllTasks\", \"id\": 1, \"params\": {\"project_id\": 6}}";
@@ -60,7 +60,7 @@ return msg;
 
 Change the project ID number.
 
-```
+```js
 msg.chatId = msg.payload.chatId;
 msg.item = msg.payload.content.replace(/^\s+/g, '');
 msg.payload = "{\"jsonrpc\": \"2.0\", \"method\": \"createTask\", \"id\": 1, \"params\": {\"title\": \"" + msg.item + "\", \"project_id\": 6}}";
@@ -71,7 +71,7 @@ return msg;
 
 Change the column ID.
 
-```
+```js
 var items = msg.payload.result;
 
 msg.payload.chatId = msg.chatId;
@@ -103,7 +103,7 @@ return [ msg ];
 
 If you make your board public, you can share in the reply.
 
-```
+```js
 msg.payload.chatId = msg.chatId;
 msg.payload.type = 'message';
 msg.payload.content = 'Added "'+ msg.item + '" to your todo list.\n\nFull list at https://kanban.example.org/public/board/XXX';
