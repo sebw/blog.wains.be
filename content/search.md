@@ -76,8 +76,10 @@ title: Search
 
       $result.append($("<a>", {
         href: result.href,
-        text: "" + result.title
+        text: result.title
       }));
+
+      $result.append(" <small><time>" + result.date + "</time></small>");
 
       $results.append($result);
     });
