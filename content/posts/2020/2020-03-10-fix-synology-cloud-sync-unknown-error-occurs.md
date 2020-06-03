@@ -26,7 +26,7 @@ Procedure to fix this non sense:
 - SSH as root on your NAS.
 - Then open up the DB for Cloud Sync and update the session_table table:
 
-```
+```bash
 root@crappynas:/volume1/@cloudsync/db# sqlite3 
 SQLite version 3.10.2 2016-01-20 15:27:19
 Enter ".help" for usage hints.
