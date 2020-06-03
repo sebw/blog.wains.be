@@ -102,7 +102,7 @@ Ansible actions are tagged for either personal machine, work machine or both.
 
 Example of a tagged action:
 
-```
+```yaml
   - name: install pip packages for work
     pip:
       name:
@@ -144,7 +144,7 @@ In that case I have to figure out how to start the application with a different 
 
 My i3 configuration is one of those and I created a GDM service that starts i3 with `config-personal`:
 
-```
+```ini
 [Desktop Entry]
 Name=i3 Personal
 Comment=improved dynamic tiling window manager
@@ -170,9 +170,8 @@ If I need to work on a larger display, I just create a script that I call with a
 
 In this example, when I had to deal with a 2560x1440 display:
 
-```
+```bash
 #!/bin/bash
-
 
 cvt 2560 1440
 xrandr --newmode "2560x1440_60.00"  312.25  2560 2752 3024 3488  1440 1443 1448 1493 -hsync +vsync
@@ -191,7 +190,7 @@ So you just move it to the scratchpad and recall it when needed.
 
 In order to put it away/recall, I have this config in i3:
 
-```
+```bash
 bindsym $meta+z move scratchpad
 bindsym $meta+s exec "~/.i3/scripts/scratchpad.py" 
 ```
@@ -200,7 +199,7 @@ One of the inconvenient of recalling windows in the scratchpad is that windows a
 
 This is the reason for `scratchpad.py`:
 
-```
+```python
 #!/usr/bin/env python3
 
 import i3ipc
@@ -254,7 +253,7 @@ It is very easy to write scripts for it. I mostly write bash or python scripts.
 
 In this screenshot we see "Pad 1" that shows how many windows I have in the scratchpad, this is the script:
 
-```
+```python
 #!/usr/bin/python
 
 import subprocess
@@ -283,7 +282,7 @@ print("Pad " + d)
 
 Next to it, the script shows the split mode (horizontal or vertical), a very important concept in i3. I do it with this script:
 
-```
+```python
 #!/usr/bin/env python3
 import i3ipc
 
@@ -355,7 +354,7 @@ I made an i3blocks script to retrieve the number of tasks in each column of the 
 
 This is the script:
 
-```
+```bash
 #!/bin/bash
 curl --silent \
 -u "USERNAME:TOKEN" \
@@ -382,7 +381,7 @@ I use the following ZSH plugins:
 
 This is my configuration (be very careful, the order of options in your config is important):
 
-```
+```zsh
 export ZSH="${HOME}/.oh-my-zsh"
 export TERM="xterm-256color"
 
@@ -424,13 +423,11 @@ plugins=(git sudo tmux k dirhistory z zsh-autosuggestions)
 
 ZSH_TMUX_AUTOSTART=false
 
-
-
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=50
 
 export EDITOR='vim'
 
-alias -s {yml,yaml}=ansible-playbook                                            
+alias -s {yml,yaml}=ansible-playbook
 alias -s {conf,adoc,md}=code
 
 _comp_options+=(globdots)
@@ -534,7 +531,7 @@ So anytime I take a screenshot, it asks if the screenshot is aimed for a report.
 
 If it is, then the script plays the screenshot in the right folder, and I get the asciidoc block of code I need to use in my report to point to the new image.
 
-```
+```bash
 #!/bin/bash                                                                     
                                                                                 
 zenity --question --default-cancel --text="Is the screenshot for an engagement journal?"
@@ -589,9 +586,8 @@ exit 0
 
 For screencasts, the script takes advantage of ffmpeg. You should run the script a first time, and run it again for the cast to stop.
 
-```
+```bash
 #!/bin/bash
-
 
 TMPFILE="$(mktemp -t screencast-XXXXXXX).mkv"
 OUTPUT="$HOME/Videos/screencast-$(date +%F-%H-%M-%S)"
@@ -789,7 +785,7 @@ So given the API to trigger notifications, you could imagine a script that check
 
 Example:
 
-```
+```bash
 curl "https://push.example.de/message?token=<apptoken>" -F "title=my title" -F "message=my message" -F "priority=5"
 ```
 
