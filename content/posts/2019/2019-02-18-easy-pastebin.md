@@ -31,7 +31,7 @@ Create an alias in your `.bashrc` or `.zshrc` config:
 alias pastebin="HASTE_SERVER=https://your-haste-server.com haste"
 ```
 
-Then after restarting your session or sourcing your config file.
+Restarting your session or source your config file.
 
 [Client sources](https://github.com/seejohnrun/haste-client)
 
