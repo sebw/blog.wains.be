@@ -5,7 +5,7 @@ title: "My Linux Desktop Environment"
 
 I have used Linux as a desktop environment since about 2006, mostly with Gnome or Cinnamon.
 
-Around 2016 I got bored of the general direction that most desktop environment ("DE" for short) were taking (what I would call "Apple-ization") and decided to tailor, hand craft, optimize and automate my Linux DE.
+Around 2016 I got bored of the general direction that most desktop environments ("DE" for short) were taking (what I would call "Apple-ization") and decided to tailor, hand craft, optimize and automate my Linux DE.
 
 By no way the aim was to make it sexy, but rather making it more efficient, distraction-free, fast, favoring keyboard usage, using as much display estate as possible.
 
@@ -467,7 +467,6 @@ Ulauncher comes with a ton of nice plugins available at [https://ext.ulauncher.i
 
 I use those:
 
-desktop-ulauncher-ext.png
 ![uext](https://blog.wains.be/images/desktop-ulauncher-ext.png)
 
 I wrote and open sourced two plugins to manage [TPLink smart plugs](https://ext.ulauncher.io/-/github-sebw-ulauncher-tplink-home-manager) and another one to [search in my self hosted bookmarks](https://ext.ulauncher.io/-/github-sebw-ulauncher-shaarli).
@@ -507,6 +506,8 @@ You can create "custom actions" readily available from a right-click (for exampl
 
 For quick notes I use `xpad`, a lightweight "post-it" app available in Fedora repository.
 
+![xpad](https://blog.wains.be/images/desktop/xpad.png)
+
 Notes are stored under `~/.config/xpad`. I moved my notes to my cloud storage and symlinked.
 
 You can toggle notes to appear/disappear with `xpad --toggle`. Obviously I made a keyboard shortcut in i3 to toggle my notes.
@@ -519,13 +520,19 @@ This allows me to test a new i3 configuration on the personal machine, and when 
 
 ## Desktop Screenshots and GIF Recording
 
+### Screenshots
+
 I use scripts to take care of screenshots and screencasts.
 
 For screenshots, the script uses Flameshot, available in Fedora repo.
 
-Since my job consists in part of writing reports, anytime I take a screenshot, it asks if the screenshot is aimed for a report.
+![flameshot](https://blog.wains.be/images/desktop/flameshot.gif)
 
-If it is, I get a nice prompt with the asciidoc code.
+I wrote a script on top of Flameshot because my job consists in part of writing reports.
+
+So anytime I take a screenshot, it asks if the screenshot is aimed for a report.
+
+If it is, then the script plays the screenshot in the right folder, and I get the asciidoc block of code I need to use in my report to point to the new image.
 
 ```
 #!/bin/bash                                                                     
@@ -576,6 +583,10 @@ fi
 exit 0
 ```
 
+### Screencast
+
+#### In house script and ffmpeg (DEPRECATED)
+
 For screencasts, the script takes advantage of ffmpeg. You should run the script a first time, and run it again for the cast to stop.
 
 ```
@@ -618,6 +629,12 @@ else
 fi
 ```
 
+#### Peek
+
+I now use [peek](https://github.com/phw/peek) to record GIF of my desktop.
+
+![](https://blog.wains.be/images/desktop/peek.gif)
+
 ## Firefox
 
 Firefox is my default browser.
@@ -642,13 +659,7 @@ I use tmux, admittedly not enough.
 
 This is my config:
 
-```
-
-
-
-
-
-
+```bash
 unbind C-Space
 unbind Space
 unbind s
@@ -768,7 +779,13 @@ Ansible has modules for all of those, so it is very easy to maintain your env.
 
 For pretty much everything (backup, anything that needs my attention), I use a self-hosted [Gotify](https://gotify.net/).
 
-You can imagine a script that checks your battery level of your laptop, and notifies your Android phone.
+It comes with a web interface, an API and an Android app.
+
+![gotify](https://blog.wains.be/images/desktop/gotify-server.png)
+
+![gotify](https://blog.wains.be/images/desktop/gotify-android.png)
+
+So given the API to trigger notifications, you could imagine a script that checks your battery level of your laptop, and notifies your Android phone when the battery is low.
 
 Example:
 
@@ -776,4 +793,4 @@ Example:
 curl "https://push.example.de/message?token=<apptoken>" -F "title=my title" -F "message=my message" -F "priority=5"
 ```
 
-For example, when I build the sources of this blog, I use Ulauncher to trigger the job through a script, and the script notifies me when the blog is updated.
+Another example: when I build the sources of this blog, I use Ulauncher to trigger the job through a script, and the script notifies me when the blog is updated.
