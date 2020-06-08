@@ -13,8 +13,10 @@ If you want to put Firefox in an i3 workspace shared with other applications and
 
 ## Solution
 
-In Firefox, in `about:config` and change:
+In Firefox, in the URL bar type `about:config`.
 
-```
+Then change:
+
+```bash
 full-screen-api.ignore-widgets: true
 ```
