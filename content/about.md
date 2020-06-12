@@ -24,9 +24,9 @@ To learn more about our consulting services, check [https://www.redhat.com/en/se
 
 ## Talks
 
-2017-04-20: [Salt] at [Jeudis du Libre] conference. Check my [Github] for the decks.
+2017-04-20: I talked about [Salt] at [Jeudis du Libre] conference. Check my [Github] for the decks.
 
-2020-06-10: I talked on Red Hat Consulting Services and Ansible at **Ansible Automates EMEA 2020**.
+2020-06-10: I talked about [Red Hat Consulting Services] and [Ansible] at **Ansible Automates EMEA 2020**.
 
 <iframe title="vimeo-player" src="https://player.vimeo.com/video/426485784" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
@@ -85,3 +85,4 @@ Please open an [issue on Github](https://github.com/sebw/blog.wains.be/issues/ne
 [Ulauncher]: https://ulauncher.io/
 [Isso]: https://posativ.org/isso/
 [Node-RED]: https://nodered.org
+[Red Hat Consulting Services]: https://www.redhat.com/en/services/consulting
