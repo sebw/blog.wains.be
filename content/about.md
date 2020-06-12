@@ -24,9 +24,11 @@ To learn more about our consulting services, check [https://www.redhat.com/en/se
 
 ## Talks
 
-I have talked about [Salt] at [Jeudis du Libre] conference. Check my [Github] for the decks.
+2017-04-20: [Salt] at [Jeudis du Libre] conference. Check my [Github] for the decks.
 
-I will give a talk about open source orchestration with Ansible at [Ansible Automates EMEA 2020](https://events.redhat.com/profile/form/index.cfm?PKformID=0x165149abcd&sc_cid=7013a000002DeY9AAK).
+2020-06-10: I talked on Red Hat Consulting Services and Ansible at **Ansible Automates EMEA 2020**.
+
+<iframe title="vimeo-player" src="https://player.vimeo.com/video/426485784" width="640" height="360" frameborder="0" allowfullscreen></iframe>
 
 ## A bit more about me
 
