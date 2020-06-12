@@ -16,7 +16,3 @@ You can keep an eye for upcoming Ansible events at [https://www.ansible.com/comm
 You can watch our video here:
 
 <iframe title="vimeo-player" src="https://player.vimeo.com/video/426485784" width="640" height="360" frameborder="0" allowfullscreen></iframe>
-
-
-
-# ![](https://blog.wains.be/images/ansible_sebastien_wains.png)
