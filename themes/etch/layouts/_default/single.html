@@ -11,10 +11,17 @@
 
 <!-- start: only display comments box for blog posts -->
 {{ if eq .Type "posts" }}
-<h2>Page sources</h2>
-<a href="https://github.com/sebw/blog.wains.be/blob/master/content/{{ .File.Path }}">https://github.com/sebw/blog.wains.be/blob/master/content/{{ .File.Path }}</a>
 
-<h2>Have something to say?</h2>
+<br />
+<br />
+<hr>
+<h3>Thanks for reading this post!</h3>
+<br />
+If you found an issue in this <a href="https://github.com/sebw/blog.wains.be/blob/master/content/{{ .File.Path }}">article</a>, you can create an issue on <a href="https://github.com/sebw/blog.wains.be/issues">Github</a>.
+<br />
+<br />
+If you have a comment or question, please drop me a line below!
+
 <script 
         data-isso="https://comment.wains.be/" 
         data-isso-css="true" 

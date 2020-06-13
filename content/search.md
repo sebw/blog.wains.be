@@ -70,8 +70,8 @@ title: Search
       return;
     }
 
-    // show first ten results
-    results.slice(0, 10).forEach(function(result) {
+    // show first 30 results
+    results.slice(0, 30).forEach(function(result) {
       var $result = $("<li>");
 
       $result.append($("<a>", {
