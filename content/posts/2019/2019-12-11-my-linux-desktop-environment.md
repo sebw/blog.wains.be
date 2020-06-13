@@ -73,9 +73,17 @@ Disadvantages:
 
 ## My Data
 
-I make sure that all data produced on my VM are backed up on a self-hosted cloud solution. My solution allows _very fast_ restoration, which is crucial.
+I run a self-hosted instance of [Seafile](https://www.seafile.com).
 
-I don't fret about losing any data.
+![](https://www.seafile.com/media/img/seafile-logo.png)
+
+I make sure that all data produced on my VM are backed up in Seafile (through mechanism of symlinks when the app won't allow to specify a custom folder).
+
+Seafile is _very fast_, this is crucial for short recovery time, in case of data loss.
+
+My Seafile is backed up on an external NAS nightly.
+
+As everything important is in Seafile, I can just reformat my VM and wouldn't lose anything important.
 
 ## VM Installation
 
@@ -501,6 +509,8 @@ You can create "custom actions" readily available from a right-click (for exampl
 
 ## Taking notes
 
+### Quick notes
+
 For quick notes I use `xpad`, a lightweight "post-it" app available in Fedora repository.
 
 ![xpad](https://blog.wains.be/images/desktop/xpad.png)
@@ -508,6 +518,16 @@ For quick notes I use `xpad`, a lightweight "post-it" app available in Fedora re
 Notes are stored under `~/.config/xpad`. I moved my notes to my cloud storage and symlinked.
 
 You can toggle notes to appear/disappear with `xpad --toggle`. Obviously I made a keyboard shortcut in i3 to toggle my notes.
+
+### Notes that are meant to stay
+
+For notes that I want to keep and refer to in the future, I use [Joplin](https://joplinapp.org/).
+
+It comes with Linux and Android apps.
+
+I save my notes on the filesystem, in a Seafile dedicated Library.
+
+![](https://joplinapp.org/images/AllClients.jpg)
 
 ## Git
 
