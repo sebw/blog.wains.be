@@ -1,6 +1,6 @@
 ---
 date: 2019-03-16
-title: "Gotify- a self-hosted push notification app"
+title: "Gotify, a self-hosted push notification app"
 ---
 
 [Project page](https://gotify.net/)

@@ -1,6 +1,6 @@
 ---
 date: 2019-11-13
-title: "i3- making Firefox full screen inside the i3 container"
+title: "i3 - making Firefox full screen inside its i3 container"
 ---
 
 ## Problem
