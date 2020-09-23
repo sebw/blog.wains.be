@@ -1,4 +1,7 @@
-# Ansible uri module doesn't necessarily urlencode variables
+---
+date: 2020-09-23 
+title: "Ansible uri module doesn't necessarily urlencode variables" 
+---
 
 For the longest time I have been using this bit of (kinda incorrect) Ansible code to log into IdM:
 
