@@ -5,7 +5,7 @@ title: "Ansible uri module doesn't necessarily urlencode variables"
 
 For the longest time I have been using this bit of (kinda incorrect) Ansible code to log into IdM:
 
-```
+```yaml
 - name: Logging in to IPA and store session cookie                            
   uri:                                                                        
     url: "{{ ipa_url }}/session/login_password"                           
@@ -27,7 +27,7 @@ You either need to:
 - urlencode the variable `{{ password | urlencode }}` as suggested [here](https://github.com/ansible/ansible/issues/63511)
 - best option, use `body_format: form-urlencoded`:
 
-```
+```yaml
 - name: Logging in to IPA and store session cookie                            
   uri:                                                                        
     url: "{{ ipa_url }}/session/login_password"                           
