@@ -27,18 +27,20 @@ You either need to:
 - urlencode the variable `{{ password | urlencode }}` as suggested [here](https://github.com/ansible/ansible/issues/63511)
 - best option, use `body_format: form-urlencoded`:
 
-  - name: Logging in to IPA and store session cookie                            
-    uri:                                                                        
-      url: "{{ ipa_url }}/session/login_password"                           
-      method: POST                                                              
-      body_format: form-urlencoded                                              
-      force_basic_auth: yes                                                     
-      body:                                                                     
-        user: "{{ username }}"                                            
-        password: "{{ password }}"                                              
-      status_code: 200                                                          
-      validate_certs: false                                                     
-    register: login
+```
+- name: Logging in to IPA and store session cookie                            
+  uri:                                                                        
+    url: "{{ ipa_url }}/session/login_password"                           
+    method: POST                                                              
+    body_format: form-urlencoded                                              
+    force_basic_auth: yes                                                     
+    body:                                                                     
+      user: "{{ username }}"                                            
+      password: "{{ password }}"                                              
+    status_code: 200                                                          
+    validate_certs: false                                                     
+  register: login
+```
 
 This would urlencode the body.
 
