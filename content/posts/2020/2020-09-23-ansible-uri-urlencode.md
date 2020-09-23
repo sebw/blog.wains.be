@@ -46,4 +46,6 @@ This would urlencode the body.
 
 I have been using API calls rather than Ansible freeipa modules, because they were not maintained and contained bugs.
 
-I will have to investigate Ansible collection for FreeIPA [https://github.com/freeipa/ansible-freeipa](https://github.com/freeipa/ansible-freeipa) to see if they are bug free.
+I'm still using API calls despite [Freeipa collection for Ansible](https://github.com/freeipa/ansible-freeipa) because it has [bugs](https://github.com/freeipa/ansible-freeipa/issues/160) that affect me particularly. 
+
+I should contribute and help fixing those.
