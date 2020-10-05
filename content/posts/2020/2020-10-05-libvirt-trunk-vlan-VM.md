@@ -90,10 +90,47 @@ Your guest VM should now be sitting in the guest VLAN.
 
 You can now redo the procedure for any other VLANs.
 
+## Regarding VMs in the native VLAN
+
+For VMs that need to sit in the native VLAN (home VLAN ID 10 in my case), just use the host device `enp8s0` which will use macvtap (also known as direct interface).
+
+Keep in mind that communication between host and guests using macvtap is not possible for technical reasons detailed [here](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/virtualization_host_configuration_and_guest_installation_guide/app_macvtap).
+
+Guests to guests communication is possible.
+
+I personally run a Pi-hole DNS server in a VM on my home network, and as a workaround I created a second NAT network interface, and the libvirt hosts resolves using the second IP.
+
 ## Conclusion
 
-By making VLAN aware bridges, you don't need to modify anything inside the guest VM.
+```
+                  +----------------------------------------------+
+                  |                                              |
+                  |                libvirt host                  |
+Switch trunk      +--------+            ^                        |
+   +------------->+ enp8s0 +------------+-----------+            |
+                  +----+---+                    +---v----------+ |
+                  |    ^   ^-----------------+  |              | |
+                  |    |                     |  |   VM home    | |
+                  |    +----+                |  |              | |
+                  |         |                |  +--------------+ |
+                  +----------------------+-----------------------+
+                  |         |            |   +------+            |
+                  | bridge  |  enp8s0.20 | bridge   |  enp8s0.30 |
+                  |         |            |          |            |
+                  +----------------------------------------------+
+                  |         |            |          |            |
+                  |  +------+-------+    |     +----+---------+  |
+                  |  |              |    |     |              |  |
+                  |  |  VM guest    |    |     |   VM work    |  |
+                  |  |              |    |     |              |  |
+                  |  +--------------+    |     +--------------+  |
+                  +----------------------+-----------------------+
+```
 
-By using native VLAN on the trunk port, I didn't have to modify anything on the libvirt host network interface (and losing remote connectivity to the host, even if it's not so far away [garage]).
+By using native VLAN on the trunk port, I didn't have to modify anything on the libvirt host network interface so I didn't lose my SSH connection to the host.
+
+By making VLAN aware bridges, I don't need to modify anything inside the guest VM. My VMs just fetch an IP from the DHCP server in the VLAN.
 
 The configuration of VLAN aware bridges with `nmtui` was also possible remotely with no loss of connection.
+
+Everything can be done over a SSH connection without any loss of communication.
