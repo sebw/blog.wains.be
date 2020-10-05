@@ -3,11 +3,11 @@ date: 2020-10-05
 title: "libvirtd with trunk port and VM in VLAN aware bridges"
 ---
 
-I use my NAS as a virtualization host running Fedora 32.
+I use my small home server as a virtualization host running Fedora 32.
 
-It has only one interface `enp8s0`.
+It has only one network interface `enp8s0`.
 
-I have 3 VLANs at home:
+I have 3 VLANs:
 
 - 10 home
 - 20 guest
@@ -15,7 +15,11 @@ I have 3 VLANs at home:
 
 My NAS sits in VLAN 10 and I wanted to be able to run virtual machines in VLAN 20 and 30 with no tagging done inside the guests VMs.
 
-The VMs should be placed in VLAN aware bridges. Let's see how to do it.
+First of all, the host must be placed behind a trunk port.
+
+Then we must create VLAN aware bridges for the guests VMs.
+
+Let's see how to do it.
 
 ## Configure the trunk on the switch
 
