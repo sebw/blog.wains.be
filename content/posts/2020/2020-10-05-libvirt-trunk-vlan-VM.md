@@ -42,7 +42,7 @@ We need to configure VLAN aware bridges for other VLANs.
 
 ## Configure the bridge for the guest VLAN
 
-I use `nmtui` as an easy interface to NetworkManager. You can obviously use `nmcli`.
+I use `nmtui` as an easy interface to NetworkManager. You can obviously use `nmcli`. [This blog post covers nmcli](https://medium.com/@kbidarkar/configuring-bridges-and-vlans-using-nmcli-8cb79f45d3a6).
 
 Install the package if you want to use the TUI `dnf install NetworkManager-tui`.
 
