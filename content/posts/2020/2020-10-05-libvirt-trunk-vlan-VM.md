@@ -134,3 +134,5 @@ By making VLAN aware bridges, I don't need to modify anything inside the guest V
 The configuration of VLAN aware bridges with `nmtui` was also possible remotely with no loss of connection.
 
 Everything can be done over a SSH connection without any loss of communication.
+
+Another way is to use one bridge and VLAN filtering, the procedure is detailed on this [Red Hat blog post](https://developers.redhat.com/blog/2017/09/14/vlan-filter-support-on-bridge/).
