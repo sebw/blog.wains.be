@@ -1,5 +1,5 @@
 ---
-date: 2020-10-05
+date: 2020-10-07
 title: "Replacing Synology DS213 with a custom build running Fedora"
 ---
 
