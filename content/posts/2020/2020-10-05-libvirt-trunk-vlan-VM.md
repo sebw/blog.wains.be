@@ -98,9 +98,11 @@ Keep in mind that communication between host and guests using macvtap is not pos
 
 Guests to guests communication is possible.
 
-I personally run a Pi-hole DNS server in a VM on my home network, and as a workaround I created a second NAT network interface, and the libvirt hosts resolves using the second IP.
+I personally run a Pi-hole DNS server in a VM on my home network, you have two possible workarounds
 
-## Conclusion
+### Second NAT NIC on the guest
+
+You create a second NAT network interface, and the libvirt hosts resolves through the NAT IP
 
 ```
                   +----------------------------------------------+
@@ -126,6 +128,37 @@ Switch trunk      +--------+            ^                        |
                   |  +--------------+    |     +--------------+  |
                   +----------------------+-----------------------+
 ```
+
+### Second physical NIC on the host
+
+You add a second physical NIC on the host and bridge VM on the second NIC. Host and guest will be able to communicate since they are no longer on the same NIC (this is what I have done)
+
+```
+                  +----------------------------------------------+
+                  |                                    +---------|
+                  |                libvirt host        | enp1s0 <---+switch untagged
+Switch trunk      +--------+            ^              +---------+
+   +------------->+ enp8s0 +------------+-----------+            |
+                  +----+---+                    +---v----------+ |
+                  |    ^   ^-----------------+  |              | |
+                  |    |                     |  |   VM home    | |
+                  |    +----+                |  |              | |
+                  |         |                |  +--------------+ |
+                  +----------------------+-----------------------+
+                  |         |            |   +------+            |
+                  | bridge  |  enp8s0.20 | bridge   |  enp8s0.30 |
+                  |         |            |          |            |
+                  +----------------------------------------------+
+                  |         |            |          |            |
+                  |  +------+-------+    |     +----+---------+  |
+                  |  |              |    |     |              |  |
+                  |  |  VM guest    |    |     |   VM work    |  |
+                  |  |              |    |     |              |  |
+                  |  +--------------+    |     +--------------+  |
+                  +----------------------+-----------------------+
+```
+
+## Conclusion
 
 By using native VLAN on the trunk port, I didn't have to modify anything on the libvirt host network interface so I didn't lose my SSH connection to the host.
 
