@@ -20,7 +20,7 @@ To learn more about our consulting services, check [https://www.redhat.com/en/se
 - This site doesn't use third party cookies
 - Search function requires Javascript
 - Comment function requires Javascript and store a cookie to work
-- I collect visits stats over at [stats.wains.be](https://stats.wains.be/wains.be) using Plausible, an open source Google Analytics alternative, which requires Javascript to work.
+- I collect visits stats over at [stat.wains.be](http://stat.wains.be/wains.be) using Plausible, an open source Google Analytics alternative, which requires Javascript to work.
 - Javascript and cookies can be disabled, the site won't break. Only search, comment and stats won't work, which doesn't affect article readability.
 
 ## Talks
