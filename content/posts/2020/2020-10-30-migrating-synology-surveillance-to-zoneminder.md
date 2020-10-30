@@ -123,7 +123,9 @@ PUSHOVER_APP_TOKEN=your_pushover_app_token
 PUSHOVER_USER_KEY=your_pushover_user_key
 ```
 
-In my case I only changed `ZMES_PICTURE_URL`. Please note you won't be able to test the URL as long as the event server is not properly functioning.
+In my case I changed `ZMES_PICTURE_URL`, `ZM_PORTAL` and `ZM_API_PORTAL`.
+
+Please note you won't be able to test the ZMES URL as long as the event server is not properly functioning.
 
 If you enabled authentication (I didn't, my Zoneminder is not exposed to the internet), change the `ZM_USER` and `ZM_PASSWORD` variables.
 
@@ -304,7 +306,7 @@ I think I only changed `object_detection_pattern` in there. You can have custom 
 
 What was missing are 3 files related to `yolov3`.
 
-I tried object detection script manually (inside the container):
+I tried object detection script manually (inside the container) from inside the container:
 
 ```bash
 docker exec -it zm sh
@@ -336,7 +338,7 @@ When you are done with the configurations files and the missing files, enable th
 
 At this point, object detection must work. Congrats!
 
-You can verify by running the object detection manually again and it should not give errors:
+You can verify by running the object detection manually again (still inside the container) and it should not give errors:
 
 ```bash
 docker exec -it zm sh
@@ -352,12 +354,14 @@ Drop a couple of pictures of the persons in this kind of structure:
 /opt/docker/zm/config/hook/known_faces/Sebastien/2.jpg
 /opt/docker/zm/config/hook/known_faces/Sebastien/whatever.jpg
 /opt/docker/zm/config/hook/known_faces/Postman/my_postman_is_cool.jpg
-/opt/docker/zm/config/hook/known_faces/Chewbacca/chewie.jpg
+/opt/docker/zm/config/hook/known_faces/Bubbles/bubs.jpg
+/opt/docker/zm/config/hook/known_faces/Ricky/rick.jpg
+/opt/docker/zm/config/hook/known_faces/Julian/julian.jpg
 ```
 
-I put 3 very small pictures of me in there and face detection has been working well. Documentation suggests to avoid large images because it slows things down.
+I put 4 very small jpeg pictures of myself in there and face detection has been working well. Documentation suggests to avoid large images because it slows things down.
 
-Run the training script:
+Run the training script from inside the container:
 
 ```bash
 sudo -u www-data /var/lib/zmeventnotification/bin/zm_train_faces.py
