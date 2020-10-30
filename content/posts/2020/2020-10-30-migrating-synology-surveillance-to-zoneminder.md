@@ -27,13 +27,9 @@ During my research in order to reduce the false positives issues, I discovered m
 
 I was initially confused by the name because it sounded just like a notification system. It's actually more than that.
 
-The idea of this project is to only notify you on events that triggered actual object detection.
+Zoneminder will detect events as usual (many of them being just false positives) and zmeventnotification will process the event with a `zm_events.py` script and some opencv magic.
 
-Every event created by Zoneminder will be parsed by a `zm_events.py` script, which uses opencv.
-
-Zoneminder will keep creating a lot of false positive events but you won't necessarily get notified for those.
-
-Every event will be parsed through the event detection of zmeventnotification. And only if an object (or person) is detected then you will get notified.
+A notification is created only if an object (a person, a car, a boat, etc.) is detected. The neat thing is that you can use any script to notify you (that's what I do).
 
 Let me tell you, it took me quite some time to figure out how to get it running but when you do it works amazingly well.
 
@@ -43,15 +39,15 @@ Look at that:
 
 ![](https://blog.wains.be/images/zoneminder-gotify.png)
 
-Someone called dlandon created a container with both Zoneminder and Zmeventnotification.
+Someone amazing called "dlandon" created a container that ships both Zoneminder and zmeventnotification.
 
-You can get push notifications to your mobile device if you use the zmninja mobile application.
+You can get push notifications to your mobile device if you use the zmninja (paid) mobile application.
 
-I purchased the app but decided not to open up Zoneminder to the internet.
+I purchased the app but decided not to use the built-in notification. I decided to use Gotify instead (which is my default choice for any kind of notifications, it is pretty awesome software).
 
-My alternative for notifications was to push to my Gotify instance (which I have talked about on this blog).
+Even if you don't need the notifications, the Android app is pretty well worth the 5 or so euros.
 
-## Neat. Do I need a fancy GPU?
+## Neat. Do I need a fancy GPU for object detection?
 
 No. I run zoneminder and object detection in a small VM and it performs well. Obviously the more cameras and streams the more power you would need.
 
