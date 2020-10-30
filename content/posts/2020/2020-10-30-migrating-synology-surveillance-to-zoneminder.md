@@ -67,7 +67,7 @@ firewall-cmd --reload
 
 Create some folders for your container data:
 
-```
+```bash
 mkdir -p /opt/docker/zm/{config,data}
 ```
 
@@ -92,11 +92,11 @@ docker run -d --name="zm" \
 dlandon/zoneminder
 ```
 
-The container will compile a whole bunch of things, it took about 35 minutes on my server.
+The container will compile a whole bunch of things, it took about 35 minutes on my small VM.
 
-When Zoneminder is up and running add your camera (look it up).
+When Zoneminder is up and running, add your cameras (look it up).
 
-You will also have to configure some stuff for zmeventnotification.
+In order to enjoy object detection, you will need to configure some stuff for zmeventnotification.
 
 On the docker host configure those:
 
@@ -123,7 +123,11 @@ PUSHOVER_APP_TOKEN=your_pushover_app_token
 PUSHOVER_USER_KEY=your_pushover_user_key
 ```
 
-In my case I only changed `ZMES_PICTURE_URL`. Please not you won't be able to test the URL as long as the event server is not properly functioning.
+In my case I only changed `ZMES_PICTURE_URL`. Please note you won't be able to test the URL as long as the event server is not properly functioning.
+
+If you enabled authentication (I didn't, my Zoneminder is not exposed to the internet), change the `ZM_USER` and `ZM_PASSWORD` variables.
+
+I was thrown out by the other variables but just left those untouched and it was fine.
 
 `/opt/docker/zm/config/zmeventnotification.ini`:
 
@@ -186,7 +190,7 @@ hook_pass_image_path = yes
 
 In this file I edited `api_push_script` which calls `/config/hook/gotify.sh` for Gotify notifications upon events.
 
-`/opt/docker/zm/config/hook/gotify.sh`:
+Create `/opt/docker/zm/config/hook/gotify.sh`:
 
 ```bash
 #!/bin/bash
@@ -208,7 +212,7 @@ curl --request POST \
 }"
 ```
 
-My Zoneminder is not exposed to the internet so I should connect to the VPN to see the image in the notification.
+My Zoneminder is not exposed to the internet so I must connect to the VPN if I want to see the image in the notification. Otherwise it just shows a message "Connect to VPN to see image".
 
 Lastly edit the object config file:
 
@@ -296,11 +300,11 @@ resize=no
 detection_sequence=object,alpr
 ```
 
-In my case I only enabled person detection.
+I think I only changed `object_detection_pattern` in there. You can have custom patterns (detecting cars and people on the frontyard camera and only people on the backyard). I assume that reducing the number of objects reduces the processing (?).
 
 What was missing are 3 files related to `yolov3`.
 
-You can indeed try the object detection script manually (inside the container):
+I tried object detection script manually (inside the container):
 
 ```bash
 docker exec -it zm sh
@@ -330,30 +334,52 @@ When you are done with the configurations files and the missing files, enable th
 
 ![](https://blog.wains.be/images/zoneminder-notif.png)
 
-You should now be able to run the object detection again and it should not complain anymore:
+At this point, object detection must work. Congrats!
+
+You can verify by running the object detection manually again and it should not give errors:
 
 ```bash
 docker exec -it zm sh
 sudo -u www-data /var/lib/zmeventnotification/bin/zm_detect.py --config /etc/zm/objectconfig.ini  --eventid 1 --monitorid 1 --debug
 ```
 
-You can also train the system for know persons.
+While you are at it, you can also train the system for know persons.
 
-Drop a couple of pictures of the person in this kind of structure:
+Drop a couple of pictures of the persons in this kind of structure:
 
 ```bash
 /opt/docker/zm/config/hook/known_faces/Sebastien/1.jpg
+/opt/docker/zm/config/hook/known_faces/Sebastien/2.jpg
 /opt/docker/zm/config/hook/known_faces/Sebastien/whatever.jpg
-/opt/docker/zm/config/hook/known_faces/Postman/yo.jpg
+/opt/docker/zm/config/hook/known_faces/Postman/my_postman_is_cool.jpg
+/opt/docker/zm/config/hook/known_faces/Chewbacca/chewie.jpg
 ```
 
-Then run the training script:
+I put 3 very small pictures of me in there and face detection has been working well. Documentation suggests to avoid large images because it slows things down.
+
+Run the training script:
 
 ```bash
 sudo -u www-data /var/lib/zmeventnotification/bin/zm_train_faces.py
 ```
 
-Now your notification could mention the name of the person:
+This should output something like this:
+
+```
+Oct 30 2020 15:03:58.339439 [INF] Using simple log output (default)
+Oct 30 2020 15:03:58.339489 [DBG 1] Face Recognition library load time took: 0.001 milliseconds
+Oct 30 2020 15:03:58.339555 [DBG 1] Sebastien is a directory. Processing all images inside it
+Oct 30 2020 15:03:58.339577 [DBG 1] loading face from  Sebastien/2.jpg
+Oct 30 2020 15:03:58.401641 [DBG 1] loading face from  Sebastien/3.jpg
+Oct 30 2020 15:03:58.466575 [DBG 1] loading face from  Sebastien/4.jpg
+Oct 30 2020 15:03:58.527484 [DBG 1] loading face from  Sebastien/index.jpg
+Oct 30 2020 15:03:59.259582 [DBG 2] Using n_neighbors to be: 3
+Oct 30 2020 15:03:59.259680 [DBG 1] Training model ...
+Oct 30 2020 15:03:59.261252 [DBG 1] wrote encoding file: /var/lib/zmeventnotification/known_faces/faces.dat
+Oct 30 2020 15:03:59.261302 [DBG 1] Face Recognition training took: 921.791 milliseconds
+```
+
+Now your notification could mention the name of the person if the processed image is good enough (not blurry, not wearing hat or mask):
 
 ![](https://blog.wains.be/images/zoneminder-face-detection.png)
 
