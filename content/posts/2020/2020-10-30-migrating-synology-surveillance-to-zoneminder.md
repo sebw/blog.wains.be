@@ -7,27 +7,29 @@ title: "Migrating from false positives of Synology Surveillance Station to Zonem
 
 I replaced my old Synology DS213j with a Fedora box. I have talked about this in a previous post.
 
-The one thing that held me for a while was Synology's taken on home security, called Surveillance Station.
+The one thing that held me for a while was Synology's take on home security, called Surveillance Station.
 
-Surveillance Station never worked quite well with my outdoor cameras (Eminent EM6360).
+It was holding me from moving to a fully open source alternative, but admittedly Surveillance Station never worked quite well with my outdoor cameras (Eminent EM6360).
 
 I was getting one million false positives a day and just decided to turn off notifications and just record constantly, and check the recording in case of break in.
 
-This is not idea and wanted to get notified if something was actually happening.
+This is not ideal and I really wanted to get notified if something was actually happening.
+
+I started looking for open source alternatives.
 
 ## Zoneminder?
 
 I first played with Zoneminder probably more than 10 years ago and decided to give it another shot.
 
-Zoneminder in its purest form was producing as many false positives as Surveillance Station.
+I installed Zoneminder in its purest form and by the evening it started producing as many false positives as Surveillance Station (rain and infrared night vision is considered as motion). I got 400 notifications in an hour.
 
-I discovered machine learning was a possibility through the use of [zmeventnotification](https://zmeventnotification.readthedocs.io/en/latest/).
+During my research in order to reduce the false positives issues, I discovered machine learning and object detection was a possibility through the use of [zmeventnotification](https://zmeventnotification.readthedocs.io/en/latest/).
 
-I was initially confused at the name because it sounded just like a notification system and not an object detection plugin.
+I was initially confused by the name because it sounded just like a notification system. It's actually more than that.
 
-The idea of this project is to only notify you on events that triggered object detection.
+The idea of this project is to only notify you on events that triggered actual object detection.
 
-Every event created by Zoneminder will be parsed by zm_events.py
+Every event created by Zoneminder will be parsed by a `zm_events.py` script, which uses opencv.
 
 Zoneminder will keep creating a lot of false positive events but you won't necessarily get notified for those.
 
@@ -48,6 +50,13 @@ You can get push notifications to your mobile device if you use the zmninja mobi
 I purchased the app but decided not to open up Zoneminder to the internet.
 
 My alternative for notifications was to push to my Gotify instance (which I have talked about on this blog).
+
+## Neat. Do I need a fancy GPU?
+
+No. I run zoneminder and object detection in a small VM and it performs well. Obviously the more cameras and streams the more power you would need.
+
+I get notified within 30 seconds of the actual event, which is good enough for me.
+
 
 ## How to get the whole thing running?
 
@@ -97,7 +106,7 @@ On the docker host configure those:
 
 `/opt/docker/zm/config/secrets.ini`:
 
-```
+```ini
 [secrets]
 ZMES_PICTURE_URL=http://zm.example.lan:8080/zm/index.php?view=image&eid=EVENTID&fid=objdetect&width=600
 ZM_USER=admin
@@ -118,11 +127,11 @@ PUSHOVER_APP_TOKEN=your_pushover_app_token
 PUSHOVER_USER_KEY=your_pushover_user_key
 ```
 
-In my case it was just editing `ZMES_PICTURE_URL`. You won't be able to test the URL as long as the event server is not properly functioning.
+In my case I only changed `ZMES_PICTURE_URL`. Please not you won't be able to test the URL as long as the event server is not properly functioning.
 
 `/opt/docker/zm/config/zmeventnotification.ini`:
 
-```
+```ini
 [general]
 secrets = /etc/zm/secrets.ini
 base_data_path=/var/lib/zmeventnotification
@@ -183,7 +192,7 @@ In this file I edited `api_push_script` which calls `/config/hook/gotify.sh` for
 
 `/opt/docker/zm/config/hook/gotify.sh`:
 
-```
+```bash
 #!/bin/bash
 
 EVENT_ID=`echo ${6} | awk -F'/' '{ print $8 }'`
@@ -209,7 +218,7 @@ Lastly edit the object config file:
 
 `/opt/docker/zm/config/hook/objectconfig.ini`:
 
-```
+```ini
 [general]
 version=1.1
 secrets = /etc/zm/secrets.ini
@@ -336,7 +345,7 @@ You can also train the system for know persons.
 
 Drop a couple of pictures of the person in this kind of structure:
 
-```
+```bash
 /opt/docker/zm/config/hook/known_faces/Sebastien/1.jpg
 /opt/docker/zm/config/hook/known_faces/Sebastien/whatever.jpg
 /opt/docker/zm/config/hook/known_faces/Postman/yo.jpg
@@ -344,7 +353,7 @@ Drop a couple of pictures of the person in this kind of structure:
 
 Then run the training script:
 
-```
+```bash
 sudo -u www-data /var/lib/zmeventnotification/bin/zm_train_faces.py
 ```
 
