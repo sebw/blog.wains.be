@@ -12,16 +12,14 @@ I'm a cloud and infrastructure senior consultant at Red Hat, the leading provide
 
 I'm a Red Hat Certified Architect (RHCA). [My certification ID is 110-643-822](https://www.redhat.com/rhtapps/services/verify/?certId=110-643-822).
 
-To learn more about our consulting services, check [https://www.redhat.com/en/services/consulting](https://www.redhat.com/en/services/consulting).
-
 ## Disclaimers
 
 - Opinions expressed here represent my own and not those of my employer
 - This site doesn't use third party cookies
-- Search function requires Javascript
-- Comment function requires Javascript and store a cookie to work
+- The search function requires Javascript
+- The comment function requires Javascript and store a cookie to work
 - I collect visits stats over at [stat.wains.be](http://stat.wains.be/wains.be) using Plausible, an open source Google Analytics alternative, which requires Javascript to work.
-- Javascript and cookies can be disabled, the site won't break. Only search, comment and stats won't work, which doesn't affect article readability.
+- The site will work with Javascript and cookies disabled. In that case search, comments and statistics are not going to work and posts will not be impacted.
 
 ## Talks
 
@@ -37,7 +35,7 @@ I like building simple, fast, powerful, resilient, secure and automated infrastr
 
 I care about security and privacy.
 
-I automate things whenever I can! I'm a big fan of [Ansible], [Node-RED], [Home Assistant], [Automagic] on Android or [Ulauncher] on Linux, and hackable connected devices. For example, this website is [automated](https://blog.wains.be/2020/2020-02-17-mkdocs-publishing-workflow/).
+I automate things whenever I can! I'm a big fan of [Ansible], [Node-RED], [Home Assistant], [Automagic] on Android or [Ulauncher] on Linux, and any device that comes with an open API.
 
 I'm a heavy keyboard user and as such, [i3wm] is my window manager. I wrote about my desktop environment [here](https://blog.wains.be/2019/2019-12-11-my-linux-desktop-environment/).
 
