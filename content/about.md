@@ -37,7 +37,7 @@ I like building simple, fast, powerful, resilient, secure and automated infrastr
 
 I care about security and privacy.
 
-I automate things whenever I can! I'm a big fan of [Ansible], [Node-RED], [Automagic] on Android, [Ulauncher] on Linux, and hackable connected devices. For example, this website is [automated](https://blog.wains.be/2020/2020-02-17-mkdocs-publishing-workflow/).
+I automate things whenever I can! I'm a big fan of [Ansible], [Node-RED], [Home Assistant], [Automagic] on Android or [Ulauncher] on Linux, and hackable connected devices. For example, this website is [automated](https://blog.wains.be/2020/2020-02-17-mkdocs-publishing-workflow/).
 
 I'm a heavy keyboard user and as such, [i3wm] is my window manager. I wrote about my desktop environment [here](https://blog.wains.be/2019/2019-12-11-my-linux-desktop-environment/).
 
@@ -74,6 +74,7 @@ Please open an [issue on Github](https://github.com/sebw/blog.wains.be/issues/ne
 [Automagic]: https://automagic4android.com/
 [Rundeck]: http://www.rundeck.org
 [Gitlab CE]: https://about.gitlab.com/downloads/
+[Home Assistant]: https://www.home-assistant.io/
 [Salt]: https://www.saltstack.com
 [iTop]: https://www.combodo.com/itop-193
 [INTJ]: https://en.wikipedia.org/wiki/INTJ
