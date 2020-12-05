@@ -27,7 +27,7 @@ For best performances on the guest, this is what you should do:
 On the guest, check those with:
 
 - `lspci | grep -i vga` should return something like `QXL paravirtual graphic card`
-- `ps aux | spice-vdagent` should output something
+- `ps aux | grep spice-vdagent` should output something
 - `lsmod | grep -i qxl` too
 
 ### Mouse doesn't feel fast?
