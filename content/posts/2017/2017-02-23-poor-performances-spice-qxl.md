@@ -28,7 +28,7 @@ On the guest, check those with:
 
 - `lspci | grep -i vga` should return something like `QXL paravirtual graphic card`
 - `ps aux | grep spice-vdagent` should output something
-- `lsmod | grep -i qxl` too
+- `lsmod | grep -i qxl` should also output something
 
 ### Mouse doesn't feel fast?
 
