@@ -12,6 +12,7 @@ My expectations:
 - notified when at home (obviously) but also when not at home
 - I want a photo of the person, I don't need to see the face in the notification, I only want to be able to see if that's the postman or a neighbor
 - fast, definitely under one second between the press of the button and the notifications
+- the doorbell should be able to withstand rain
 
 My problems:
 
@@ -219,6 +220,8 @@ I also struggled with the Conbee, because it got disconnected from the VM after 
 Ever since I stuck the button to my door, it has not failed once.
 
 I will keep an eye on the battery. Xiaomi says the battery should last two years. I put the button at the door 15 days ago and the battery went from 100% to 94%. It seems to decrement by 3% at a time. Or maybe it gets updated only when the button is pressed? Not sure.
+
+When it comes to rain, the Xiaomi button is NOT rated for those conditions, but I have read a few comments on Reddit from people using the button for two years in British weather. I think it's going to do fine, I will report back if it doesn't survive its first downpour.
 
 One of my problems was that I didn't want to rely on clouds. I do: Telegram and LaMetric. I could use Gotify but I wouldn't get the picture attached to the notification which is something I really want. Also, I'm not that bothered with Telegram API today. I can always change the notification system should my opinion of Telegram change.
 
