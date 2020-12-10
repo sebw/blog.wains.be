@@ -39,7 +39,7 @@ If you don't already own all that stuff I used to achieve this project you will 
 - outdoor camera: about 65 euros (Eminent EM6360, discontinued)
 - Conbee 2 Zigbee gateway: less than 40 euros (Amazon)
 - LaMetric clock: typically 200 euros, got for 160 with coupon on their official store
-- finally Xiaomi button: under 20 euros if you are impatient (Amazon), about 10 euros on Aliexpress
+- finally Xiaomi button WXKG01LM: under 20 euros if you are impatient (Amazon), about 10 euros on Aliexpress
 
 https://phoscon.de/en/conbee2
 https://www.amazon.fr/Xiaomi-Interrupteur-connect%C3%A9-Wireless-Switch/dp/B07X71ZS7J/ref=sr_1_14?dchild=1&keywords=xiaomi+aqara&qid=1607612309&sr=8-14
@@ -48,6 +48,10 @@ https://store.lametric.com/products/lametric
 Also, if you don't own all that stuff already, do you really want to create and run such a complex infrastructure just for your doorbell use case? Probably not.
 
 I happened to own everything already besides the Zigbee gateway and the button, and my server runs 24/7 so that was an inexpensive addition. Also I have learned about Zigbee on the way!
+
+Lastly, make sure that Zigbee devices you buy are compatible with the Conbee 2 gateway. You can search here: https://phoscon.de/en/conbee2/compatible
+
+My button is the `WXKG01LM` model.
 
 ### Home Assistant
 
@@ -74,3 +78,45 @@ My home assistant/hassio runs in a VM.
 Attach the USB device to the guest.
 
 ![](https://blog.wains.be/images/doorbell/vm.png)
+
+##### deCONZ
+
+You will need to install the deCONZ add-on in home assistant.
+
+deCONZ will allow you to configure new Zigbee sensors.
+
+Install deCONZ and make sure it will start at boot:
+
+![](https://blog.wains.be/images/doorbell/deconz.png)
+
+From the left menu open up the deCONZ menu, and you will see two options:
+
+![](https://blog.wains.be/images/doorbell/phoscon.png)
+
+Choose phoscon.
+
+You need to pair your button with the gateway.
+
+I won't provide a full step by step screenshot tutorial here as it is pretty easy to achieve.
+
+Pairing a new device requires you to click the reset button on the button, and tell the gateway to scan for new devices.
+
+If pressing for 5 seconds on the reset button doesn't work, try a short press. Make sure to stand close enough to your gateway.
+
+The end result should be this:
+
+![](https://blog.wains.be/images/doorbell/pair.png)
+
+Now if you go in the **Configuration > Integration** and Home Assistant will probably suggest to enable the deCONZ integration:
+
+![](https://blog.wains.be/images/doorbell/integration.png)
+
+You should be good to go as soon as you have 1 device reported.
+
+##### Listening to Zigbee events
+
+If you press on the button, events will be sent on a `deconz_event`.
+
+You can see those by listening to the events under Developer Tools > Events in Home Assistant:
+
+![](https://blog.wains.be/images/doorbell/events.png)
