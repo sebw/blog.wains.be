@@ -165,7 +165,7 @@ You can see how I attach a camera capture in the Telegram message. Just provide 
 
 I also have a LaMetric notification in place, as you can see in a picture at the beginning of this post.
 
-You have the possibility to pushes messages to your LaMetric clock through and integration:
+You have the possibility to push messages to your LaMetric clock through an integration:
 
 https://www.home-assistant.io/integrations/lametric/
 
