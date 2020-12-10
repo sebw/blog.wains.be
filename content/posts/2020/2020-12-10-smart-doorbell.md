@@ -31,13 +31,36 @@ A notification on my LaMetric alarm:
 
 First, I'm definitely lying on the 15 euro click-baity statement.
 
-If you don't already all that stuff (server running 24/7, cameras, LaMetric) your doorbell will end up costing hundreds of euros:
+If you don't already own all that stuff I used to achieve this project you will end up with a couple hundred of euros/dollars bill:
 
-- server in the garage: around 600 euros
-- outdoor camera: about 65 euros (Eminent EM6360)
+- server in the garage beefy enough to run a couple of Libvirt VMs: around 600 euros
+- outdoor camera: about 65 euros (Eminent EM6360, discontinued)
 - Conbee 2 Zigbee gateway: less than 40 euros (Amazon)
 - LaMetric clock: typically 200 euros, got for 160 with coupon on their official store
 - finally Xiaomi button: under 20 euros if you are impatient (Amazon), about 10 euros on Aliexpress
 
 https://phoscon.de/en/conbee2
+https://www.amazon.fr/Xiaomi-Interrupteur-connect%C3%A9-Wireless-Switch/dp/B07X71ZS7J/ref=sr_1_14?dchild=1&keywords=xiaomi+aqara&qid=1607612309&sr=8-14
+https://store.lametric.com/products/lametric
 
+Also, if you don't own all that stuff already, do you really want to create and run such a complex infrastructure just for your doorbell use case? Probably not.
+
+I happened to own everything already besides the Zigbee gateway and the button, and my server runs 24/7 so that was an inexpensive addition. Also I have learned about Zigbee on the way!
+
+### Home Assistant
+
+I will assume you already have Home Assistant or Hassio running.
+
+You don't necessarily need to integrate Zoneminder with Home Assistant.
+
+You can create an automation in Home Assistant that takes a camera capture.
+
+#### Conbee 2 integration
+
+My home assistant/hassio runs in a VM.
+
+Make sure to plug your Conbee 2 into a USB cable extension, and not directly in the back of your machine.
+
+This is important especially in my case since my home server is in a rack and this would suffer from a faraday cage effect.
+
+![](https://blog.wains.be/images/doorbell/server.png)
