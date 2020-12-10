@@ -10,7 +10,7 @@ My expectations:
 - as open source as possible
 - notifications on phone and other devices
 - notified when at home (obviously) but also when not at home
-- I want a photo of the person, I don't need to see the face in the notification, I only want to be able to see if that's the postman or a neighbor
+- I want a photo of the person, I don't need to see the face in the notification, I only want to be able to tell if that's the postman, the UPS guy, a neighbor or someone else (I can also review Zoneminder footage anyway)
 - fast, definitely under one second between the press of the button and the notifications
 - the doorbell should be able to withstand rain
 
