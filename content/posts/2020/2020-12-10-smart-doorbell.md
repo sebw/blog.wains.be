@@ -60,10 +60,6 @@ My button is the `WXKG01LM` model.
 
 I will assume you already have Home Assistant or Hassio running.
 
-You don't necessarily need to integrate Zoneminder with Home Assistant.
-
-You can create an automation in Home Assistant that takes a camera capture.
-
 #### Conbee 2
 
 ##### Placement
