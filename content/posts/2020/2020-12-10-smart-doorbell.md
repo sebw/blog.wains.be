@@ -38,12 +38,14 @@ If you don't already own all that stuff I used to achieve this project you will 
 - server in the garage beefy enough to run a couple of Libvirt VMs: around 600 euros
 - outdoor camera: about 65 euros (Eminent EM6360, discontinued)
 - Conbee 2 Zigbee gateway: less than 40 euros (Amazon)
-- LaMetric clock: typically 200 euros, got for 160 with coupon on their official store
+- LaMetric clock: typically 200 euros, got for 160 with coupon on their official store. An expensive gadget but totally worth it if you ask me
 - finally Xiaomi button WXKG01LM: under 20 euros if you are impatient (Amazon), about 10 euros on Aliexpress
 
-https://phoscon.de/en/conbee2
-https://www.amazon.fr/Xiaomi-Interrupteur-connect%C3%A9-Wireless-Switch/dp/B07X71ZS7J/ref=sr_1_14?dchild=1&keywords=xiaomi+aqara&qid=1607612309&sr=8-14
-https://store.lametric.com/products/lametric
+Check those links to learn more:
+
+- Conbee 2: https://phoscon.de/en/conbee2
+- Button: https://www.amazon.fr/Xiaomi-Interrupteur-connect%C3%A9-Wireless-Switch/dp/B07X71ZS7J/ref=sr_1_14?dchild=1&keywords=xiaomi+aqara&qid=1607612309&sr=8-14
+- Clock: https://store.lametric.com/products/lametric
 
 Also, if you don't own all that stuff already, do you really want to create and run such a complex infrastructure just for your doorbell use case? Probably not.
 
