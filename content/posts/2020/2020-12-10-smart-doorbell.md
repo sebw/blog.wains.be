@@ -53,7 +53,7 @@ Lastly, make sure that Zigbee devices you buy are compatible with the Conbee 2 g
 
 My button is the `WXKG01LM` model.
 
-### Home Assistant
+### Home Assistant (HA)
 
 I will assume you already have Home Assistant or Hassio running.
 
@@ -107,11 +107,11 @@ The end result should be this:
 
 ![](https://blog.wains.be/images/doorbell/pair.png)
 
-Now if you go in the **Configuration > Integration** and Home Assistant will probably suggest to enable the deCONZ integration:
+Now if you go in the **Configuration > Integration**, Home Assistant should suggest to enable the deCONZ integration:
 
 ![](https://blog.wains.be/images/doorbell/integration.png)
 
-You should be good to go as soon as you have 1 device reported.
+Enable it and it should report 2 devices, the gateway and your button.
 
 ##### Listening to Zigbee events
 
@@ -120,3 +120,96 @@ If you press on the button, events will be sent on a `deconz_event`.
 You can see those by listening to the events under Developer Tools > Events in Home Assistant:
 
 ![](https://blog.wains.be/images/doorbell/events.png)
+
+The event number corresponds to a specific action on the button.
+
+* 1000 	initial press
+* 1001 	single hold
+* 1002 	single short release
+* 1003 	single hold release
+* 1004 	double short press
+* 1005 	triple short press
+* 1006 	quad short press
+* 1010 	five+ short press
+
+https://github.com/dresden-elektronik/deconz-rest-plugin/wiki/Xiaomi-WXKG01LM
+
+Any press always triggers an event 1000. Keep this in mind for your automation.
+
+If you need to debug deCONZ add the following to your `configuration.yaml` config file in Home Assistant:
+
+```
+logger:
+  default: info
+  logs:
+    pydeconz: debug
+    homeassistant.components.deconz: debug
+```
+
+##### Automation
+
+Now create a new automation in HA.
+
+Your trigger will be the event on `deconz_event`:
+
+![](https://blog.wains.be/images/doorbell/trigger.png)
+
+The notification on Telegram is done through a service.
+
+Follow the instructions here: https://www.home-assistant.io/integrations/telegram/
+
+You can use your new notification:
+
+![](https://blog.wains.be/images/doorbell/notification.png)
+
+You can see how I attach a camera capture in the Telegram message. Just provide the correct URL and it will just work.
+
+I also have a LaMetric notification in place, as you can see in a picture above.
+
+You have the possibility to create local applications with LaMetric.
+
+In my `configuration.yaml` I have:
+
+```
+notify:
+    - name: lametric_1
+      platform: lametric
+      lifetime: 20
+      icon: a7956
+      cycles: 0
+      priority: info
+      icon_type: none
+```
+
+In my automation notification, I override the icon and priority there:
+
+```
+service: notify.lametric_1
+data:
+  message: Someone is at the door
+  data:
+    icon: a24087
+    cycles: 0
+    priority: normal
+    icon_type: none
+```
+
+### Conclusion
+
+I mostly struggled with Phoscon initially because I was discovering the Zigbee world.
+
+I also struggled with the Conbee, because it got disconnected from the VM after a firmware upgrade and didn't notice immediately.
+
+Ever since I stuck the button to my door, it has not failed once.
+
+I will keep an eye on the battery. Xiaomi says the battery should last two years. I put the button at the door 15 days ago and the battery went from 100% to 94%. It seems to decrement by 3% at a time (100 > 97 > 93)
+
+One of my main concern was the speed of notifications:
+
+- pressing on the button triggers the automation immediately
+- the camera capture shows the person with their finger still on the button
+- the LaMetric clocks notifies me within the second
+- Telegram on my phone might take a couple of seconds to ring, which is probably due to the Android system
+- Telegram on desktop reacts faster than the phone
+
+Please reach out in the comments if you need help implementing something similar!
