@@ -166,13 +166,19 @@ You can use your new notification:
 
 You can see how I attach a camera capture in the Telegram message. Just provide the correct URL and it will just work.
 
-I also have a LaMetric notification in place, as you can see in a picture above.
+I also have a LaMetric notification in place, as you can see in a picture at the beginning of this post.
 
-You have the possibility to create local applications with LaMetric.
+You have the possibility to pushes messages to your LaMetric clock through and integration:
+
+https://www.home-assistant.io/integrations/lametric/
 
 In my `configuration.yaml` I have:
 
 ```
+lametric:
+  client_id: XXXXXX
+  client_secret: XXXXXX
+
 notify:
     - name: lametric_1
       platform: lametric
@@ -182,6 +188,8 @@ notify:
       priority: info
       icon_type: none
 ```
+
+Note: You can obtain your client ID and secret on https://developer.lametric.com
 
 In my automation notification, I override the icon and priority there:
 
