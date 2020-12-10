@@ -27,6 +27,8 @@ A notification on my LaMetric alarm:
 
 ![](https://blog.wains.be/images/doorbell/lametric.png)
 
+The clock actually displays a "Someone is at the door" in a loop until I click on the button at the top of the clock.
+
 ### Want the same setup? Read on!
 
 First, I'm definitely lying on the 15 euro click-baity statement.
@@ -55,12 +57,20 @@ You don't necessarily need to integrate Zoneminder with Home Assistant.
 
 You can create an automation in Home Assistant that takes a camera capture.
 
-#### Conbee 2 integration
+#### Conbee 2
 
-My home assistant/hassio runs in a VM.
+##### Placement
 
-Make sure to plug your Conbee 2 into a USB cable extension, and not directly in the back of your machine.
+Make sure to plug your Conbee 2 into a USB cable extension, and not directly in the back of your machine. I have read here and there that plugging directly in the back of your machine reduces the range of the device.
 
 This is important especially in my case since my home server is in a rack and this would suffer from a faraday cage effect.
 
 ![](https://blog.wains.be/images/doorbell/server.png)
+
+##### Libvirt
+
+My home assistant/hassio runs in a VM.
+
+Attach the USB device to the guest.
+
+![](https://blog.wains.be/images/doorbell/vm.png)
