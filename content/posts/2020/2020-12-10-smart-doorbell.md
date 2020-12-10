@@ -1,6 +1,6 @@
 ---
 date: 2020-12-10
-title: "DRAFT Home Assistant + Xiaomi Button + Conbee 2 + Zoneminder + LaMetric + Telegram = a smart 15 euro doorbell"
+title: "Home Assistant + Conbee 2 Zigbee Gateway + Xiaomi Button + Zoneminder + LaMetric + Telegram = a smart 15 euro doorbell"
 ---
 
 So you want a smart doorbell? I have wanted one for a long time.
@@ -193,6 +193,12 @@ data:
     priority: normal
     icon_type: none
 ```
+
+Obviously you can implement any other type of notifications. LaMetric and Telegram are good enough.
+
+I didn't use Gotify this time because I needed to attach the capture to the message. Gotify can only show images from remote URLs. My Zoneminder is not opened to the world for obvious reasons so I went with Telegram.
+
+Also I created a Telegram group and put my girlfriend and myself in there. My girlfriend gets notified as well now.
 
 ### Conclusion
 
