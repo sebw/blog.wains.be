@@ -218,7 +218,7 @@ I also struggled with the Conbee, because it got disconnected from the VM after 
 
 Ever since I stuck the button to my door, it has not failed once.
 
-I will keep an eye on the battery. Xiaomi says the battery should last two years. I put the button at the door 15 days ago and the battery went from 100% to 94%. It seems to decrement by 3% at a time (100 > 97 > 93)
+I will keep an eye on the battery. Xiaomi says the battery should last two years. I put the button at the door 15 days ago and the battery went from 100% to 94%. It seems to decrement by 3% at a time. Or maybe it gets updated only when the button is pressed? Not sure.
 
 One of my main concern was the speed of notifications:
 
