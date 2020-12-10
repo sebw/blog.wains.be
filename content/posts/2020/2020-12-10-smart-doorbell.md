@@ -36,7 +36,7 @@ First, I'm definitely lying on the 15 euro click-baity statement.
 
 If you don't already own all that stuff I used to achieve this project you will end up with a couple hundred of euros/dollars bill:
 
-- server in the garage beefy enough to run a couple of Libvirt VMs: around 600 euros
+- server in the garage beefy enough to run a couple of Libvirt VMs: around 600 euros in my case because the server does more than Home Assistant. You can definitely go lower.
 - outdoor camera: about 65 euros (Eminent EM6360, discontinued)
 - Conbee 2 Zigbee gateway: less than 40 euros (Amazon)
 - LaMetric clock: typically 200 euros, got for 160 with coupon on their official store. An expensive gadget but totally worth it if you ask me
