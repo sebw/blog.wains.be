@@ -24,11 +24,11 @@ This is the end result, a notification in a Telegram group:
 
 ![](https://blog.wains.be/images/doorbell/result.png)
 
-A notification on my LaMetric alarm:
+A notification on my LaMetric smart clock:
 
 ![](https://blog.wains.be/images/doorbell/lametric.png)
 
-The clock actually displays a "Someone is at the door" in a loop until I click on the button at the top of the clock.
+The clock will display a "Someone is at the door" message in a loop until I tap the button at the top of the clock.
 
 ### Want the same setup? Read on!
 
