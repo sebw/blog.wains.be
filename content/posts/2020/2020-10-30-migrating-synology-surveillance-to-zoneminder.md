@@ -327,7 +327,7 @@ cd /opt/docker/zm/config/hook/models
 Download the missing files:
 
 ```bash
-wget https://raw.githubusercontent.com/pjreddie/darknet/master/data/coco.name
+wget https://raw.githubusercontent.com/pjreddie/darknet/master/data/coco.names
 wget https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3.cfg
 wget https://pjreddie.com/media/files/yolov3.weights
 ```
