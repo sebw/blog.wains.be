@@ -306,7 +306,7 @@ I think I only changed `object_detection_pattern` in there. You can have custom 
 
 What was missing are 3 files related to `yolov3`.
 
-I tried object detection script manually (inside the container) from inside the container:
+I tried object detection script manually from inside the container:
 
 ```bash
 docker exec -it zm sh
@@ -317,16 +317,16 @@ Where the monitor ID is 1 and I parse the first event ID 1.
 
 This was throwing a bunch of errors all related to missing yolo files.
 
-On the Docker host create a models folder:
+On the Docker host create this folder:
 
 ```bash
-mkdir /opt/docker/zm/config/hook/models
-cd /opt/docker/zm/config/hook/models
+mkdir /opt/docker/zm/config/hook/models/yolov3
 ```
 
-Download the missing files:
+Download the missing files inside the newly created folder:
 
 ```bash
+cd /opt/docker/zm/config/hook/models/yolov3
 wget https://raw.githubusercontent.com/pjreddie/darknet/master/data/coco.names
 wget https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3.cfg
 wget https://pjreddie.com/media/files/yolov3.weights
