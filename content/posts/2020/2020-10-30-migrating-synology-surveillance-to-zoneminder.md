@@ -47,16 +47,21 @@ I purchased the app but decided not to use the built-in notification. I decided 
 
 Even if you don't need the notifications, the Android app is pretty well worth the 5 or so euros.
 
-## Neat. Do I need a fancy GPU for object detection?
+## Neat. Do I need fancy hardware for object detection?
 
-No. I run zoneminder and object detection in a small VM and it performs well. Obviously the more cameras and streams the more power you would need.
+I run Zoneminder on a 4 CPU and 6 GB VM, with 5 cameras. It performs globally well enough for a domestic usage.
 
 I get notified within 30 seconds of the actual event, which is good enough for me.
 
+The host has a reasonably inexpensive AMD Ryzen 5 3400G.
 
 ## How to get the whole thing running?
 
-On a Fedora box install `docker-ce` or `moby-engine`.
+On a Fedora box install `docker-ce` or `moby-engine`:
+
+```bash
+dnf install moby-engine
+```
 
 Make sure to add the docker interface to the firewalld trusted zone (I didn't and the container couldn't resolve):
 
@@ -92,6 +97,26 @@ docker run -d --name="zm" \
 dlandon/zoneminder
 ```
 
+## Edit Jan 2021
+
+In the latest image update, the container didn't seem to take the `SHMEM` variable into account, resulting in a `/dev/shm/` of 64 MB, the default.
+
+When that happens, Zoneminder processes will fail miserably, returning errors 124 or 255.
+
+My workaround has been to create a tmpfs on the host and map the volume.
+
+```
+mount -t tmpfs -o size=3G tmpfs /mnt/dockershm
+```
+
+If that happens, add the following to the `docker run` command above:
+
+```
+-v "/mnt/dockershm":"/dev/shm"
+```
+
+## End of edit
+
 The container will compile a whole bunch of things, it took about 35 minutes on my small VM.
 
 When Zoneminder is up and running, add your cameras (look it up).
@@ -123,11 +148,11 @@ PUSHOVER_APP_TOKEN=your_pushover_app_token
 PUSHOVER_USER_KEY=your_pushover_user_key
 ```
 
-In my case I changed `ZMES_PICTURE_URL`, `ZM_PORTAL` and `ZM_API_PORTAL`.
+Most options are left untouched. In my case I changed `ZMES_PICTURE_URL`, `ZM_PORTAL` and `ZM_API_PORTAL`.
 
 Please note you won't be able to test the ZMES URL as long as the event server is not properly functioning.
 
-If you enabled authentication (I didn't, my Zoneminder is not exposed to the internet), change the `ZM_USER` and `ZM_PASSWORD` variables.
+If you want to enable authentication (I didn't, my Zoneminder is not exposed to the internet), change the `ZM_USER` and `ZM_PASSWORD` variables.
 
 I was thrown out by the other variables but just left those untouched and it was fine.
 
