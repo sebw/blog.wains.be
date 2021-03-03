@@ -59,10 +59,10 @@ Start your music player.
 
 You should be able to send your audio through the tunnel:
 
-![](https://blog.wains.be/images/pulseaudio/pavucontrol1.png)
+![](https://blog.wains.be/images/pulseaudio/pavucontrol2.png)
 
 You can also control the volume of the output:
 
-![](https://blog.wains.be/images/pulseaudio/pavucontrol2.png)
+![](https://blog.wains.be/images/pulseaudio/pavucontrol1.png)
 
 I now enjoy a crackle free audio experience.
