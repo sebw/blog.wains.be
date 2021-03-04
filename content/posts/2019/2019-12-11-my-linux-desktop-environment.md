@@ -819,8 +819,8 @@ I use CMUS, a command line music player: https://cmus.github.io/
 
 cmus comes with `cmus-remote` which allows you to program and interact with your music player.
 
-```
-cmus-remote --server 0.0.0.0 --passwd xxxxxxx -Q
+```bash
+$ cmus-remote -Q
 status paused
 file /path/to/music/blah.mp3
 duration 253
@@ -850,11 +850,15 @@ set vol_right 48
 
 This allows me to have a i3block widget showing what's playing.
 
-I also send notifications to my LaMetric smart clock when a song plays.
+I also send notifications to my LaMetric smart clock when a song plays, with a script.
 
-I use this script:
+The script can be enabled with:
 
-```
+`:set status_display_program=/path/to/script`
+
+The script:
+
+```bash
 #!/bin/bash
 
 # Notify Lametric clock when playing/pausing tracks
@@ -906,6 +910,6 @@ curl --request POST \
 
 ```
 
-In CMUS you can define the script to run with `:set status_display_program=/path/to/script`
+CMUS can also be remote controlled. It must be started with `cmus --listen 0.0.0.0` and port tcp/3000 must be opened.
 
-CMUS can also be remote controlled if you start it with `cmus --listen 0.0.0.0`. Check https://github.com/cmus/cmus/wiki/remote-control
+Check https://github.com/cmus/cmus/wiki/remote-control for remote clients.
