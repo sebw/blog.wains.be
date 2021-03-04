@@ -148,7 +148,7 @@ There are some application configurations that I want a bit different between th
 
 When the application doesn't support conditions in its config files, you should create (and maintain) two separate configuration files (eg: config-work and config-personal).
 
-In that case I have to figure out how to start the application with a different configuration file. 
+In that case I have to figure out how to start the application with a different configuration file.
 
 My i3 configuration is one of those and I created a GDM service that starts i3 with `config-personal`:
 
@@ -200,7 +200,7 @@ In order to put it away/recall, I have this config in i3:
 
 ```bash
 bindsym $meta+z move scratchpad
-bindsym $meta+s exec "~/.i3/scripts/scratchpad.py" 
+bindsym $meta+s exec "~/.i3/scripts/scratchpad.py"
 ```
 
 One of the inconvenient of recalling windows in the scratchpad is that windows are appearing in a random fashion.
@@ -269,8 +269,8 @@ import simplejson
 
 def getNodes(data):
     result = 0
-    if data['scratchpad_state'] != 'none': 
-        result += 1    
+    if data['scratchpad_state'] != 'none':
+        result += 1
     if (len(data['nodes']) > 0) or (len(data['floating_nodes']) > 0):
         for node in (data['nodes'] + data['floating_nodes']):
             result += getNodes(node)
@@ -381,7 +381,7 @@ I use the following ZSH plugins:
 - tmux
 - k
 - dirhistory
-- z 
+- z
 - zsh-autosuggestions
 - zsh-syntax-highlighting
 
@@ -552,51 +552,51 @@ So anytime I take a screenshot, it asks if the screenshot is aimed for a report.
 If it is, then the script plays the screenshot in the right folder, and I get the asciidoc block of code I need to use in my report to point to the new image.
 
 ```bash
-#!/bin/bash                                                                     
-                                                                                
+#!/bin/bash
+
 zenity --question --default-cancel --text="Is the screenshot for an engagement journal?"
-ej=$?                                                                           
-                                                                                
-if [ "$ej" == "0" ]; then                                                       
-    DEST="${HOME}/Documents/ENGAGEMENT_REPORTS_CURRENT/images"                  
+ej=$?
+
+if [ "$ej" == "0" ]; then
+    DEST="${HOME}/Documents/ENGAGEMENT_REPORTS_CURRENT/images"
     NAME_IMG=$(zenity --entry --text="Engagement Journal Image Name (do not add extension .png)")
-    if [ "$?" == "1" ]; then                                                    
-        notify-send 'Screenshot cancelled'                                      
-        exit 1                                                                  
-    fi                                                                          
-    PATH_IMG="${DEST}/${NAME_IMG}.png"                                          
-else                                                                            
-    DEST="${HOME}/Pictures/SCREENSHOTS"                                         
-    SCREENSHOT_DATE=`date +%Y-%m-%d_%H%M%S`                                     
-    PATH_IMG="${DEST}/${SCREENSHOT_DATE}.png"                                   
-fi                                                                              
-                                                                                
-if [ ! -d "${DEST}" ]; then                                                     
-    mkdir -p ${DEST}                                                            
-    notify-send Screenshot "Created the screenshot directory"                   
-fi                                                                              
-                                                                                
-if [ -e $PATH_IMG ]; then                                                       
-    zenity --warning --text="File exists!"                                      
-    exit 1                                                                      
-fi                                                                              
-                                                                                
+    if [ "$?" == "1" ]; then
+        notify-send 'Screenshot cancelled'
+        exit 1
+    fi
+    PATH_IMG="${DEST}/${NAME_IMG}.png"
+else
+    DEST="${HOME}/Pictures/SCREENSHOTS"
+    SCREENSHOT_DATE=`date +%Y-%m-%d_%H%M%S`
+    PATH_IMG="${DEST}/${SCREENSHOT_DATE}.png"
+fi
+
+if [ ! -d "${DEST}" ]; then
+    mkdir -p ${DEST}
+    notify-send Screenshot "Created the screenshot directory"
+fi
+
+if [ -e $PATH_IMG ]; then
+    zenity --warning --text="File exists!"
+    exit 1
+fi
+
 RESULT_CAP=$(sleep 0.2; flameshot gui -p $DEST -r > $PATH_IMG && head -n 1 $PATH_IMG)
-                                                                                
-if [[ $RESULT_CAP != "screenshot aborted" ]] ; then                             
-    xclip -selection clipboard -target image/png -i $PATH_IMG                   
-                                                                                
-    if [ "$ej" == "0" ]; then                                                   
-        notify-send "EJ screenshot taken ${PATH_IMG}"                           
+
+if [[ $RESULT_CAP != "screenshot aborted" ]] ; then
+    xclip -selection clipboard -target image/png -i $PATH_IMG
+
+    if [ "$ej" == "0" ]; then
+        notify-send "EJ screenshot taken ${PATH_IMG}"
         zenity --entry --entry-text="image::/report/images/${NAME_IMG}.png[500,500,align=center]" --text="Copy-paste Asciidoc image path:"
-    else                                                                        
-        notify-send "Screenshot taken ${PATH_IMG}"                              
-    fi                                                                          
-else                                                                            
-    notify-send 'Screenshot aborted'                                            
-    rm -f $PATH_IMG                                                             
-fi                                                                              
-                                                                                
+    else
+        notify-send "Screenshot taken ${PATH_IMG}"
+    fi
+else
+    notify-send 'Screenshot aborted'
+    rm -f $PATH_IMG
+fi
+
 exit 0
 ```
 
@@ -627,14 +627,14 @@ if [ "$?" != 0 ]; then
 
     # This process should be killed before it continues
     ffmpeg -f x11grab -s "$W"x"$H" -i ${DISPLAY}+${X},${Y} "$TMPFILE"
-    
+
     # Generating the GIF
     ffmpeg -y -i "$TMPFILE"  -vf fps=10,palettegen /tmp/palette.png
     ffmpeg -i "$TMPFILE" -i /tmp/palette.png -filter_complex "paletteuse" $OUTPUT.gif
 
     mv $TMPFILE $OUTPUT.mkv
     notify-send "$OUTPUT.gif: $(du -h $OUTPUT.gif | awk '{print $1}')"
-    
+
     trap "rm -f '$TMPFILE'" 0
 
 else
@@ -655,7 +655,7 @@ I now use [peek](https://github.com/phw/peek) to record GIF of my desktop.
 
 Firefox is my default browser.
 
-I use only a few extensions. 
+I use only a few extensions.
 
 The most interesting is [Power Tabs](https://addons.mozilla.org/en-US/firefox/addon/power-tabs/).
 
@@ -810,3 +810,102 @@ curl "https://push.example.de/message?token=<apptoken>" -F "title=my title" -F "
 ```
 
 Another example: when I build the sources of this blog, I use Ulauncher to trigger the job through a script, and the script notifies me when the blog is updated.
+
+## Music Player
+
+I use CMUS, a command line music player: https://cmus.github.io/
+
+![cmus](https://blog.wains.be/images/desktop/cmus.png)
+
+cmus comes with `cmus-remote` which allows you to program and interact with your music player.
+
+```
+cmus-remote --server 0.0.0.0 --passwd xxxxxxx -Q
+status paused
+file /path/to/music/blah.mp3
+duration 253
+position 225
+tag artist Artist
+tag album Album
+tag title title
+tag date 2011
+tag genre Indie
+tag discnumber 02
+tag tracknumber 07
+tag albumartist Artist
+set aaa_mode all
+set continue true
+set play_library false
+set play_sorted true
+set replaygain disabled
+set replaygain_limit true
+set replaygain_preamp 0.000000
+set repeat false
+set repeat_current false
+set shuffle true
+set softvol false
+set vol_left 48
+set vol_right 48
+```
+
+This allows me to have a i3block widget showing what's playing.
+
+I also send notifications to my LaMetric smart clock when a song plays.
+
+I use this script:
+
+```
+#!/bin/bash
+
+# Notify Lametric clock when playing/pausing tracks
+
+# Inspired by /usr/share/doc/cmus/examples/cmus-status-display
+# Enable with ":set status_display_program=cmus-status-display"
+
+while test $# -ge 2
+do
+	eval _$1='$2'
+	shift
+	shift
+done
+
+if test -n "$_file"
+then
+	h=$(($_duration / 3600))
+	m=$(($_duration % 3600))
+
+	duration=""
+	test $h -gt 0 && dur="$h:"
+	duration="$dur$(printf '%02d:%02d' $(($m / 60)) $(($m % 60)))"
+
+	SONG="[$_status] $_artist - $_title"
+	#SONG="[$_status] $_artist - $_album - $_title ($_date) $duration"
+elif test -n "$_url"
+then
+	SONG="[$_status] $_url - $_title"
+else
+	SONG="[$_status]"
+fi
+
+curl --request POST \
+  --url http://clock.example.org:8080/api/v2/device/notifications \
+  --header 'authorization: Basic XXXXXXXXXXX' \
+  --header 'content-type: application/json' \
+  --data "{
+   \"icon_type\": \"none\",
+   \"model\": {
+        \"frames\": [
+            {
+               \"icon\":10685,
+               \"text\":\"${SONG}\"
+            }
+        ]
+    }
+}
+"
+
+```
+
+In CMUS you can define the script to run with `:set status_display_program=/path/to/script`
+
+CMUS can also be remote controlled if you start it with `cmus --listen 0.0.0.0`. Check https://github.com/cmus/cmus/wiki/remote-control
