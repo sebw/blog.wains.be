@@ -13,7 +13,7 @@ Install FRP server (called frps).
 
 I installed my instance on Docker using Ansible and the `cloverzrg/frps-docker` image:
 
-```
+```yaml
 ---
 - name: frps tunnel server side
   hosts: vps
@@ -52,7 +52,7 @@ The server will listen for connections on TCP/7700. Services will be exposed eit
 
 `/opt/docker/tunnel.example.org/conf/frps.ini`
 
-```
+```ini
 [common]
 bind_port = 7700
 token = xxx
@@ -78,7 +78,7 @@ Unzip.
 
 Create `frpc.ini`
 
-```
+```ini
 [common]
 server_addr = server.example.org
 server_port = 7700
