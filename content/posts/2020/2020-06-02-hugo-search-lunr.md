@@ -192,6 +192,16 @@ As soon as your start typing in the field, lunr will start querying the content 
 
 ![](https://blog.wains.be/images/lunr-result.png)
 
+## My search page doesn't load the index.json file!
+
+Make sure you don't have a content-security-policy blocking your json.
+
+You can verify by opening your developer tools, and if a policy blocks the download it should be indicated:
+
+![](https://blog.wains.be/images/csp.png)
+
+Remove the conflicting CSP (typically configured in your webserver) and you should be good.
+
 ## Acknowledments
 
 - Mark McDonnell
