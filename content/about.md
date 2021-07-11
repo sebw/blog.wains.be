@@ -6,11 +6,15 @@ title: "About"
 
 My name is Sebastien Wains.
 
-I'm a cloud and infrastructure senior consultant at Red Hat, the leading provider of enterprise open source solutions.
+I'm a solution architect at Red Hat, the leading provider of enterprise open source solutions.
 
 ![](https://blog.wains.be/images/redhatibm.png)
 
-I'm a Red Hat Certified Architect (RHCA). [My certification ID is 110-643-822](https://www.redhat.com/rhtapps/services/verify/?certId=110-643-822).
+I'm a Red Hat Certified Architect (RHCA).
+
+![](https://blog.wains.be/images/rhca.png)
+
+[My certification ID is 110-643-822](https://www.redhat.com/rhtapps/services/verify/?certId=110-643-822).
 
 ## Disclaimers
 
