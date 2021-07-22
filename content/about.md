@@ -22,8 +22,8 @@ I'm a Red Hat Certified Architect (RHCA).
 - This site doesn't use third party cookies
 - The search function requires Javascript
 - The comment function requires Javascript and store a cookie to work
-- I collect visits stats over at [stat.wains.be](http://stat.wains.be/wains.be) using Plausible, an open source Google Analytics alternative, which requires Javascript to work.
-- The site will work with Javascript and cookies disabled. In that case search, comments and statistics are not going to work and posts will not be impacted.
+- I do not collect statistics from my visitors, I'm pretty clueless as to the number of visits these days
+- The site will work with Javascript and cookies disabled. In that case search and comments are not going to work and posts will not be impacted.
 
 ## Talks
 
