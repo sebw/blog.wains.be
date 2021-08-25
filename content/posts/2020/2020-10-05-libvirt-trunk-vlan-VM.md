@@ -184,10 +184,10 @@ I give `enp8s0` (host traffic) priority over `enp1s0` (VM).
 
 Native VLAN on the trunk port means no tagging needed for the traffic of the host.
 
-By making VLAN aware bridges, I don't have to configure VLAN tagging inside VMs. I just add a NIC to the VM that uses the appropriate bridge. The VM is able to communicate with the DHCP from then on.
+By making VLAN aware bridges on the libvirt host, I don't have to configure VLAN tagging inside VMs. Simply configure the VM NIC to use the appropriate bridge.
 
 Configuration of VLAN aware bridges with `nmtui` did not disrupt traffic. I didn't lose my SSH connection to the host while configuring them.
 
-So all in all, everything can be performed remotely.
+So all in all, everything can be performed and configured remotely.
 
 Besides the two options presented above, there's another option where you use one bridge and VLAN filtering. The procedure is detailed on this [Red Hat blog post](https://developers.redhat.com/blog/2017/09/14/vlan-filter-support-on-bridge/) (I have not tested it).
