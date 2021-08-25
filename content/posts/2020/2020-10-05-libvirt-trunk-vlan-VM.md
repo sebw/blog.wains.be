@@ -1,7 +1,9 @@
 ---
 date: 2020-10-05
-title: "libvirtd with trunk port and VM in VLAN aware bridges"
+title: Configuring VLANs for your Libvirt virtual machines
 ---
+
+Previous title was "libvirtd with trunk port and VM in VLAN aware bridges".
 
 I use my small home server as a virtualization host running Fedora 32.
 
