@@ -15,17 +15,17 @@ I have 3 VLANs:
 
 My NAS sits in VLAN 10 and I wanted to be able to run virtual machines in VLAN 20 and 30 with no tagging done inside the guests VMs.
 
-First of all, the host must be placed behind a trunk port.
+First of all, the host must be connected to a trunk port on your switch.
 
-Then we must create VLAN aware bridges for the guests VMs.
+Then we must create VLAN aware bridges on the host for the guests VMs.
 
 Let's see how to do it.
 
 ## Configure the trunk on the switch
 
-My switch is a Ubiquiti EdgeSwitch 24 Lite. As a result the following might not work for your gear.
+My switch is a Ubiquiti EdgeSwitch 24 Lite. Adjust accordingly to your gear.
 
-```
+```python
 enable
 configure
 interface 0/23
@@ -36,9 +36,9 @@ interface 0/23
     exit
 ```
 
-The native VLAN is my home network, so anything coming from my NAS or from a VM using the macvtap device should fall within the home VLAN.
+The native VLAN is my home network, so any traffic coming from my NAS or from a VM using the macvtap `enp8s0` device should fall within the home VLAN.
 
-We need to configure VLAN aware bridges for other VLANs.
+We need to configure the host with VLAN aware bridges for other VLANs.
 
 ## Configure the bridge for the guest VLAN
 
@@ -92,13 +92,17 @@ You can now redo the procedure for any other VLANs.
 
 ## Regarding VMs in the native VLAN
 
-For VMs that need to sit in the native VLAN (home VLAN ID 10 in my case), just use the host device `enp8s0` which will use macvtap (also known as direct interface).
+There is a known limitation for VMs that need to use the same VLAN as the host.
 
-Keep in mind that communication between host and guests using macvtap is not possible for technical reasons detailed [here](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/virtualization_host_configuration_and_guest_installation_guide/app_macvtap).
+In such a scenario the VM would be using the host device `enp8s0` which will use macvtap.
+
+The communication between host and guests using macvtap is not possible for technical reasons detailed [here](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/virtualization_host_configuration_and_guest_installation_guide/app_macvtap).
 
 Guests to guests communication is possible.
 
-I personally run a Pi-hole DNS server in a VM on my home network, you have two possible workarounds
+I personally run a Pi-hole DNS server in a VM on my home network, so it means the host can't use Pi-hole as the resolver.
+
+There are two possible workarounds.
 
 ### Second NAT NIC on the guest
 
@@ -131,15 +135,19 @@ Switch trunk      +--------+            ^                        |
 
 ### Second physical NIC on the host
 
-You add a second physical NIC on the host and bridge VM on the second NIC. Host and guest will be able to communicate since they are no longer on the same NIC (this is what I have done)
+You can also add a second physical NIC on the host and bridge the VMs on the macvtap of the second NIC.
+
+Host and guest will then be able to communicate since they are no longer sharing the same NIC (this is what I have done using a cheap 12 euros tplink Gigabit Ethernet card).
+
+
 
 ```
                   +----------------------------------------------+
                   |                                    +---------|
-                  |                libvirt host        | enp1s0 <---+switch untagged
-Switch trunk      +--------+            ^              +---------+
-   +------------->+ enp8s0 +------------+-----------+            |
-                  +----+---+                    +---v----------+ |
+                  |                libvirt host     +--+ enp1s0 <---+switch untagged
+Switch trunk      +--------+            ^           |  +---------+
+   +------------->+ enp8s0 +------------+           |            |
+                  +----+---+                    +---+----------+ |
                   |    ^   ^-----------------+  |              | |
                   |    |                     |  |   VM home    | |
                   |    +----+                |  |              | |
@@ -158,14 +166,26 @@ Switch trunk      +--------+            ^              +---------+
                   +----------------------+-----------------------+
 ```
 
+Now that you have two network interface in the same subnet, you will need to configure metric priority like this:
+
+```
+[root@srv ~]# route -n
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+0.0.0.0         10.10.0.1       0.0.0.0         UG    10     0        0 enp8s0
+0.0.0.0         10.10.0.1       0.0.0.0         UG    100    0        0 enp1s0
+```
+
+I give `enp8s0` (host traffic) priority over `enp1s0` (VM).
+
 ## Conclusion
 
-By using native VLAN on the trunk port, I didn't have to modify anything on the libvirt host network interface so I didn't lose my SSH connection to the host.
+By using native VLAN on the trunk port, I didn't have to modify anything on the libvirt host network interface so I didn't even lose my SSH connection to the host while configuring them.
 
-By making VLAN aware bridges, I don't need to modify anything inside the guest VM. My VMs just fetch an IP from the DHCP server in the VLAN.
+By making VLAN aware bridges, I don't need to modify anything inside the guest VM. I just add a NIC to the VM using the appropriate bridge. My VMs just fetch an IP from the DHCP server running in their VLAN.
 
-The configuration of VLAN aware bridges with `nmtui` was also possible remotely with no loss of connection.
+Configuration of VLAN aware bridges with `nmtui` did not disrupt host traffic either.
 
-Everything can be done over a SSH connection without any loss of communication.
+So all in all, everything can be performed over a SSH connection without any loss of communication.
 
-Another way is to use one bridge and VLAN filtering, the procedure is detailed on this [Red Hat blog post](https://developers.redhat.com/blog/2017/09/14/vlan-filter-support-on-bridge/).
+Besides the two options presented above, there's another option where you use one bridge and VLAN filtering. The procedure is detailed on this [Red Hat blog post](https://developers.redhat.com/blog/2017/09/14/vlan-filter-support-on-bridge/) (I have not tested it).
