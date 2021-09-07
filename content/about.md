@@ -39,9 +39,9 @@ I like building simple, fast, powerful, resilient, secure and automated infrastr
 
 I care about security and privacy.
 
-I automate things whenever I can! I'm a big fan of [Ansible], [Node-RED], [Home Assistant], [Automagic] on Android or [Ulauncher] on Linux, and any device that comes with an open API.
+I automate things whenever I can! I'm a big fan of [Ansible], [Node-RED], [Home Assistant], [Automagic] (now deprecated, which I replaced with MacroDroid) on Android or [Ulauncher] on Linux, and any device that comes with an open API.
 
-I'm a heavy keyboard user and as such, [i3wm] is my window manager. I wrote about my desktop environment [here](https://blog.wains.be/2019/2019-12-11-my-linux-desktop-environment/).
+I'm a heavy keyboard user and as such, [bspwm] is my window manager (after 6 years on [i3wm]). I wrote about my i3wm desktop environment [here](https://blog.wains.be/2019/2019-12-11-my-linux-desktop-environment/) and might write about bspwm at some point.
 
 When I'm not busy at the computer, I travel, hike, ski, camp out and take photos.
 
@@ -57,6 +57,8 @@ This site has gone through six major design revisions:
 - [2015 (Wikitten)](https://blog.wains.be/images/nostalgy/2015.png)
 - [2017 (Mkdocs)](https://blog.wains.be/images/nostalgy/2017.png)
 - [2020 (Hugo)](https://blog.wains.be/images/nostalgy/2020.png)
+
+It currently runs on top of Kubernetes.
 
 ## You found a mistake on this site?
 
@@ -90,3 +92,4 @@ Please open an [issue on Github](https://github.com/sebw/blog.wains.be/issues/ne
 [Isso]: https://posativ.org/isso/
 [Node-RED]: https://nodered.org
 [Red Hat Consulting Services]: https://www.redhat.com/en/services/consulting
+[bspwm]: https://github.com/baskerville/bspwm
