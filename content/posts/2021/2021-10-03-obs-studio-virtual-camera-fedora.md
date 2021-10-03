@@ -21,8 +21,8 @@ sudo modprobe v4l2loopback
 
 Now, start OBS Studio and you should see the "Start virtual camera" menu in the lower right corner.
 
-The virtual camera allows you to inject pictures, logs, text, etc. in your camera stream.
+The virtual camera allows you to inject pictures, logos, text, video streams (using VLC), etc. in your original webcam stream.
 
-When in Zoom, Google Meet, Webex or others, simply choose the virtual camera as your video input, and your audience should whatever you added in OBS Studio.
+When in Zoom, Google Meet, Webex or others, simply choose the virtual camera as your video input device, and your audience should whatever you added in OBS Studio.
 
 Have fun!
