@@ -124,7 +124,7 @@ cp Fedora-Cloud-Base-34-1.2.x86_64.qcow2 /mnt/libvirtd/VM/$NEWIMG.qcow2
 
 You can now spin up your new VM based on the cloud image and the cloud-init files you have created in the previous steps:
 
-```
+```bash
 virt-install --name $NEWIMG --memory 4096 --cpu host --vcpus 2 --graphics none --os-type linux --os-variant fedora34 --import --disk path=/mnt/libvirtd/VM/$NEWIMG.qcow2,format=qcow2,bus=virtio,size=100 --network type=direct,source=enp1s0,source_mode=bridge,model=virtio --cloud-init meta-data=/var/lib/libvirt/boot/cloud-init/$NEWIMG-meta-data,user-data=/var/lib/libvirt/boot/cloud-init/$NEWIMG-user-data
 cd /var/lib/libvirt/boot/cloud-init/
 ```
