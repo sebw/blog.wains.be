@@ -81,7 +81,7 @@ The gif above shows resizing using the mouse. When using the keyboard, i3wm actu
 
 By default, in bspwm you need two shortcuts to resize a window: one to make the window larger, one to make the window smaller. That's tedious.
 
-THe `bspc` client is powerful so you can actually script something to make it fit in one keyboard shortcut:
+The `bspc` client is powerful so you can actually script something to make it fit in one keyboard shortcut:
 
 ```bash
 #!/bin/bash
