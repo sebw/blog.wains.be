@@ -1,6 +1,6 @@
 ---
 date: 2019-12-11
-title: "★ My Linux Desktop Environment"
+title: "💻 My Linux Desktop Environment"
 ---
 
 I have used Linux as a desktop environment since about 2006, mostly with Gnome or Cinnamon.
