@@ -10,7 +10,7 @@ I'm a solution architect at Red Hat, the leading provider of enterprise open sou
 
 My background is mostly infrastructure but I'm interested in helping organizations in their DevSecOps journeys.
 
-My current focus and areas of interest are [DevSecOps](https://www.redhat.com/en/topics/devops/what-is-devsecops), automation, infrastructure as code, security (Red Hat IdM) and Kubernetes.
+My current focus and areas of interest are [DevSecOps](https://www.redhat.com/en/topics/devops/what-is-devsecops), automation, infrastructure as code, security and Kubernetes.
 
 ![](https://blog.wains.be/images/redhatibm.png)
 
