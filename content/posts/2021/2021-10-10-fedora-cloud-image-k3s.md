@@ -133,7 +133,7 @@ virt-install --name $NEWIMG \
     --os-type linux \
     --os-variant fedora34 \
     --import \
-    --disk path=/mnt/libvirtd/VM/$NEWIMG.qcow2,format=qcow2,bus=virtio,size=100 \
+    --disk path=/mnt/libvirtd/VM/$NEWIMG.qcow2,format=qcow2,bus=virtio \
     --network type=direct,source=enp1s0,source_mode=bridge,model=virtio \
     --cloud-init meta-data=/var/lib/libvirt/boot/cloud-init/$NEWIMG-meta-data,user-data=/var/lib/libvirt/boot/cloud-init/$NEWIMG-user-data
 ```
@@ -147,3 +147,15 @@ The cloud image will boot, your terminal will attach itself to the new VM, you w
 The IP address of your new VM will be displayed at the login prompt.
 
 You can detach from the VM you can do `ctrl + ]`.
+
+# Have fun
+
+From this point on you should be able to SSH into your new VM and validate your Kubernetes is running:
+
+```bash
+ kubectl get nodes
+NAME              STATUS   ROLES                  AGE   VERSION
+k3s01             Ready    control-plane,master   17h   v1.21.5+k3s2
+```
+
+Enjoy!
