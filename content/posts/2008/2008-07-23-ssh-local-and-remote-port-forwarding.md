@@ -9,13 +9,15 @@ I use SSH local port forwarding on a daily basis but I rarely use remote port fo
 
 When to use? When you need to access a service on a remote server that is not exposed.
 
-`home$ ssh user@work.example.org -L 10000:lan-ip-of-remote-server:80`
+```bash
+home$ ssh user@work.example.org -L 10000:lan-ip-of-remote-server:80`
+```
 
 SSH exposes a port locally that point to the HTTP service on the remote server:
 
 ```bash
 home$ netstat -tunelp | grep 10000
-tcp        0      0 127.0.0.1:10000         0.0.0.0:*               LISTEN      1000       71679       12468/ssh
+tcp 0 0 127.0.0.1:10000   0.0.0.0:*   LISTEN   1000   71679   12468/ssh
 ```
 
 Now we can point our browser to http://localhost:10000 or use curl:
@@ -36,7 +38,7 @@ We now see the service is available on all interfaces of your home computer, ava
 
 ```bash
 home$ netstat -tunelp | grep 10000
-tcp        0      0 0.0.0.0:10000           0.0.0.0:*               LISTEN      1000       72265       12543/ssh
+tcp 0 0 0.0.0.0:10000   0.0.0.0:*   LISTEN   1000   72265   12543/ssh
 ```
 
 Anyone on your local subnet should be able to open http://your-workstation-ip:10000.
@@ -45,7 +47,9 @@ Anyone on your local subnet should be able to open http://your-workstation-ip:10
 
 When to use? Opening a service running on your workstation to people on a remote site.
 
-`home$ ssh user@work.example.org -R 10000:your-workstation-ip:22`
+```bash
+home$ ssh user@work.example.org -R 10000:your-workstation-ip:22
+```
 
 We see on the server at work  that a new port tcp/10000 is listening on the loopback interface:
 
@@ -56,8 +60,9 @@ tcp        0      0 127.0.0.1:10000              0.0.0.0:*                   LIS
 
 People logged in on the machine work.example.org now should be able to SSH into your home machine by doing:
 
-`work.example.org$ ssh user@localhost -p 10000`
-
+```
+work.example.org$ ssh user@localhost -p 10000
+```
 
 ### Remote port forwarding for anyone at work
 
@@ -65,24 +70,30 @@ When to use? If you want everybody on the subnet at work to be able to SSH into 
 
 There's no `-g` option for remote forward. You need to change the SSH server configuration of work.example.org, add the following to `/etc/ssh/sshd_config`:
 
-`GatewayPorts yes`
+```bash
+GatewayPorts yes
+```
 
 Restart SSH.
 
 Connect just as before:
 
-`home$ ssh user@work.example.org -R 10000:192.168.1.10:22`
+```bash
+home$ ssh user@work.example.org -R 10000:192.168.1.10:22
+```
 
 Now, the service is exposed globally:
 
-```
+```bash
 work.example.org$ netstat -tunelp | grep 10000
-tcp        0      0 0.0.0.0:10000                0.0.0.0:*                   LISTEN      0          73721060   4426/1
+tcp 0 0 0.0.0.0:10000   0.0.0.0:*   LISTEN   0   73721060   4426/1
 ```
 
 Provided appropriate firewall rules, anyone at work can now connect to your home machine by SSH via the work server, through port tcp/10000:
 
-`$ ssh anyone@work.example.org -p 10000`
+```
+$ ssh anyone@work.example.org -p 10000
+```
 
 ### Notes
 
