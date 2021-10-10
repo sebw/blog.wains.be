@@ -19,7 +19,11 @@ In bspwm, it will look like this:
 
 ![d5b858eae2a0e2fcf200907d4d003065.png](https://img.wains.be/images/d5b858eae2a0e2fcf200907d4d003065.png)
 
-This is the biggest thing for me.
+This is one of the biggest improvement for me.
+
+The second biggest improvement is how you can easily reorganize and resize your windows:
+
+[![d9f2ee6064fa9ee7cf47604b9d42b0e3.gif](https://img.wains.be/images/d9f2ee6064fa9ee7cf47604b9d42b0e3.gif)](https://img.wains.be/image/bXQG)
 
 I'm going to go over my current desktop environment and workflows in this post.
 
@@ -75,7 +79,7 @@ By default, in bspwm you need two shortcuts to resize a window. One to make the 
 
 I'm now using this script to do everything from a single command:
 
-```
+```bash
 #!/bin/bash
 
 # Used in bspwm to resize with a single key shortcut
@@ -122,7 +126,7 @@ esac
 
 In my `sxhkdrc` file:
 
-```
+```bash
 ctrl + super + {Left,Down,Up,Right}
     $HOME/.config/bspwm/resize.sh {left,down,up,right}
 ```
@@ -167,7 +171,7 @@ I gave a shot to Kitty and Alacritty but the "Watch for activity" and "Watch for
 
 FiraMono. On Fedora install those packages:
 
-```
+```bash
 mozilla-fira-fonts-common-4.202-10.fc34.noarch
 mozilla-fira-mono-fonts-4.202-10.fc34.noarch
 mozilla-fira-sans-fonts-4.202-10.fc34.noarch
@@ -375,3 +379,293 @@ Self hosted Gofify. Unchanged.
 ## Music player
 
 `cmus`. Unchanged.
+
+## Conclusion
+
+Overall, I'm more efficient around windows management with bspwm.
+
+These are the two essential configuration files to get started with bspwm. Adjust as needed.
+
+`$HOME/.config/bspwm/bspwmrc`:
+
+```bash
+#! /bin/sh
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+bspc monitor -d 1 2 3 4 5 6 7 8 9 10 11 12
+
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+bspc config merge_overlapping_monitors true
+bspc config honor_size_hints false
+bspc config border_width         2
+bspc config window_gap           12
+bspc config split_ratio          0.60
+bspc config focus_follows_pointer true
+bspc config center_pseudo_tiled true
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_corner
+bspc config presel_feedback_color \#5e81ac
+bspc config focused_border_color \#5e81ac
+bspc config normal_border_color \#2e3440
+bspc config directional_focus_tightness low # allows to focus floating windows
+
+### RULES ###
+bscp rule -r "*"
+
+bspc rule -a Firefox desktop='^1' --one-shot follow=on
+bspc rule -a discord desktop='^2'
+bspc rule -a Signal desktop='^2' follow=on
+bspc rule -a TelegramDesktop desktop='^2' follow=on
+bspc rule -a Terminator desktop='^3' --one-shot follow=on
+bspc rule -a Code desktop='^4' --one-shot
+bspc rule -a code desktop='^4' --one-shot
+bspc rule -a Thunar desktop='^5' follow=on --one-shot
+bspc rule -a Zim desktop='^6' --one-shot
+bspc rule -a "Rapid Photo Downloader" desktop='^7'
+bspc rule -a Rawtherapee desktop='^7'
+bspc rule -a Gnucash desktop='^8'
+bspc rule -a Bitwarden state=floating rectangle=850x600+100+100
+bspc rule -a Lxappearance state=floating
+bspc rule -a Pavucontrol state=floating
+bspc rule -a Ulauncher state=floating border=off
+bspc rule -a Seahorse state=floating
+bspc rule -a Sxiv state=floating border=off
+bspc rule -a Virt-manager state=floating rectangle=800x600+100+100
+bspc rule -a xpad state=floating rectangle=350x350+400+300
+bspc rule -a "Seafile Client" desktop='^12' state=floating rectangle=350x350+400+300 border=off
+
+### DEFAULT APPLICATIONS ###
+xdg-mime default sxiv.desktop image/jpg
+xdg-mime default sxiv.desktop image/jpeg
+xdg-mime default sxiv.desktop image/png
+xdg-mime default vlc.desktop image/mp4
+
+### STARTUP APPLICATIONS ###
+xss-lock xsecurelock &
+killall polybar
+polybar -q personal -c $HOME/.config/polybar/blocks/config.ini &
+pgrep -x dunst > /dev/null || dunst &
+pgrep -x xpad > /dev/null || xpad &
+feh --bg-fill --no-fehbg ~/Seafile/Wallpaper/000-DEFAULT-WALLPAPER
+pgrep -x thunar > /dev/null || thunar --daemon &
+nm-applet &
+seafile-applet &
+pgrep -x xfce4-clipman > /dev/null || xfce4-clipman &
+pgrep -x pasystray > /dev/null || pasystray &
+pgrep -x ulauncher > /dev/null || ulauncher --hide-window --no-window-shadow &
+pgrep -x xfce4-power-manager> /dev/null || xfce4-power-manager &
+pgrep -x autokey-gtk > /dev/null || autokey-gtk &
+/usb/bin/pulseaudio --system --daemonize --disallow-exit --disallow-module-loading &
+```
+
+`$HOME/.config/bspwm/sxhkdrc`:
+
+```bash
+super + h
+	$HOME/.config/bspwm/hkhelper.sh
+
+# Terminal
+super + Return
+	terminator
+
+# Reload bspwm
+super + Escape
+	notify-send -i dialog-information-symbolic.symbolic -u normal -t 3000 "bspwm" "Reloaded"; bspc wm -r
+
+# Restart sxhkd
+shift + super + Escape
+	notify-send -i dialog-information-symbolic.symbolic -u normal -t 3000 "sxhkd" "Restarted"; pkill -USR1 -x sxhkd
+
+# Restart Polybar
+ctrl + super + Escape
+	notify-send -i dialog-information-symbolic.symbolic -u normal -t 3000 "Polybar" "restarted"; pkill -USR1 -x polybar; sleep 1; bspc wm -r
+
+# Power menu
+super + p
+	$HOME/.config/rofi/powermenu.sh
+
+# Close application
+shift + super + q
+	bspc node -c
+
+# File explorer
+super + e
+	$HOME/.config/bspwm/thunar.sh
+
+# Favorite applications menu
+super + apostrophe
+	$HOME/.config/rofi/apps.sh
+
+# Mute notifications
+super + i
+	dunstctl set-paused toggle
+
+# Clipboard manager
+ctrl + alt + h
+	/usr/bin/xfce4-popup-clipman
+
+# Lock session
+super + l
+	xsecurelock
+
+# Tiled mode
+super + t
+    if [ -z "$(bspc query -N -n focused.tiled)" ]; then \
+        bspc node focused -t tiled; \
+	    notify-send -u low -t 800 "Tiled"; \
+    else \
+	    notify-send -u normal -t 800 "Already tiled"; \
+    fi
+
+# Toggle between pseudo tiled and tiled
+super + y
+    if [ -z "$(bspc query -N -n focused.pseudo_tiled)" ]; then \
+        bspc node focused -t pseudo_tiled; \
+	    notify-send -u low -t 800 "Pseudo tiled"; \
+    else \
+        bspc node focused -t tiled; \
+	    notify-send -u low -t 800 "Undo tiled"; \
+    fi
+
+# Toggle between floating and tiled
+super + f
+    if [ -z "$(bspc query -N -n focused.floating)" ]; then \
+        bspc node focused -t floating; \
+	    notify-send -u low -t 800 "Floating"; \
+    else \
+        bspc node focused -t tiled; \
+	    notify-send -u low -t 800 "Undo floating"; \
+    fi
+
+# Toggle between fullscreen and tiled
+super + g
+    if [ -z "$(bspc query -N -n focused.fullscreen)" ]; then \
+        bspc node focused -t fullscreen; \
+	    notify-send -u low -t 800 "Fullscreen"; \
+    else \
+        bspc node focused -t tiled; \
+	    notify-send -u low -t 800 "Undo fullscreen"; \
+    fi
+
+# Toggle sticky mode
+super + s
+    bspc node focused --flag sticky; \
+    window_name=$(bspc query -T -n $(bspc query -N -n focused) | jq -r .client.className); \
+    if [ -z "$(bspc query -N -n focused.sticky)" ]; then \
+        notify-send -u low -t 1500 "Unsticky $window_name"; \
+    else \
+	    notify-send -u low -t 1500 "Sticky $window_name"; \
+    fi
+
+# Rotate the tree rooted at the selected node
+super + x
+    bspc node -f @parent; bspc node -R 90; bspc node --focus
+
+# Keyboard layout
+super + k
+	$HOME/.config/rofi/keyboard.sh
+
+# Change monitor
+{XF86Display,super + m}
+	$HOME/.config/rofi/monitor.sh
+
+# Mute
+super + v
+    dunstify --urgency=critical --replace 2 -t 3000 --icon=audio-input-microphone-symbolic.symbolic "Toggling microphone" && pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# App switcher and scratchpad manager
+alt + Tab
+        rofi -show window -window-thumbnail
+
+# Swap windows {Left,Right,Up,Down}
+super + alt + {Left,Right,Up,Down}
+	bspc node --swap {west,east,north,south}
+
+# Focus window {left,right,up,down}
+super + {Left,Right,Up,Down}
+	bspc node --focus {west,east,north,south}
+
+# Change desktop {1-9,10,11}
+super + {1-9,0,minus,equal}
+    desktop='^{1-9,10,11,12}'; \
+    bspc query -D -d "$desktop.focused" && bspc desktop -f last || bspc desktop -f "$desktop"
+
+# Move windows to desktop {1-9,10,11}
+shift + super + {1-9,0,minus}
+	bspc node -d '^{1-9,10,11}'
+
+# Move and follow window to desktop {1-9,10,11}
+shift + ctrl + super + {1-9,0,minus,equal}
+    id=$(bspc query -N -n); bspc node -d ^{1-9,10,11,12}; bspc node -f $id
+
+# Put in scratchpad
+super + z
+	bspc node focused -t floating; bspc node -d '^12'
+
+# Focus {previous,next} occupied desktop
+super + {q,w}
+	bspc desktop --focus {prev,next}.occupied
+
+# Circulate tree {backward,forward}
+super + bracket{left,right}
+	bspc node @/ --circulate {backward,forward}
+
+# Grow gap
+shift + super + alt + equal
+	gap=$(bspc query --tree --monitor | jq '.windowGap'); new_gap=$(( $gap + 5 )); bspc config window_gap ${new_gap}
+
+# Shrink gap
+shift + super + alt + minus
+	gap=$(bspc query --tree --monitor | jq '.windowGap'); new_gap=$(( $gap - 5 )); bspc config window_gap ${new_gap}
+
+# Set gap to 0
+shift + super + alt + 0
+	bspc config window_gap 0
+
+# Ratio {33,50,66} percent
+super + {comma,period,slash}
+	$HOME/.config/bspwm/ratio.sh {0.33,0.50,0.66}
+
+# Screenshot
+Print
+	$HOME/.config/bspwm/screenshot.sh
+
+# Screenshot with upload
+super + Print
+	$HOME/.config/bspwm/screenshot.sh upload
+
+# Toggle xpad
+super + n
+	xpad --toggle
+
+# Volume {up,down,mute}
+XF86Audio{RaiseVolume,LowerVolume,Mute}
+	pactl set-sink-volume @DEFAULT_SINK@ {+10%,-10%,toggle}
+
+# Brightness up
+XF86MonBrightnessUp
+	brightnessctl set +5% -q; dunstify --replace 1 -t 3000 --icon=daytime-sunrise-symbolic.symbolic "Brightness Up" "$(brightnessctl -m | cut -d',' -f4)"
+
+# Brightness down
+XF86MonBrightnessDown
+	brightnessctl set 5%- -q; dunstify --replace 1 -t 3000  --icon=daytime-sunset-symbolic.symbolic "Brightness Down" "$(brightnessctl -m | cut -d',' -f4)"
+
+# Preselect next window on {left,down,up,right}
+shift + super + {Left,Down,Up,Right}
+	bspc node -p {west,south,north,east}
+
+# Cancel the preselection
+shift + super + space
+	bspc node -p cancel
+
+# Preselect the ratio {1-9}0%
+ctrl + super + {1-9}
+	bspc node -o 0.{1-9}
+
+# Resize the window on {left,down,up,right}
+ctrl + super + {Left,Down,Up,Right}
+	$HOME/.config/bspwm/resize.sh {left,down,up,right}
+
+```
