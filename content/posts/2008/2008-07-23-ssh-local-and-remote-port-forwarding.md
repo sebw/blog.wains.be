@@ -95,7 +95,7 @@ tcp 0 0 0.0.0.0:10000   0.0.0.0:*   LISTEN   0   73721060   4426/1
 
 Provided appropriate firewall rules, anyone at work can now connect to your home machine by SSH via the work server, through port tcp/10000:
 
-```
+```bash
 $ ssh anyone@work.example.org -p 10000
 ```
 
