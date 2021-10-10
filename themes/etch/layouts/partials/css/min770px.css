@@ -26,12 +26,12 @@ main#content header#post-header h1 {
 }
 
 main#content img {
-    max-width: 108%;
-    margin-left: -4%;
+    max-width: 100%;
+    margin-left: 0%;
 }
 
 main#content pre {
-    width: 108%;
-    margin-left: -4%;
+    width: 100%;
+    margin-left: 0%;
     padding: 1.5rem 2.2rem;
 }
