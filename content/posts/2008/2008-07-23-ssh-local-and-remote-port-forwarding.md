@@ -9,18 +9,20 @@ I use SSH local port forwarding on a daily basis but I rarely use remote port fo
 
 When to use? When you need to access a service on a remote server that is not exposed.
 
+In this example the remote service runs on port tcp/80.
+
 ```bash
 home$ ssh user@work.example.org -L 10000:lan-ip-of-remote-server:80
 ```
 
-SSH exposes a port locally that point to the HTTP service on the remote server:
+SSH exposes a port locally (tcp/10000) that will point to the HTTP service on the remote server, through the SSH tunnel:
 
 ```bash
 home$ netstat -tunelp | grep 10000
 tcp 0 0 127.0.0.1:10000   0.0.0.0:*   LISTEN   1000   71679   12468/ssh
 ```
 
-Now we can point our browser to http://localhost:10000 or use curl:
+Now we can point our browser to http://localhost:10000 or use curl, you request goes to your local machine, then through the SSH tunnel to the remote server:
 
 ```bash
 home$ curl localhost:10000
@@ -47,13 +49,13 @@ Anyone on your local subnet should be able to open http://your-workstation-ip:10
 
 ### Remote port forwarding
 
-When to use? Opening a service running on your workstation to people on a remote site.
+When to use? Giving access to a service running on your workstation to people on a remote site. For example if someone needs help on their workstation.
 
 ```bash
 home$ ssh user@work.example.org -R 10000:your-workstation-ip:22
 ```
 
-We see on the server at work  that a new port tcp/10000 is listening on the loopback interface:
+We see on the server at work that a new port tcp/10000 is listening on the loopback interface:
 
 ```bash
 work.example.org$ netstat -tunelp | grep 10000
@@ -100,5 +102,5 @@ $ ssh anyone@work.example.org -p 10000
 ### Notes
 
 - You would need to log in as root if you want services to listen on a port < 1024.
-- Don't forget to open necessary ports on any firewall either at home or work.
+- Already mentioned but don't forget to open necessary ports on any firewall either at home or work.
 - Unfortunately you can only forward services running on TCP, but [it is possible to forward UDP through SSH using netcat](https://blog.wains.be/2007/2007-02-13-tunneling-udp-requests-through-ssh/)
