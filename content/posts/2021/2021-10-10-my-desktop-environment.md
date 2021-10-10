@@ -13,6 +13,14 @@ I started looking at how other tiling window managers were handling things and d
 
 After some tests I made the move because it is indeed easier to manage windows, I really liked the "client" (called `bspc`) to interact with bspwm but it also felt slightly lighter.
 
+In i3wm, if you open 5 terminals in the same desktop you get 5 "columns".
+
+In bspwm, it will look like this:
+
+![d5b858eae2a0e2fcf200907d4d003065.png](https://img.wains.be/images/d5b858eae2a0e2fcf200907d4d003065.png)
+
+This is the biggest thing for me.
+
 I'm going to go over my current desktop environment and workflows in this post.
 
 ## Disclaimer
@@ -28,12 +36,6 @@ Lenovo t14s with 32GB of RAM and 1TB NVME.
 Fedora i3 spin.
 
 I use the i3 spin to bootstrap my bspwm installation (using Ansible playbooks). This means I don't pull all the Gnome dependencies and the i3 spin brings LightDM, which I like better.
-
-## How does it look like today?
-
-![](https://img.wains.be/images/aafdb228cf32f98475a0f7fd2b6333ff.png)
-
-For some reason, most icons in the tray are hidden when taking a screenshot with `flameshot`.
 
 ### Bar
 
@@ -66,6 +68,70 @@ alt + Tab
 ```
 
 If you want to accept selection with `win+z` in rofi, add the following in rofi's configuration: `kb-accept-alt: "Super+z";`
+
+### Resizing windows makes more sense in i3
+
+By default, in bspwm you need two shortcuts to resize a window. One to make the window larger, one to make the window smaller. But `bspc` is powerful so you can make it happen.
+
+I'm now using this script to do everything from a single command:
+
+```
+#!/bin/bash
+
+# Used in bspwm to resize with a single key shortcut
+
+wid=$(xdotool getactivewindow)
+wininfo=$(xwininfo -id "$wid")
+width=$(echo "$wininfo" | awk '/Width/ {print $2}')
+height=$(echo "$wininfo" | awk '/Height/ {print $2}')
+case $1 in
+	left)
+		# bspc node @east -r -40 || bspc node @west -r -40
+		bspc node -z left -40 0
+		if [[ $width == "$(xwininfo -id "$wid" | \
+				awk '/Width/ {print $2}')" ]]; then
+			bspc node -z right -40 0
+		fi
+		;;
+	down)
+		# bspc node @south -r +35 || bspc node @north -r +35
+		bspc node -z bottom 0 +35
+		if [[ $height == "$(xwininfo -id "$wid" | \
+				awk '/Height/ {print $2}')" ]]; then
+			bspc node -z top 0 +35
+		fi
+		;;
+	up)
+		# bspc node @north -r -35 || bspc node @south -r -35
+		bspc node -z top 0 -35
+		if [[ $height == "$(xwininfo -id "$wid" | \
+				awk '/Height/ {print $2}')" ]]; then
+			bspc node -z bottom 0 -35
+		fi
+		;;
+	right)
+		# bspc node @west -r +40 || bspc node @east -r +40
+		bspc node -z right +40 0
+		if [[ $width == "$(xwininfo -id "$wid" | \
+				awk '/Width/ {print $2}')" ]]; then
+			bspc node -z left +40 0
+		fi
+		;;
+esac
+```
+
+In my `sxhkdrc` file:
+
+```
+ctrl + super + {Left,Down,Up,Right}
+    $HOME/.config/bspwm/resize.sh {left,down,up,right}
+```
+
+### Keyboard shortcut helper
+
+Given the number of keyboard shortcuts, it can happen I forget how to do something.
+
+I use [sxhkd-helper-menu](https://github.com/fiskhest/sxhkd-helper-menu) with `rofi` to help me when I forget a shortcut. I use the `win+h` combo.
 
 ## On using virtual machines
 
