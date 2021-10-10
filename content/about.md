@@ -8,6 +8,10 @@ My name is Sebastien Wains.
 
 I'm a solution architect at Red Hat, the leading provider of enterprise open source solutions.
 
+My background is mostly infrastructure but I'm interested in helping organizations in their DevSecOps journeys.
+
+My current focus and areas of interest are [DevSecOps](https://www.redhat.com/en/topics/devops/what-is-devsecops), automation, infrastructure as code, security (Red Hat IdM) and Kubernetes.
+
 ![](https://blog.wains.be/images/redhatibm.png)
 
 I'm a Red Hat Certified Architect (RHCA).
@@ -22,8 +26,8 @@ I'm a Red Hat Certified Architect (RHCA).
 - This site doesn't use third party cookies
 - The search function requires Javascript
 - The comment function requires Javascript and store a cookie to work
-- I do not collect statistics from my visitors, I'm pretty clueless as to the number of visits these days
-- The site will work with Javascript and cookies disabled. In that case search and comments are not going to work and posts will not be impacted.
+- I do not collect statistics from my visitors, I actually have no idea at the number of visitors I get
+- The site can work with Javascript and cookies disabled. Search and comments will not work.
 
 ## Talks
 
