@@ -150,10 +150,10 @@ You can detach from the VM you can do `ctrl + ]`.
 
 # Have fun
 
-From this point on you should be able to SSH into your new VM and validate your Kubernetes is running:
+From this point on you should be able to SSH with your unprivileged user into your new VM and validate your Kubernetes is running:
 
 ```bash
- kubectl get nodes
+$ sudo kubectl get nodes
 NAME              STATUS   ROLES                  AGE   VERSION
 k3s01             Ready    control-plane,master   17h   v1.21.5+k3s2
 ```
