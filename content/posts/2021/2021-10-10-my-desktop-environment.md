@@ -11,7 +11,7 @@ In May 2021, I changed role at Red Hat, requiring me to present and share my scr
 
 I started looking at how other tiling window managers were handling things and decided to give [bspwm](https://github.com/baskerville/bspwm) a try.
 
-After some tests I made the move because it is indeed easier to manage windows, I really liked the "client" (called `bspc`) to interact with bspwm but it also felt slightly lighter.
+After some tests I made the move because it is indeed easier to manage windows, I really liked the "client" (called `bspc` allowing you to "talk" to the server component) and it also felt slightly lighter.
 
 In i3wm, if you open 5 terminals in the same desktop you get 5 "columns".
 
