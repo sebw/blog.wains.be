@@ -1,6 +1,6 @@
 ---
 date: 2021-10-10
-title: "★★ My Linux desktop environment (2021 update)"
+title: "💻 My Linux desktop environment (2021 update)"
 ---
 
 ## Moving from i3wm to bspwm
