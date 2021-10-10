@@ -145,7 +145,7 @@ In 2019 I was running my desktop environment inside virtual machines. I stopped 
 
 ## Storing data
 
-Unchanged since 2019, I store everything of importance in a self-hosted Seafile.
+Unchanged since 2019, I store everything of importance in a self hosted Seafile.
 
 My configurations are stored in git and managed with Stow.
 
@@ -362,9 +362,9 @@ I use a few plugins in `nnn`. See `NNN_PLUG` above.
 
 Ulauncher. Unchanged.
 
-## Editor
+## Editors
 
-vim and VScode. Unchanged. Even though VScode is becoming some kind of Frankenstein these days.
+vim and VSCodium. I changed to VSCodium because VSCode started installing extensions that I never asked for, and MS is sneakily re-enabling telemetry.
 
 ## Desktop screenshots and recording
 
@@ -372,7 +372,7 @@ Flameshot and Peek. Unchanged.
 
 ## Bookmarks
 
-Self hosted shaarli instance. Unchanged.
+Self hosted Shaarli instance. Unchanged.
 
 ## Notification
 
