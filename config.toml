@@ -9,7 +9,7 @@ pygmentsUseClasses = true
 [params]
   description = "My notes about open source stuff."
   copyright = "Copyright © Sebastien Wains"
-  dark = "off"
+  dark = "on"
   highlight = true
 
 [permalinks]
