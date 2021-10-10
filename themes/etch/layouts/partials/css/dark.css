@@ -31,6 +31,10 @@ main#content ul#posts li a:hover {
     color: #5e81ac;
 }
 
+main#content ul#posts li a:visited {
+    color: #81a1c1;
+}
+
 main#content header#post-header time {
     color: #a7a7a7;
 }
