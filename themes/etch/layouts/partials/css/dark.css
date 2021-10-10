@@ -16,7 +16,7 @@ header#banner nav ul li a {
 }
 
 main#content a {
-    color: #00b1ed;
+    color: #88c0d0;
 }
 
 main#content p {
@@ -28,7 +28,7 @@ main#content ul#posts small {
 }
 
 main#content ul#posts li a:hover {
-    color: #21c7ff;
+    color: #5e81ac;
 }
 
 main#content header#post-header time {
