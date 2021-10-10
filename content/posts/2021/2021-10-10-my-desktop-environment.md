@@ -29,7 +29,7 @@ I'm going to go over my current desktop environment and workflows in this post.
 
 ## Disclaimer
 
-This desktop environment is probably not for you. I have my own workflows and have no pretention that this is the best way to organize your environment. At the very least it can give some ideas.
+This desktop environment is probably not for you. I have my own workflows and have no pretension that this is the best way to organize your environment. At the very least it can give some ideas.
 
 ## Hardware
 
@@ -40,6 +40,8 @@ Lenovo t14s with 32GB of RAM and 1TB NVME.
 Fedora i3 spin.
 
 I use the i3 spin to bootstrap my bspwm installation (using Ansible playbooks). This means I don't pull all the Gnome dependencies and the i3 spin brings LightDM, which I like better.
+
+You can probably start with a minimal Fedora Server install but you would have to figure out the LightDM and audio stuff. Those are pulled automatically in the i3 spin. And I'm not unhappy to have i3 around, should I mess up something in bspwm.
 
 ### Bar
 
