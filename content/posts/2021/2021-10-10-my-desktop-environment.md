@@ -75,14 +75,14 @@ If you want to accept selection with `win+z` in rofi, add the following in rofi'
 
 ### Resizing windows makes more sense in i3
 
-By default, in bspwm you need two shortcuts to resize a window. One to make the window larger, one to make the window smaller. But `bspc` is powerful so you can make it happen.
+The gif above shows resizing using the mouse. When using the keyboard, i3wm actually makes a little bit more sense.
 
-I'm now using this script to do everything from a single command:
+By default, in bspwm you need two shortcuts to resize a window: one to make the window larger, one to make the window smaller. That's tedious.
+
+THe `bspc` client is powerful so you can actually script something to make it fit in one keyboard shortcut:
 
 ```bash
 #!/bin/bash
-
-# Used in bspwm to resize with a single key shortcut
 
 wid=$(xdotool getactivewindow)
 wininfo=$(xwininfo -id "$wid")
