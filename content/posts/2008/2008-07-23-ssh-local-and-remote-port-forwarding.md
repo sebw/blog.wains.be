@@ -10,7 +10,7 @@ I use SSH local port forwarding on a daily basis but I rarely use remote port fo
 When to use? When you need to access a service on a remote server that is not exposed.
 
 ```bash
-home$ ssh user@work.example.org -L 10000:lan-ip-of-remote-server:80`
+home$ ssh user@work.example.org -L 10000:lan-ip-of-remote-server:80
 ```
 
 SSH exposes a port locally that point to the HTTP service on the remote server:
@@ -32,7 +32,9 @@ When to use? If you want other people on your home subnet to be able to reach th
 
 Just add the option `-g`:
 
-`home$ ssh user@work.example.org -L 10000:lan-ip-of-remote-server:80 -g`
+```bash
+home$ ssh user@work.example.org -L 10000:lan-ip-of-remote-server:80 -g
+```
 
 We now see the service is available on all interfaces of your home computer, available for anyone to connect to on the local subnet (provided appropriate firewall rules):
 
