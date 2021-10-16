@@ -1,5 +1,6 @@
 ---
-title: "About"
+title: About
+modified: 2021-10-16T21:08:57+02:00
 ---
 
 ## Who am I?
@@ -45,7 +46,7 @@ I care about security and privacy.
 
 I automate things whenever I can! I'm a big fan of [Ansible], [Node-RED], [Home Assistant], [Automagic] (now deprecated, which I replaced with MacroDroid) on Android or [Ulauncher] on Linux, and any device that comes with an open API.
 
-I'm a heavy keyboard user and as such, [bspwm] is my window manager (after 6 years on [i3wm]). I wrote about my i3wm desktop environment [here](https://blog.wains.be/2019/2019-12-11-my-linux-desktop-environment/) and might write about bspwm at some point.
+I'm a heavy keyboard user and as such, [bspwm] is my window manager (after 6 years on [i3wm]). I wrote about my [i3wm](https://blog.wains.be/2019/2019-12-11-my-linux-desktop-environment/) and [bspwm](https://blog.wains.be/2021/2021-10-10-my-desktop-environment/) desktop environments.
 
 When I'm not busy at the computer, I travel, hike, ski, camp out and take photos.
 
