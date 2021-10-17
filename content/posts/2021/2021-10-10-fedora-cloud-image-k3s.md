@@ -3,7 +3,7 @@ date: 2021-10-10
 title: "Spin up a Kubernetes cluster in a couple of minutes on Libvirt using Fedora Cloud images"
 ---
 
-There are many lightweight or light enough Kubernetes distributions out there: k0s, k3s, Microk8s, OpenShift CodeReady Containers, etc.
+There are many lightweight or light enough Kubernetes distributions out there: k0s, k3s, Microk8s, OpenShift CodeReady Containers, Microshift, etc.
 
 Those lightweight distributions are a very inexpensive way to learn Kubernetes or OpenShift, and is a good approach to eventually embrace Enterprise Kubernetes distributions.
 
