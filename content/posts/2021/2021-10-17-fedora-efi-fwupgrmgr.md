@@ -74,7 +74,7 @@ I also managed to update my T480s.
 
 ## Conclusion
 
-After upgrading all possible firmares, the USB flapping is gone.
+After upgrading all possible firmwares, the USB flapping is gone.
 
 Lenovo Thunderbolt docking stations are quite terrible and unreliable (sources: own experience and IT support claims).
 
