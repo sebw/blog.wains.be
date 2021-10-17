@@ -28,9 +28,9 @@ I ordered one and got:
 
 ## Updating Dell docking firmware
 
-I decided to try to update the docking firmwares with `fwupdmgr` and indeed, it just works.
+I decided to try to update the docking firmwares with `fwupdmgr` from my t14s running Fedora 34 and indeed, it just works.
 
-## UPdating T14s firmwares
+## Updating T14s firmwares
 
 Then I decided to upgrade the laptop firmwares but it was not possible because of this error:
 
