@@ -17,17 +17,20 @@ I assumed the docking was slowly dying so I asked our IT department for a replac
 
 ## Dell docking stations are actually quit good
 
-A US based colleague then suggested to get a Dell Thunderbolt Dock WD19TBS instead, claiming that everything worked perfectly on his P51 and that I could update it with `fwupdmgr` (which is impossible with Lenovo Gen1s, you need a Windows machine).
+A US based colleague then suggested to get a Dell Thunderbolt Dock WD19TBS instead, claiming that everything worked perfectly on his P51 and that he was able to update its firmwares with `fwupdmgr` (which is impossible with Lenovo Gen1s, you need a Windows machine).
 
 I ordered one and got:
 
+- shocked at the price of TB3 docking stations, those things are pricey
 - no external display issues anymore :D
 - USB flappings, still :(
 - a very good impression on the built, it's solid, probably twice the weight of the Lenovo and it has a fan (that you barely hear when it runs)
 
+## Updating Dell docking firmware
+
 I decided to try to update the docking firmwares with `fwupdmgr` and indeed, it just works.
 
-## Upgrading T14s firmwares
+## UPdating T14s firmwares
 
 Then I decided to upgrade the laptop firmwares but it was not possible because of this error:
 
@@ -65,18 +68,20 @@ sudo fwupdmgr update
 
 There were so many things to upgrade that I had to reboot a couple of times.
 
-I also managed to update my T480s.
+## Updating T480s firmwares
 
-And guess what? The USB flapping is gone.
+I also managed to update my T480s.
 
 ## Conclusion
 
+After upgrading all possible firmares, the USB flapping is gone.
+
 Lenovo Thunderbolt docking stations are quite terrible and unreliable (sources: own experience and IT support claims).
 
-Updating the Gen1 with `fwupdmgr` is not possible. Only Gen 2s.
+Updating the Gen1 with `fwupdmgr` is not possible. You need a Windows machine. Only Gen 2s can be updated from the Linux CLI.
 
-The Dell can be updated with `fwupdmgr`.
+The Dell WD19TBS can be updated with `fwupdmgr`.
 
-`fwupdmgr` can ignore your `/boot/efi` and you need to hardcode the value in a config file.
+`fwupdmgr` may ignore your `/boot/efi` install and you need to hardcode the value in `uefi_capsule.conf` and reboot.
 
-Thanks Dell for making a docking that just works!
+Even though it might sound not natural, but I recommend to get the Dell Thunderbolt 3 docking for your Lenovo laptop if you have the choice.
