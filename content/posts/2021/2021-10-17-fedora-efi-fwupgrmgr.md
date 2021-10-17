@@ -1,5 +1,5 @@
 ---
-date: 2021-10-10
+date: 2021-10-17
 title: "Fixing fwupdmgr's UEFI ESP partition not detected or configured on Fedora 34"
 ---
 
