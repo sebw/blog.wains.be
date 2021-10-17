@@ -34,7 +34,7 @@ I decided to try to update the docking firmwares with `fwupdmgr` from my t14s ru
 
 Then I decided to upgrade the laptop firmwares but it was not possible because of this error:
 
-```
+```bash
 WARNING: UEFI ESP partition not detected or configured
 ```
 
