@@ -39,7 +39,7 @@ systemctl enable libvirtd
 
 # Download Fedora Cloud Image
 
-Start here if you already had Fedora and Libvirt installed.
+Start here if you already have Fedora and Libvirt installed.
 
 From your libvirt host, download the Fedora Cloud base image:
 
@@ -107,7 +107,7 @@ The `container-selinux`, `selinux-policy-base` and `k3s-selinux` packages are ne
 
 # Spin up your first VM
 
-Always from the libvirt host terminal, run the next few commands.
+Always from the libvirt host terminal, as root, run the next few commands.
 
 I'm going to name the new VM `k3s01`:
 
