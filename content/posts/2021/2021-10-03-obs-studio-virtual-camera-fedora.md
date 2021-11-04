@@ -7,17 +7,33 @@ By default on Fedora, when you install the package `obs-studio` you might not se
 
 The reason is that OBS is expecting a v4l2loopback module to be loaded.
 
-In order to do so, install the package "v4l2loopback":
+## Installation
+
+In order to do so, you will need to enable rpmfusion repositories and install the package "v4l2loopback":
 
 ```bash
-sudo dnf install v4l2loopback
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-34.noarch.rpm
+```
+
+```bash
+sudo dnf install v4l2loopback kmod-v4l2loopback
 ```
 
 Then insert the module:
 
 ```bash
-sudo modprobe v4l2loopback
+sudo modprobe v4l2loopback devices=1 max_buffers=2 exclusive_caps=1 card_label="VirtualCam"
 ```
+
+If modprobe fails try this before rerunning the `modprobe` command:
+
+```bash
+sudo depmod
+```
+
+You can configure some settings for your new virtual camera with `v4l2loopback-ctl`.
+
+## OBS Studio
 
 Now, start OBS Studio and you should see the "Start virtual camera" menu in the lower right corner.
 
