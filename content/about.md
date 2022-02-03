@@ -15,11 +15,13 @@ My current focus and areas of interest are [DevSecOps](https://www.redhat.com/en
 
 ![](https://blog.wains.be/images/redhatibm.png)
 
-I'm a Red Hat Certified Architect (RHCA).
+I've been Red Hat Certified Architect (RHCA) since March 29th, 2019.
 
 ![](https://blog.wains.be/images/rhca.png)
 
 [My certification ID is 110-643-822](https://www.redhat.com/rhtapps/services/verify/?certId=110-643-822).
+
+Expiration dates are often in motion for RHCA. The badge might not be the latest :D
 
 ## Disclaimers
 
