@@ -38,7 +38,13 @@ git clone https://github.com/stackrox/stackrox
 cd stackrox
 ```
 
-Edit `deploy/common/k8sbased.sh` and at line 101 change to `use_docker=0`
+Edit the script
+
+```bash
+vim deploy/common/k8sbased.sh
+```
+
+Edit line 101 and change from `use_docker=1` to `use_docker=0`.
 
 Start the installer with the tag you want to deploy
 
@@ -79,7 +85,7 @@ spec:
 
 Apply:
 
-```
+```bash
 kubectl apply -f ingress.yaml
 ```
 
