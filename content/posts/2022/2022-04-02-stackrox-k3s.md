@@ -57,24 +57,24 @@ metadata:
   name: stackrox-ingress
   namespace: stackrox
   annotations:
-	kubernetes.io/ingress.class: traefik
-	cert-manager.io/cluster-issuer: letsencrypt-prod
+  kubernetes.io/ingress.class: traefik
+  cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   tls:
-	- secretName: stackrox-tls
-	  hosts:
-		- stackrox.example.org
+  - secretName: stackrox-tls
+    hosts:
+    - stackrox.example.org
   rules:
   - host: stackrox.example.org
-	http:
-	  paths:
-		- path: /
-		  pathType: Prefix
-		  backend:
-			service:
-			  name: central
-			  port:
-	        number: 443
+  http:
+    paths:
+    - path: /
+      pathType: Prefix
+      backend:
+      service:
+        name: central
+        port:
+          number: 443
 ```
 
 Apply:
