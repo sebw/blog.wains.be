@@ -38,7 +38,7 @@ git clone https://github.com/stackrox/stackrox
 cd stackrox
 ```
 
-Edit `deploy/common/k8sbased.sh` and at line 199 change to `use_docker=0`
+Edit `deploy/common/k8sbased.sh` and at line 101 change to `use_docker=0`
 
 Start the installer with the tag you want to deploy
 
