@@ -17,13 +17,13 @@ In i3wm, if you open 5 terminals in the same desktop you get 5 "columns".
 
 In bspwm, it will look like this:
 
-![d5b858eae2a0e2fcf200907d4d003065.png](https://img.wains.be/images/d5b858eae2a0e2fcf200907d4d003065.png)
+![d5b858eae2a0e2fcf200907d4d003065.png](https://blog.wains.be/images/d5b858eae2a0e2fcf200907d4d003065.png)
 
 This is one of the biggest improvement for me.
 
 The second biggest improvement is how you can easily reorganize and resize your windows:
 
-[![d9f2ee6064fa9ee7cf47604b9d42b0e3.gif](https://img.wains.be/images/d9f2ee6064fa9ee7cf47604b9d42b0e3.gif)](https://img.wains.be/image/bXQG)
+[![d9f2ee6064fa9ee7cf47604b9d42b0e3.gif](https://blog.wains.be/images/d9f2ee6064fa9ee7cf47604b9d42b0e3.gif)](https://blog.wains.be/image/bXQG)
 
 I'm going to go over my current desktop environment and workflows in this post.
 
@@ -211,7 +211,7 @@ I'm a huge fan of `fzf`. I now use it for pretty much anything in the terminal.
 
 The ZSH autocompletion uses it:
 
-![](https://img.wains.be/images/06b04aad79db22c88ecbd4b0491da812.png)
+![](https://blog.wains.be/images/06b04aad79db22c88ecbd4b0491da812.png)
 
 My shell history (ctrl + r) also.
 
