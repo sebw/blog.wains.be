@@ -100,9 +100,9 @@ Remember this:
 
 | Type        | Expression | Also possible|   |   |
 |-------------|------|-----|---|---|
-| Negation    | !    | not |   |   |
-| Concatenate | &&   | and |   |   |
-| Alternate   | \|\| | or  |   |   |
+| Negation    | `!`    | `not` |   |   |
+| Concatenate | `&&`   | `and` |   |   |
+| Alternate   | `\|\|` | `or`  |   |   |
 
 For example the following rule will match any TCP traffic on port 80 (web) with 192.168.1.254 or 192.168.1.200 as destination host:
 
