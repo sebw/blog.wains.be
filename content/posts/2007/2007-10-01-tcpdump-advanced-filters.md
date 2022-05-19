@@ -720,26 +720,32 @@ tcpdump -i eth0 '(icmp[0] = 0) and (icmp[4:2] = 0x1f4)'
 
 ## Acknowledgments
 
-* Yousong Zhou (China)
+* Contribution and updates: Yousong Zhou (China)
 
-	* tcpflags
-	* Python hex conversion
-	* portrange
-	* typo corrections
+    * tcpflags
+    * Python hex conversion
+    * portrange
+    * typo corrections
 
-* Keith Makan (South Africa)
+* Publication/reference: Keith Makan (South Africa)
 
-	* reference to this article in "Penetration Testing with the Bash shell" published at Packt Publishing, available [here](https://www.packtpub.com/networking-and-servers/penetration-testing-bash-shell).
+    * "Penetration Testing with the Bash shell" published at Packt Publishing, available [here](https://www.packtpub.com/networking-and-servers/penetration-testing-bash-shell).
 
-This article has been published in various projects documentation and other blogs:
+* Documentation/reference: Tcpdump project
 
-- Tcpdump itself: https://www.tcpdump.org/
-- pfSense: https://docs.netgate.com/pfsense/en/latest/diagnostics/packetcapture/references.html
-- Daniel Miessler: https://danielmiessler.com/study/tcpdump/
+    * https://www.tcpdump.org/
 
-And also helped students:
+* Documentation/reference: pfSense project
 
-Andrés Geovanny Muñoz Ponguillo - Ecuador http://repositorio.ug.edu.ec/bitstream/redug/16465/1/B_CISC_PTG.1167.Mu%C3%B1oz%20Ponguillo%20Andr%C3%A9s%20Geovanny.pdf
+    * https://docs.netgate.com/pfsense/en/latest/diagnostics/packetcapture/references.html
+
+* Reference in blog post: Daniel Miessler (California)
+
+    * https://danielmiessler.com/study/tcpdump/
+
+* Reference in Thesis: Andrés Geovanny Muñoz Ponguillo (Ecuador)
+
+    * http://repositorio.ug.edu.ec/bitstream/redug/16465/1/B_CISC_PTG.1167.Mu%C3%B1oz%20Ponguillo%20Andr%C3%A9s%20Geovanny.pdf
 
 
 ## References
