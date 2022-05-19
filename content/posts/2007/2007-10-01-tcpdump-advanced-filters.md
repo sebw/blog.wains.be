@@ -18,9 +18,9 @@ In this article, I will explain how to use tcpdump to:
 
 I usually type ```tcpdump -n -i eth1 -s 1600``` before my filter but I won't do that throughout the article.
 
-```-n``` prevents DNS lookups.
-```-i``` specifies the interface.
-```-s``` specifies the size of the packets (default is 65536 bytes).
+- ```-n``` prevents DNS lookups.
+- ```-i``` specifies the interface.
+- ```-s``` specifies the size of the packets (default is 65536 bytes).
 
 Be careful if you use ```-s 0``` because depending on the version of tcpdump, you might be capturing 64K or full-lenght packets.
 
