@@ -128,11 +128,11 @@ Before we continue, we need to know how to filter out info from headers:
 
 | Expression | Explanation |
 |---|---|
-| proto[x:y]  | will start filtering from byte x for y bytes. ip[2:2] would filter bytes 3 and 4 (first byte begins by 0)  |
-| proto[x:y] & z = 0  | will match bits set to 0 when applying mask z to proto[x:y]  |
-| proto[x:y] & z !=0  | some bits are set when applying mask z to proto[x:y]  |
-| proto[x:y] & z = z  |  every bits are set to z when applying mask z to proto[x:y] |
-| proto[x:y] = z  | p[x:y] has exactly the bits set to z  |
+| `proto[x:y]`  | will start filtering from byte x for y bytes. `ip[2:2]` would filter bytes 3 and 4 (first byte begins by 0)  |
+| `proto[x:y] & z = 0`  | will match bits set to 0 when applying mask `z` to `proto[x:y]`  |
+| `proto[x:y] & z !=0`  | some bits are set when applying mask `z` to `proto[x:y]`  |
+| `proto[x:y] & z = z`  |  every bits are set to z when applying mask `z` to `proto[x:y]` |
+| `proto[x:y] = z`  | `p[x:y]` has exactly the bits set to `z`  |
 
 Operators:
 
