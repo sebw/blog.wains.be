@@ -605,7 +605,7 @@ If no IP options are set.. the GET command will use bytes 20, 21 and 22. Usually
 
 Tcpdump can only match data size of either 1, 2 or 4 bytes, we will take the following ASCII character following the GET command (a space).
 
-"GET " in hex is 47455420
+"GET " in hex is `47455420`
 
 ```bash
 tcpdump 'tcp[32:4] = 0x47455420'
