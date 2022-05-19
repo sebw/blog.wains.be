@@ -32,13 +32,17 @@ Expiration dates are often in motion for RHCA. The badge might not be the latest
 - I do not collect statistics from my visitors, I actually have no idea at the number of visitors I get
 - The site can work with Javascript and cookies disabled. Search and comments will not work.
 
-## Talks
+## Talks and conferences
 
 2017-04-20: I talked about [Salt] at [Jeudis du Libre] conference. Check my [Github] for the decks.
 
 2020-06-10: I talked about [Red Hat Consulting Services] and [Ansible] at **Ansible Automates EMEA 2020**.
 
 <iframe title="vimeo-player" src="https://player.vimeo.com/video/426485784" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+2022-03-29: Advanced Cluster Security for Kubernetes at Open'22 by Kangaroot in Antwerpen
+
+2022-05-31: Ansible Automation Platform live demo at Ansible Automates 2022 in Vilvoorde
 
 ## A bit more about me
 
