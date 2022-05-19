@@ -11,7 +11,7 @@ I'm a solution architect at Red Hat, the leading provider of enterprise open sou
 
 My background is mostly infrastructure but I'm interested in helping organizations in their DevSecOps journeys.
 
-My current focus and areas of interest are [DevSecOps](https://www.redhat.com/en/topics/devops/what-is-devsecops), automation, infrastructure as code, security and Kubernetes.
+My current focus and areas of interest are [DevSecOps](https://www.redhat.com/en/topics/devops/what-is-devsecops), automation, infrastructure as code, security and containers.
 
 ![](https://blog.wains.be/images/redhatibm.png)
 
@@ -66,6 +66,10 @@ This site has gone through six major design revisions:
 - [2020 (Hugo)](https://blog.wains.be/images/nostalgy/2020.png)
 
 It currently runs on top of Kubernetes.
+
+The blog post that has and keeps dragging the most visitors is my article about Tcpdump advanced filters:
+
+https://blog.wains.be/2007/2007-10-01-tcpdump-advanced-filters/
 
 ## You found a mistake on this site?
 
