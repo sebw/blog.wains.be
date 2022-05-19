@@ -593,11 +593,13 @@ Simple Mail Transfer Protocol
 
 Let's make a filter that will find any packets containing GET requests.
 
-The HTTP request will begin by:
+The HTTP request will begin with:
 
 ```bash
-GET / HTTP/1.1\r\n (16 bytes counting the carriage return but not the backslashes !)
+GET / HTTP/1.1\r\n
 ```
+
+For a total of 16 bytes counting the carriage return but not the backslashes!
 
 If no IP options are set.. the GET command will use bytes 20, 21 and 22. Usually, options takes 12 bytes (12th byte indicates the header length, which should report 32 bytes). So we should match bytes 32, 33 and 34 (1st byte = byte 0).
 
