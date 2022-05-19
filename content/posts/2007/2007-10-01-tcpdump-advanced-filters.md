@@ -2,8 +2,6 @@
 date: 2007-10-01
 title: "Tcpdump advanced filters"
 ---
-Original publication: 2007-10-01  
-Last up
 
 ## Introduction
 
@@ -18,15 +16,21 @@ In this article, I will explain how to use tcpdump to:
 
 ## Notes
 
-I usually type ```tcpdump -n -i eth1 -s 1600``` before my filter but I won't do that throughout the article. ```-n``` prevents DNS lookups, ```-i``` specifies the interface and ```-s``` specifies the size of the packets (default is 65536 bytes). Be careful if you use ```-s 0``` because depending on the version, you might be capturing 64K or full-lenght packets.
+I usually type ```tcpdump -n -i eth1 -s 1600``` before my filter but I won't do that throughout the article.
+
+```-n``` prevents DNS lookups.
+```-i``` specifies the interface.
+```-s``` specifies the size of the packets (default is 65536 bytes).
+
+Be careful if you use ```-s 0``` because depending on the version of tcpdump, you might be capturing 64K or full-lenght packets.
 
 All commands are typed as root.
 
-Feel free to contact me for comments, suggestions or for reporting mistakes. Let me know if something is not clear.
+Feel free to contact me for comments, suggestions or reporting mistakes. Let me know if something is not clear!
 
 I'll try to keep this document updated with new useful rules.
 
-## Let's start
+## Let's learn the syntax
 
 Before I begin with advanced filters, let's review the basic syntax of tcpdump.
 
@@ -36,19 +40,19 @@ _Filtering hosts_
 
 Match any traffic involving 192.168.1.1 as destination or source:
 
-```
+```bash
 tcpdump host 192.168.1.1
 ```
 
 As source only:
 
-```
+```bash
 tcpdump src host 192.168.1.1
 ```
 
 As destination only:
 
-```
+```bash
 tcpdump dst host 192.168.1.1
 ```
 
@@ -56,25 +60,25 @@ _Ports filtering_
 
 Match any traffic involving port 25 as source or destination:
 
-```
+```bash
 tcpdump port 25
 ```
 
 As source only:
 
-```
+```bash
 tcpdump src port 25
 ```
 
 As destination only:
 
-```
+```bash
 tcpdump dst port 25
 ```
 
 _Network filtering_
 
-```
+```bash
 tcpdump net 192.168
 tcpdump src net 192.168
 tcpdump dst net 192.168
@@ -82,7 +86,7 @@ tcpdump dst net 192.168
 
 _Protocol filtering_
 
-```
+```bash
 tcpdump arp
 tcpdump ip
 tcpdump tcp
@@ -94,27 +98,27 @@ tcpdump icmp
 
 Remember this:
 
-```
-Negation    : ! or "not" (without the quotes)
-Concatanate : && or "and"
-Alternate   : || or "or"
-```
+| Type        | Expression | Also possible|   |   |
+|-------------|------|-----|---|---|
+| Negation    | !    | not |   |   |
+| Concatenate | &&   | and |   |   |
+| Alternate   | \|\| | or  |   |   |
 
-This rule will match any TCP traffic on port 80 (web) with 192.168.1.254 or 192.168.1.200 as destination host:
+For example the following rule will match any TCP traffic on port 80 (web) with 192.168.1.254 or 192.168.1.200 as destination host:
 
-```
+```bash
 tcpdump '((tcp) and (port 80) and ((dst host 192.168.1.254) or (dst host 192.168.1.200)))'
 ```
 
-Will match any ICMP traffic involving the destination with physical/MAC address 00:01:02:03:04:05:
+This one will match any ICMP traffic involving the destination with physical/MAC address 00:01:02:03:04:05:
 
-```
+```bash
 tcpdump '((icmp) and ((ether dst host 00:01:02:03:04:05)))'
 ```
 
-Will match any traffic for the destination network 192.168 except destination host 192.168.1.200:
+This will match any traffic for the destination network 192.168 except destination host 192.168.1.200:
 
-```
+```bash
 tcpdump '((tcp) and ((dst net 192.168) and (not dst host 192.168.1.200)))'
 ```
 
@@ -122,32 +126,33 @@ tcpdump '((tcp) and ((dst net 192.168) and (not dst host 192.168.1.200)))'
 
 Before we continue, we need to know how to filter out info from headers:
 
-```
-proto[x:y] : will start filtering from byte x for y bytes. ip[2:2] would filter bytes 3 and 4 (first byte begins by 0)
-proto[x:y] & z = 0     : will match bits set to 0 when applying mask z to proto[x:y]
-proto[x:y] & z !=0     : some bits are set when applying mask z to proto[x:y]
-proto[x:y] & z = z     : every bits are set to z when applying mask z to proto[x:y]
-proto[x:y] = z         : p[x:y] has exactly the bits set to z
-```
+| Expression | Explanation |
+|---|---|
+| proto[x:y]  | will start filtering from byte x for y bytes. ip[2:2] would filter bytes 3 and 4 (first byte begins by 0)  |
+| proto[x:y] & z = 0  | will match bits set to 0 when applying mask z to proto[x:y]  |
+| proto[x:y] & z !=0  | some bits are set when applying mask z to proto[x:y]  |
+| proto[x:y] & z = z  |  every bits are set to z when applying mask z to proto[x:y] |
+| proto[x:y] = z  | p[x:y] has exactly the bits set to z  |
 
 Operators:
 
-```
->  : greater
-<  : lower
->= : greater or equal
-<= : lower or equal
-=  : equal
-!= : different
-```
+| Operator | Meaning |
+|---|---|
+| > | greater |
+| <  | lower |
+| >= | greater or equal |
+| <= | lower or equal |
+| =  | equal |
+| != | different |
 
-This may not be clear in the first place but you'll find examples below involving these.
+
+This may not be clear in the first place but you'll find examples below involving these expressions.
 
 Of course, it is important to know what the protocol headers look like before diving into more advanced filters.
 
 IP header:
 
-```
+```bash
 0                   1                   2                   3
 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -171,11 +176,13 @@ I'll consider we are only working with the IPv4 protocol suite for these example
 
 In an ideal world, every field would fit inside one byte. This is not the case, of course.
 
-Exercise: Are IP options set?
+## Exercises
+
+### Exercise: Are IP options set?
 
 Let's say we want to know if the IP header has options set. We can't just try to filter out the 21st byte because if no options are set, data start at the 21st byte. We know a "normal" header is usually 20 bytes (160 bits) long. With options set, the header is longer than that. The IP header has the header length field which we will filter here to know if the header is longer than 20 bytes.
 
-```
+```bash
 +-+-+-+-+-+-+-+-+
 |Version|  IHL  |
 +-+-+-+-+-+-+-+-+
@@ -185,7 +192,7 @@ Usually the first byte has a value of 01000101 in binary.
 
 Anyhow, we need to divide the first byte in half...
 
-```
+```bash
 0100 0101
 
 0100 = 4 in decimal. This is the IP version.
@@ -195,22 +202,23 @@ Anyhow, we need to divide the first byte in half...
 The second half of the first byte would be bigger than 5 if the header had IP options set.
 
 We have two ways of dealing with that kind of filters.
+
 - Either try to match a value bigger than 01000101. This would trigger matches for IPv4 traffic with IP options set, but ALSO any IPv6 traffic !
 
-In decimal 01000101 equals 69.
+In decimal `01000101` equals `69`.
 
 Let's recap how to calculate in decimal.
 
-```
+```bash
 0 : 0        \
-1 : 2^6 = 64 \ First field (IP version)
+1 : 2^6 = 64  \ First field (IP version)
 0 : 0         /
 0 : 0        /
 -
 0 : 0        \
-1 : 2^2 = 4     \ Second field (Header length)
+1 : 2^2 = 4   \ Second field (Header length)
 0 : 0         /
-1 : 2^0 = 1    /
+1 : 2^0 = 1  /
 ```
 
 64 + 4 + 1 = 69
@@ -219,29 +227,30 @@ The first field in the IP header would usually have a decimal value of 69. If we
 
 This rule should do the job:
 
-```
+```bash
 tcpdump 'ip[0] > 69'
 ```
 
 Somehow, the proper way is to mask the first half/field of the first byte, because as mentioned earlier, this filter would match any IPv6 traffic.
+
 - The proper/right way : "masking" the first half of the byte
 
-0100 0101 will become 0000 0101 thanks to a mask of 0000 1111
+`0100 0101` will become `0000 0101` thanks to a mask of `0000 1111`
 
-```
+```bash
 0100 0101 : 1st byte originally
 0000 1111 : mask (0xf in hex or 15 in decimal). 0 will mask the values while 1 will keep the values intact.
-vvvv vvvv <-- those are arrows :-)
+---------
 0000 0101 : final result
 ```
 
-You should see the mask as a power switch. 1 means on/enabled, 0 means off/disabled.
+You should see the mask as a "power switch". 1 means on/enabled, 0 means off/disabled.
 
 The correct filter:
 
 In decimal:
 
-```
+```bash
 tcpdump 'ip[0] & 15 > 5'
 ```
 
@@ -249,25 +258,24 @@ or
 
 In hexadecimal:
 
-```
+```bash
 tcpdump 'ip[0] & 0xf > 5'
 ```
 
 I use hex masks.
 
-Recap.. That's rather simple, if you want to:
+Let's recap.. That's rather simple, if you want to:
 
-```
-- keep the last 4 bits intact, use 0xf (binary 00001111)
-- keep the first 4 bits intact, use 0xf0 (binary 11110000)
-```
+- keep the last 4 bits intact, use `0xf` (binary 00001111)
+- keep the first 4 bits intact, use `0xf0` (binary 11110000)
 
 ### Exercise: Is DF bit (don't fragment) set?
-Let's now trying to know if we have fragmentation occuring, which is not desirable. Fragmentation occurs when a the MTU of the sender is bigger than the path MTU on the path to destination.
+
+Let's now try to know if we fragmentation is occuring. Fragmentation is not desirable. Fragmentation occurs when a the MTU of the sender is bigger than the path MTU on the path to destination.
 
 Fragmentation info can be found in the 7th and 8th byte of the IP header.
 
-```
+```bash
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 |Flags|      Fragment Offset    |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -281,9 +289,9 @@ The fragment offset field is only used when fragmentation occurs.
 
 If we want to match the DF bit (don't fragment bit, to avoid IP fragmentation):
 
-The 7th byte would have a value of: 01000000 or 64 in decimal
+The 7th byte would have a value of `01000000` or `64` in decimal
 
-```
+```bash
 tcpdump 'ip[6] = 64'
 ```
 
@@ -291,7 +299,7 @@ Exercise: Matching fragmentation
 
 Matching MF (more fragment set)? This would match the fragmented datagrams but wouldn't match the last fragment (which has the 2nd bit set to 0):
 
-```
+```bash
 tcpdump 'ip[6] = 32'
 ```
 
@@ -299,35 +307,43 @@ The last fragment have the first 3 bits set to 0... but has data in the fragment
 
 Matching the fragments and the last fragments:
 
-```
+```bash
 tcpdump '((ip[6:2] > 0) and (not ip[6] = 64))'
 ```
 
-A bit of explanations:
+A bit of explanation:
 
-"ip[6:2] > 0" would return anything with a value of at least 1.
+`ip[6:2] > 0` would return anything with a value of at least 1.
 
-We don't want datagrams with the DF bit set though.. the reason of the "not ip[6] = 64"
+We don't want datagrams with the DF bit set though.. the reason of the `not ip[6] = 64`
 
 If you want to test fragmentation use something like:
 
-```
+```bash
 ping -M want -s 3000 192.168.1.1
 ```
 
 ### Exercise: Matching datagrams with low TTL
-The TTL field is located in the 9th byte and fits perfectly into 1 byte. The maximum decimal value of the TTL field is thus 255 (11111111 in binary).
+
+The TTL field is located in the 9th byte and fits perfectly inside 1 byte.
+
+The maximum decimal value of the TTL field is thus `255` (`11111111` in binary).
 
 This can be verified, we're going to try to specify a TTL of 256:
 
+```bash
+ping -M want -s 3000 -t 256 192.168.1.200
 ```
-$ ping -M want -s 3000 -t 256 192.168.1.200
+
+Indeed ping tells use 256 is out of range:
+
+```bash
 ping: ttl 256 out of range
 ```
 
 The TTL field:
 
-```
+```bash
 +-+-+-+-+-+-+-+-+
 |  Time to Live |
 +-+-+-+-+-+-+-+-+
@@ -335,25 +351,27 @@ The TTL field:
 
 We can try to find if someone on our network is using trace route by using something like this on the gateway:
 
-```
+```bash
 tcpdump 'ip[8] < 5'
 ```
 
 ### Exercise: Matching packets longer than X bytes
+
 Where X is 600 bytes:
 
-```
+```bash
 tcpdump 'ip[2:2] > 600'
 ```
 
-### More IP filtering
+## More IP filtering
+
 We could imagine filtering source and destination addresses directly in decimal addressing. We could also match the protocol by filtering the 10th byte.
 
 It would be pointless anyhow, because tcpdump makes it already easy to filter out that kind of info.
 
 TCP header:
 
-```
+```bash
 0                   1                   2                   3
 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -375,23 +393,23 @@ TCP header:
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ```
 
-##### Matching any TCP traffic with a source port > 1024:
+### Matching any TCP traffic with a source port > 1024:
 
-```
+```bash
 tcpdump 'tcp[0:2] > 1024'
 ```
 
 or
 
-```
+```bash
 tcpdump 'tcp src portrange 1025-65535'
 ```
 
-##### Matching TCP traffic with particular flag combinations:
+### Matching TCP traffic with particular flag combinations:
 
 The flags are defined in the 14th byte of the TCP header.
 
-```
+```bash
 +-+-+-+-+-+-+-+-+
 |C|E|U|A|P|R|S|F|
 |W|C|R|C|S|S|Y|I|
@@ -399,26 +417,29 @@ The flags are defined in the 14th byte of the TCP header.
 +-+-+-+-+-+-+-+-+
 ```
 
-In the TCP 3-way handshakes, the exchange between hosts goes like this:  
-1. Source sends SYN  
-2. Destination answers with SYN, ACK  
+In the TCP 3-way handshakes, the exchange between hosts goes like this:
+
+1. Source sends SYN
+2. Destination answers with SYN, ACK
 3. Source sends ACK
 
-If we want to match packets with only the SYN flag set, the 14th byte would have a binary value of 00000010 which equals 2 in decimal:
+If we want to match packets with only the SYN flag set, the 14th byte would have a binary value of `00000010` which equals 2 in decimal:
 
-```
+```bash
 tcpdump 'tcp[13] = 2'
 ```
 
-#####Matching SYN, ACK (00010010 or 18 in decimal):
+### Matching SYN, ACK
+
+`00010010` or `18` in decimal:
 
 ```
 tcpdump 'tcp[13] = 18'
 ```
 
-#####Matching either SYN only or SYN-ACK datagrams:
+### Matching either SYN only or SYN-ACK datagrams
 
-```
+```bash
 tcpdump 'tcp[13] & 2 = 2'
 ```
 
@@ -429,45 +450,45 @@ Let's assume the following examples (SYN-ACK)
 ```
 00010010 : SYN-ACK packet
 00000010 : mask (2 in decimal)
-vvvvvvvv
+--------
 00000010 : result (2 in decimal)
 ```
 
 Every bits of the mask match!
 
-#####Matching PSH-ACK packets:
+### Matching PSH-ACK packets
 
-```
+```bash
 tcpdump 'tcp[13] = 24'
 ```
 
-#####Matching any combination containing FIN (FIN usually always comes with an ACK so we either need to use a mask or match the combination ACK-FIN)
+### Matching any combination containing FIN
 
-```
+FIN usually always comes with an ACK so we either need to use a mask or match the combination ACK-FIN.
+
+```bash
 tcpdump 'tcp[13] & 1 = 1'
 ```
 
-#####Matching RST flag:
+### Matching RST flag
 
-```
+```bash
 tcpdump 'tcp[13] & 4 = 4'
 ```
 
-##### Matching with tcpflags
+### Matching with tcpflags
 
-Actually, there's an easier way to filter flags (man pcap-filter and look for tcpflags):
+Actually, there's an easier way to filter flags (`man pcap-filter` and look for tcpflags):
 
-```
+```bash
 tcpdump 'tcp[tcpflags] == tcp-ack'
 ```
 
 Matching all packages with TCP-SYN or TCP-FIN set:
 
-```
+```bash
 tcpdump 'tcp[tcpflags] & (tcp-syn|tcp-fin) != 0
 ```
-
-
 
 By looking at the TCP state machine we can find the different flag combinations we may want to analyze.
 
@@ -476,20 +497,21 @@ By looking at the TCP state machine we can find the different flag combinations 
 Ideally, a socket in ACK_WAIT mode should not have to send a RST. It means the 3 way handshake has not completed. We may want to analyse that kind of traffic.
 
 ### Exercise: Matching SMTP data
-I will make a filter that will match any packet containing the "MAIL" command from SMTP exchanges.
+
+I will make a filter that will match any packet containing the "MAIL" command from an SMTP exchange.
 
 You can use something like [http://www.easycalculation.com/ascii-hex.php](http://www.easycalculation.com/ascii-hex.php) to convert values from ASCII to hexadecimal or you can use Python.
 
-```
+```bash
 $ python -c 'print "MAIL".encode("hex")'
 4d41494c
 ```
 
-So "MAIL" in hex is 0x4d41494c
+So "MAIL" in hex is `0x4d41494c`
 
 The rule would be:
 
-```
+```bash
 tcpdump '((port 25) and (tcp[20:4] = 0x4d41494c))'
 ```
 
@@ -499,7 +521,7 @@ This rule would not match packets with IP options set.
 
 This is an example of packet (a spam, of course):
 
-```
+```bash
 Capturing on eth0
 Frame 1 (92 bytes on wire, 92 bytes captured)
     Arrival Time: Sep 25, 2007 00:06:10.875424000
@@ -568,45 +590,46 @@ Simple Mail Transfer Protocol
 ```
 
 ### Matching HTTP data
+
 Let's make a filter that will find any packets containing GET requests.
 
 The HTTP request will begin by:
 
-```
+```bash
 GET / HTTP/1.1\r\n (16 bytes counting the carriage return but not the backslashes !)
 ```
 
-If no IP options are set.. the GET command will use bytes 20, 21 and 22. Usually, options takes 12 bytes (12th byte indicates the header length, which should report 32 bytes).  So we should match bytes 32, 33 and 34 (1st byte = byte 0).
+If no IP options are set.. the GET command will use bytes 20, 21 and 22. Usually, options takes 12 bytes (12th byte indicates the header length, which should report 32 bytes). So we should match bytes 32, 33 and 34 (1st byte = byte 0).
 
 Tcpdump can only match data size of either 1, 2 or 4 bytes, we will take the following ASCII character following the GET command (a space).
 
 "GET " in hex is 47455420
 
-```
+```bash
 tcpdump 'tcp[32:4] = 0x47455420'
 ```
 
 Matching HTTP data (exemple taken from tcpdump man page):
 
-```
+```bash
 tcpdump 'tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)'
 
           +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ip[2:2] = |          Total Length         |
-            +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+          +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
         +-+-+-+-+-+-+-+-+
-ip[0] =    |Version|  IHL  |
+ip[0] = |Version|  IHL  |
         +-+-+-+-+-+-+-+-+
 
-              +-+-+-+-+-+-+-+-+
+             +-+-+-+-+-+-+-+-+
 ip[0]&0xf =  |# # # #|  IHL  | <-- that's right, we masked the version bits
-              +-+-+-+-+-+-+-+-+     with 0xf or 00001111 in binary
+             +-+-+-+-+-+-+-+-+     with 0xf or 00001111 in binary
 
             +-+-+-+-+
             |  Data |
-tcp[12] = | Offset|
-           |       |
+tcp[12] =   | Offset|
+            |       |
             +-+-+-+-+
 ```
 
@@ -614,16 +637,17 @@ So what we are doing here is "(IP total length - IP header length - TCP header l
 
 We are matching any packet that contains data.
 
-We are taking the IHL (total IP lenght
+We are taking the IHL (total IP length)
 
 ### Exercise: Matching other interesting TCP things
-SSH connection (on any port):
+
+#### SSH connection (on any port)
 
 We will be looking for the reply given by the SSH server.
 
-OpenSSH usually replies with something like "SSH-2.0-OpenSSH_3.6.1p2". The first 4 bytes (SSH-) have an hex value of 0x5353482D.
+OpenSSH usually replies with something like "SSH-2.0-OpenSSH_3.6.1p2". The first 4 bytes (SSH-) have an hex value of `0x5353482D`.
 
-```
+```bash
 tcpdump 'tcp[(tcp[12]>>2):4] = 0x5353482D'
 ```
 
@@ -635,12 +659,12 @@ The reply from the server would be something like "SSH-1.99.."
 tcpdump '(tcp[(tcp[12]>>2):4] = 0x5353482D) and (tcp[((tcp[12]>>2)+4):2] = 0x312E)'
 ```
 
-Explanation of >>2 can be found below in the reference section.
+Explanation of `>>2` can be found below in the references section.
 
 ### UDP header
 
-```
-  0      7 8     15 16    23 24    31  
+```bash
+  0      7 8     15 16    23 24    31
  +--------+--------+--------+--------+
  |     Source      |   Destination   |
  |      Port       |      Port       |
@@ -657,11 +681,12 @@ Nothing really interesting here.
 
 If we want to filter ports we would use something like:
 
-```
+```bash
 tcpdump udp dst port 53
 ```
 
 ### ICMP header
+
 See different ICMP messages:
 
 ![](https://blog.wains.be/images/icmp.png)
@@ -670,37 +695,50 @@ We will usually filter the type (1 byte) and code (1 byte) of the ICMP messages.
 
 Here are common ICMP types:
 
-```
-  0    Echo Reply                 [RFC792]
-  3    Destination Unreachable     [RFC792]
+```bash
+  0    Echo Reply                [RFC792]
+  3    Destination Unreachable   [RFC792]
   4    Source Quench             [RFC792]
-  5    Redirect                 [RFC792]
-  8    Echo                     [RFC792]
+  5    Redirect                  [RFC792]
+  8    Echo                      [RFC792]
  11    Time Exceeded             [RFC792]
 ```
 
 We may want to filter ICMP messages type 4, these kind of messages are sent in case of congestion of the network.
 
-```
+```bash
 tcpdump 'icmp[0] = 4'
 ```
 
 If we want to find the ICMP echo replies only, having an ID of 500. By looking at the image with all the ICMP packet description we see the ICMP echo reply have the ID spread across the 5th and 6th byte. For some reason, we have to filter out with the value in hex.
 
-```
+```bash
 tcpdump -i eth0 '(icmp[0] = 0) and (icmp[4:2] = 0x1f4)'
 ```
 
-## Acknowledgment
+## Acknowledgments
 
-* Yousong Zhou (China):  
-	* tcpflags 
-	* Python hex conversion  
-	* portrange  
+* Yousong Zhou (China)
+
+	* tcpflags
+	* Python hex conversion
+	* portrange
 	* typo corrections
 
-* Keith Makan (South Africa):
+* Keith Makan (South Africa)
+
 	* reference to this article in "Penetration Testing with the Bash shell" published at Packt Publishing, available [here](https://www.packtpub.com/networking-and-servers/penetration-testing-bash-shell).
+
+This article has been published in various projects documentation and other blogs:
+
+- Tcpdump itself: https://www.tcpdump.org/
+- pfSense: https://docs.netgate.com/pfsense/en/latest/diagnostics/packetcapture/references.html
+- Daniel Miessler: https://danielmiessler.com/study/tcpdump/
+
+And also helped students:
+
+Andrés Geovanny Muñoz Ponguillo - Ecuador http://repositorio.ug.edu.ec/bitstream/redug/16465/1/B_CISC_PTG.1167.Mu%C3%B1oz%20Ponguillo%20Andr%C3%A9s%20Geovanny.pdf
+
 
 ## References
 - tcpdump man page : [http://www.tcpdump.org/tcpdump_man.html](http://www.tcpdump.org/tcpdump_man.html)
@@ -708,9 +746,9 @@ tcpdump -i eth0 '(icmp[0] = 0) and (icmp[4:2] = 0x1f4)'
 - Filtering HTTP requests: [http://www.wireshark.org/tools/string-cf.html](http://www.wireshark.org/tools/string-cf.html)
 - Filtering data regardless of TCP options: [http://www.wireshark.org/lists/wireshark-users/201003/msg00024.html](http://www.wireshark.org/lists/wireshark-users/201003/msg00024.html)
 
-Just in case the post disappears, here's a copy of the last URL:
+Just in case the post in the last link ever disappears, here's a copy of the content:
 
-```
+```bash
 From: Sake Blok <sake@xxxxxxxxxx>
 Date: Wed, 3 Mar 2010 22:42:29 +0100
 Subject: Wireshark-users: Re: [Wireshark-users] Hex Offset Needed
