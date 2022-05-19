@@ -487,7 +487,7 @@ tcpdump 'tcp[tcpflags] == tcp-ack'
 Matching all packages with TCP-SYN or TCP-FIN set:
 
 ```bash
-tcpdump 'tcp[tcpflags] & (tcp-syn|tcp-fin) != 0
+tcpdump 'tcp[tcpflags] & (tcp-syn|tcp-fin) != 0'
 ```
 
 By looking at the TCP state machine we can find the different flag combinations we may want to analyze.
