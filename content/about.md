@@ -50,7 +50,7 @@ I like building simple, fast, powerful, resilient, secure and automated infrastr
 
 I care about security and privacy.
 
-I automate things whenever I can! I'm a big fan of [Ansible], [Node-RED], [Home Assistant], [Automagic] (now deprecated, which I replaced with MacroDroid) on Android or [Ulauncher] on Linux, and any device that comes with an open API.
+I automate things whenever I can! I'm a big fan of IT automation tools ([Ansible], [Terraform], [Saltstack]), [Node-RED], [Home Assistant], [Automagic] (now deprecated, which I replaced with MacroDroid) on Android or [Ulauncher] on Linux, and any device that comes with an open API.
 
 I'm a heavy keyboard user and as such, [bspwm] is my window manager (after 6 years on [i3wm]). I wrote about my [i3wm](https://blog.wains.be/2019/2019-12-11-my-linux-desktop-environment/) and [bspwm](https://blog.wains.be/2021/2021-10-10-my-desktop-environment/) desktop environments.
 
@@ -108,3 +108,5 @@ Please open an [issue on Github](https://github.com/sebw/blog.wains.be/issues/ne
 [Node-RED]: https://nodered.org
 [Red Hat Consulting Services]: https://www.redhat.com/en/services/consulting
 [bspwm]: https://github.com/baskerville/bspwm
+[Terraform]: https://www.terraform.io/
+[Saltstack]: https://saltproject.io/
