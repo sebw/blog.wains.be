@@ -3,6 +3,6 @@ title: Contact
 type: contact
 ---
 
-Email: blogREMOVETHIS@REMOVETHISwains.be
+By email at blog@wains.be.
 
-Telegram: <a href="https://t.me/SebastienWains">@SebastienWains</a>
+By chat with [Session Messenger](https://getsession.org), my ID is  `05153861a7252bf17e44a936ed00ac4e40f6ed88642a466f47ff52b808ec3ba863`.
