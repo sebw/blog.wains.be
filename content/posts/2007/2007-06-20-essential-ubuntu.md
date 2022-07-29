@@ -3,16 +3,6 @@ date: 2007-06-20
 title: "Essential tools for Ubuntu (and others)"
 ---
 
-
-
-
-
-
-
-categories:
-- Linux
-
-
 I'm going to keep a list of tools I find essential under Linux. I'm using Ubuntu as my main desktop OS for now but it should apply to any other distro under Gnome.
 The tools are available in the Ubuntu repositories unless otherwise stated.
 
@@ -45,11 +35,11 @@ nautilus-open-terminal : nautilus plugin for opening terminals in arbitrary loca
 
 nautilus-image-converter : nautilus extension to mass resize images (this one is a life saver !)
 
-nautilus-gksu : privilege granting extension for nautilus using gksu 
+nautilus-gksu : privilege granting extension for nautilus using gksu
 
 nautilus-actions : nautilus extension to configure programs to launch (I personally create a "Securely erase" menu, working with wipe)
 
-cGmail : email notification tool that integrates well with Gnome 
+cGmail : email notification tool that integrates well with Gnome
 http://cgmail.tuxfamily.org/index.html
 Not available from the repositories
 
