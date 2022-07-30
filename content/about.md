@@ -82,7 +82,9 @@ This site has gone through six major design revisions and went full static in 20
 
 ### Technically
 
-It currently runs on top of Kubernetes with ArgoCD automating deployments and stuff.
+It currently runs on top of a single node Kubernetes and local storage, with ArgoCD automating deployments and stuff.
+
+I run many services next to the blog, justifying Kubernetes.
 
 ### Top Post
 
