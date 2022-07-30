@@ -1,5 +1,6 @@
 baseURL = "https://blog.wains.be"
 languageCode = "en-us"
+timeZone = "Europe/Brussels"
 title = "Sebastien Wains"
 theme = "etch"
 enableInlineShortcodes = true
