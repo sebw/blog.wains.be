@@ -1,6 +1,5 @@
 ---
 title: Subscribe
-layout: rss
 menu:
   main:
     weight: 30
