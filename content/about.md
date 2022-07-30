@@ -6,6 +6,11 @@ menu:
     weight: 50
 ---
 
+## Disclaimers
+
+- This is a personal blog that is not related to my employer, my employer has no influence on my posts (which can talk about competing solutions)
+- Opinions my own, yada yada.
+
 ## Who am I?
 
 My name is Sebastien Wains.
@@ -26,14 +31,7 @@ I've been Red Hat Certified Engineer (RHCE) since April 2007 and Red Hat Certifi
 
 Expiration dates are often in motion for RHCA. The badge might not be the latest :D
 
-## Disclaimers
 
-- This is a personal blog that is not related to my employer
-- This site doesn't use third party cookies
-- The search function requires Javascript
-- The comment function requires Javascript and store a cookie to work
-- I do not collect statistics from my visitors (I actually have no idea how many visitors I get)
-- The site can work with Javascript and cookies disabled. Search and comments will not work.
 
 ## A bit more about me
 
@@ -69,9 +67,11 @@ I'm an [INTJ]: INTJs are known as the "Systems Builders" of the types, perhaps i
 
 2022-05-31: Ansible Automation Platform live demo at Ansible Automates 2022 in Vilvoorde
 
-## Website iterations
+## About this blog
 
-This site has gone through six major design revisions:
+### Iterations
+
+This site has gone through six major design revisions and went full static in 2015:
 
 - [2005 (Wordpress)](https://blog.wains.be/images/nostalgy/2005.png)
 - [2008 (Wordpress)](https://blog.wains.be/images/nostalgy/2008.png)
@@ -80,11 +80,23 @@ This site has gone through six major design revisions:
 - [2017 (Mkdocs)](https://blog.wains.be/images/nostalgy/2017.png)
 - [2020 (Hugo)](https://blog.wains.be/images/nostalgy/2020.png)
 
+### Technically
+
 It currently runs on top of Kubernetes.
+
+### Top post
 
 The blog post that has and keeps dragging the most visitors is my article about Tcpdump advanced filters:
 
 https://blog.wains.be/2007/2007-10-01-tcpdump-advanced-filters/
+
+### This blog doesn't track you!
+
+- No third party cookies
+- Javascript is needed for search and comments
+- A cookie is needed for comments
+- No tracking whatsoever (I have no idea how many visitors I get actually)
+- The site can work with Javascript and cookies disabled. Search and comments will just not work.
 
 ## You found a mistake on this site?
 
