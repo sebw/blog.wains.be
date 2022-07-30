@@ -1,6 +1,9 @@
 ---
 title: Contact
 type: contact
+menu:
+  main:
+    weight: 40
 ---
 
 By email at blog@wains.be.

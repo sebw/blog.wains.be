@@ -1,6 +1,9 @@
 ---
 title: About
 modified: 2021-10-16T21:08:57+02:00
+menu:
+  main:
+    weight: 50
 ---
 
 ## Who am I?
