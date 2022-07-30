@@ -1,5 +1,8 @@
 ---
 title: Search
+menu:
+  main:
+    weight: 20
 ---
 
 <div>
@@ -48,7 +51,7 @@ title: Search
 
   function search(query) {
     // Find the item in our index corresponding to the lunr one to have more info
-    // Lunr result: 
+    // Lunr result:
     //  {ref: "/section/page1", score: 0.2725657778206127}
     // Our result:
     //  {title:"Page1", href:"/section/page1", ...}
