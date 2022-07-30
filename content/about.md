@@ -82,9 +82,9 @@ This site has gone through six major design revisions and went full static in 20
 
 ### Technically
 
-It currently runs on top of Kubernetes.
+It currently runs on top of Kubernetes with ArgoCD automating deployments and stuff.
 
-### Top post
+### Top Post
 
 The blog post that has and keeps dragging the most visitors is my article about Tcpdump advanced filters:
 
