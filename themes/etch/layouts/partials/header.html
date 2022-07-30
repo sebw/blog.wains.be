@@ -2,11 +2,15 @@
     <h2><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h2>
     <nav>
         <ul>
+
+            <li><a href="{{ .Site.BaseURL }}">posts</a></li>
+
             {{ range .Site.Menus.main.ByWeight -}}
             <li>
                 {{ .Pre }}<a href="{{ .URL }}" title="{{ .Title }}">{{- .Name -}}</a>{{ .Post }}
             </li>
             {{- end }}
+
         </ul>
     </nav>
 </header>
