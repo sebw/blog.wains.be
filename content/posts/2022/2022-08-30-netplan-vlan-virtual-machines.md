@@ -55,6 +55,6 @@ network:
       addresses: [10.40.0.2/16]
 ```
 
-Run `netplay apply` and of you go.
+Run `netplay apply` and off you go.
 
 The metric is needed to define which NIC gets priority to the outside world.
