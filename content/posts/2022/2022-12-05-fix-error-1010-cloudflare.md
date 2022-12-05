@@ -1,4 +1,7 @@
-# Fix "error 1010" when using Python and Cloudflare
+---
+date: 2022-12-05
+title: "Fix error 1010 when using Cloudflare and Python"
+---
 
 I recently moved from running a VPS in some cloud to running a VM on my home server and exposing it behind Cloudflare tunnels.
 
