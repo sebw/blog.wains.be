@@ -19,7 +19,7 @@ A quick search on the error code and we see many projects (Gitlab, others) affec
 
 Go to your Cloudflare dashboard.
 
-Choose your domain.
+Choose your domain. (Websites > Domain on https://dash.cloudflare.com)
 
 Security > Settings.
 
