@@ -17,7 +17,7 @@ A quick search on the error code and we see many projects (Gitlab, others) affec
 
 ## Solution
 
-Go to your Cloudflare dashboard at [](https://dash.cloudflare.com)
+Go to your [Cloudflare dashboard](https://dash.cloudflare.com)
 
 Choose your domain.
 
