@@ -3,19 +3,9 @@ date: 2006-12-13
 title: "RRDWeather 0.40 released"
 ---
 
+Download here: [https://github.com/sebw/rrdweather](https://github.com/sebw/rrdweather)
 
-
-
-
-
-
-categories:
-- RRDWeather
-
-
-Download here : [http://blog.wains.be/projects/pub/rrdweather-0.40.tar.gz](http://blog.wains.be/projects/pub/rrdweather-0.40.tar.gz)
-
-Project page : [http://blog.wains.be/projects/rrdweather/](http://blog.wains.be/projects/rrdweather/)
+Project page: [https://www.wains.be/projects/rrdweather/](https://www.wains.be/projects/rrdweather/)
 
 Changelog since version 0.36
 - Grégory Bittan reported an issue when the web connection is down.
