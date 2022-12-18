@@ -1,6 +1,6 @@
 ---
 date: 2022-12-18
-title: "Generate the token for Shaarli API authentication using Python"
+title: "Generate the JWT token for Shaarli API authentication using Python"
 ---
 
 Official [documentation](https://github.com/shaarli/api-documentation/blob/master/api-authentication.md) of Shaarli only gives a PHP example, but I'm more of a Python kind of guy.
