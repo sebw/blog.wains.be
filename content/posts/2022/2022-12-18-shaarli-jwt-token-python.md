@@ -1,6 +1,6 @@
 ---
 date: 2022-12-18
-title: "Generate the JWT token for Shaarli API authentication using Python"
+title: "Generate the JWT (JSON web token) for Shaarli API authentication using Python"
 ---
 
 Official [documentation](https://github.com/shaarli/api-documentation/blob/master/api-authentication.md) of Shaarli only gives a PHP example, but I'm more of a Python kind of guy.
@@ -24,12 +24,12 @@ token = jwt.encode(payload, SHAARLI_API_SECRET, algorithm = SHAARLI_HASH_ALGORIT
 print(token)
 ```
 
-You can now use the JWT token (replace `<your-newly-obtained-jwt-token>` with the output of previous script):
+You can now use the JWT (replace `<your-newly-obtained-jwt-token>` with the output of previous script):
 
 ```bash
 curl --request GET \
   --url 'https://bookmark.example.com/api/v1/links?searchterm=linux&limit=1' \
-  --header 'Authorization: Bearer <your-newly-obtained-jwt-token>'
+  --header 'Authorization: Bearer <your-newly-obtained-jwt>'
 ```
 
 If successful:
