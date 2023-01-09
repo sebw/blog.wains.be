@@ -34,7 +34,7 @@ It turns out the temporary folder is overriden by AAP.
 
 You can find the actual temp folder with this:
 
-```
+```bash
 [root@aap23 etc] su awx -
 [awx@aap23 ~]$ podman --log-level debug ps
 INFO[0000] podman filtering at log level debug
@@ -55,4 +55,4 @@ cd /tmp/ansible.d1xwha4l/libpod/tmp
 rm pause.pid
 ```
 
-I can sync my projects again with no restart needed.
+I can now sync my projects again with no restart needed.
