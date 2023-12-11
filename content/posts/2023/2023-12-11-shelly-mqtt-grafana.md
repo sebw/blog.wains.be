@@ -1,5 +1,5 @@
 ---
-date: 2023-01-09
+date: 2023-12-11
 title: "Graphing Shelly temperatures into Grafana"
 ---
 
