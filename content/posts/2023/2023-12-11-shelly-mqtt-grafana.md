@@ -114,7 +114,13 @@ Make sure to point the data source to the `telegraf` database:
 
 Create a new dashboard:
 
-![ALt text](https://blog.wains.be/images/mqtt/mqtt5.png)
+![ALl text](https://blog.wains.be/images/mqtt/mqtt5.png)
+
+An example of query to graph the temperature of my probe:
+
+```
+SELECT last("tC") FROM "mqtt_consumer" WHERE topic = 'shellyi4dc/status/temperature:101' AND $timeFilter GROUP BY time($__interval) fill(previous)
+```
 
 ## Troubleshooting
 
