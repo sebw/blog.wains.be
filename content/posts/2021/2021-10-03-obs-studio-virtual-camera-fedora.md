@@ -9,11 +9,14 @@ The reason is that OBS is expecting a v4l2loopback module to be loaded.
 
 ## Installation
 
-In order to do so, you will need to enable rpmfusion repositories and install the package "v4l2loopback":
+In order to do so, you will need to enable rpmfusion repositories for your version of Fedora and install the package "v4l2loopback":
 
 ```bash
-sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-34.noarch.rpm
+VERSION=`lsb_release -r -s`
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-${VERSION}.noarch.rpm
 ```
+
+The above code requires lsb_release to be installed, or just set the VERSION manually if you don't want to install the tool.
 
 ```bash
 sudo dnf install v4l2loopback kmod-v4l2loopback
