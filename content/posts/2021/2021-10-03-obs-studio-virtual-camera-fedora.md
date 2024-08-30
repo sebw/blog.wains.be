@@ -3,6 +3,8 @@ date: 2021-10-03
 title: "Enable virtual camera in OBS Studio on Fedora"
 ---
 
+TESTED ON FEDORA 34 AND 40. PLEASE REPORT SUCCESS OR FAILURE FOR YOUR FEDORA SECTION IN COMMENTS.
+
 By default on Fedora, when you install the package `obs-studio` you might not see the "Start virtual camera" button.
 
 The reason is that OBS is expecting a v4l2loopback module to be loaded.
@@ -34,7 +36,8 @@ If modprobe fails try this before rerunning the `modprobe` command:
 sudo depmod
 ```
 
-You can configure some settings for your new virtual camera with `v4l2loopback-ctl`.
+If installing the package pulled a new kernel version and modprobe still fails to locate the module, you might need to reboot your system.
+
 
 ## OBS Studio
 
@@ -43,5 +46,9 @@ Now, start OBS Studio and you should see the "Start virtual camera" menu in the 
 The virtual camera allows you to inject pictures, logos, text, video streams (using VLC), etc. in your original webcam stream.
 
 When in Zoom, Google Meet, Webex or others, simply choose the virtual camera as your video input device, and your audience should whatever you added in OBS Studio.
+
+## Virtual camera configuration
+
+You can configure some settings for your new virtual camera with `v4l2loopback-ctl`.
 
 Have fun!
