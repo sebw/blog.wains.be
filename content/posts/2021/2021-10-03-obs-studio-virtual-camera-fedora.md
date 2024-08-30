@@ -3,7 +3,7 @@ date: 2021-10-03
 title: "Enable virtual camera in OBS Studio on Fedora"
 ---
 
-TESTED ON FEDORA 34 AND 40. PLEASE REPORT SUCCESS OR FAILURE FOR YOUR FEDORA SECTION IN COMMENTS.
+_TESTED ON FEDORA 34 AND 40. PLEASE REPORT SUCCESS OR FAILURE FOR YOUR FEDORA VERSION IN THE COMMENTS_
 
 By default on Fedora, when you install the package `obs-studio` you might not see the "Start virtual camera" button.
 
