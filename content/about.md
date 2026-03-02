@@ -1,6 +1,6 @@
 ---
 title: About
-modified: 2021-10-16T21:08:57+02:00
+modified: 2026-03-02T23:08:57+02:00
 menu:
   main:
     weight: 50
@@ -15,11 +15,7 @@ menu:
 
 My name is Sebastien Wains.
 
-I'm a solution architect / technical presales at Red Hat, the leading provider of enterprise open source solutions.
-
-My background is mostly infrastructure but I'm interested in helping organizations in their DevSecOps journeys.
-
-My current focus and areas of interest are [DevSecOps](https://www.redhat.com/en/topics/devops/what-is-devsecops), automation, infrastructure as code, security and containers.
+I'm the automation strategist for Belgium and Luxembourg at Red Hat, the leading provider of enterprise open source solutions.
 
 ![](https://blog.wains.be/images/redhatibm.png)
 
@@ -29,7 +25,7 @@ I've been Red Hat Certified Engineer (RHCE) since April 2007 and Red Hat Certifi
 
 [My certification ID is 110-643-822](https://www.redhat.com/rhtapps/services/verify/?certId=110-643-822).
 
-Expiration dates are often in motion for RHCA. The badge might not be the latest :D
+My certifications have expired for a while now.
 
 
 
@@ -67,6 +63,8 @@ I'm an [INTJ]: INTJs are known as the "Systems Builders" of the types, perhaps i
 
 2022-05-31: Ansible Automation Platform live demo at Ansible Automates 2022 in Vilvoorde
 
+2023-now: Red Hat Tech Day (Belgium and Luxemboug), Red Hat Summit Connect (Brussels), Voxxed Days Luxembourg
+
 ## About this blog
 
 ### Iterations
@@ -80,12 +78,6 @@ This site has gone through six major design revisions and went full static in 20
 - [2017 (Mkdocs)](https://blog.wains.be/images/nostalgy/2017.png)
 - [2020 (Hugo)](https://blog.wains.be/images/nostalgy/2020.png)
 
-### Technically
-
-It currently runs on top of a single node Kubernetes and local storage, with ArgoCD automating deployments and stuff.
-
-I run many services next to the blog, justifying Kubernetes.
-
 ### Top Post
 
 The blog post that has and keeps dragging the most visitors is my article about Tcpdump advanced filters:
@@ -93,6 +85,8 @@ The blog post that has and keeps dragging the most visitors is my article about 
 https://blog.wains.be/2007/2007-10-01-tcpdump-advanced-filters/
 
 ### This blog doesn't track you!
+
+So much so that I don't even know how many visitors I get.
 
 - No third party cookies
 - Javascript is needed for search and comments
