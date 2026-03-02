@@ -16,7 +16,7 @@ Assumptions:
 - this service is currently publicly accessible with no authentication whatsoever
 - you still have to install PocketID at `id.example.com` which will also be behind Cloudflare Zero Trust
 - you already have Docker running
-- once PocketID is deploy, you want to put `service.example.com` behind its authentication
+- once PocketID is deployed, you want to put `service.example.com` behind its authentication
 
 You will need to find the name of your Cloudflare team:
 
@@ -90,6 +90,7 @@ You should be able to access PocketID:
 
 - create an account
 - add a passkey to access that account
+- think of configuring SMTP so you can get notified when a connection from a new machine is identified
 
 Once this is all figured out, we can start getting busy in PocketID:
 
@@ -119,8 +120,8 @@ Create an identity provider:
 - App ID: paste Client ID saved earlier
 - Client secret: paste Client secret earlier
 - Auth URL: `https://id.example.com/authorize`
-- Token URL: `https://id.wains.be/api/oidc/token`
-- Certificate URL: `https://id.wains.be/.well-known/jwks.json`
+- Token URL: `https://id.example.com/api/oidc/token`
+- Certificate URL: `https://id.example.com/.well-known/jwks.json`
 - Tick PKCE
 - Save
 - Test: it should quickly connect on PocketID and say "Your connection works!" with some details about your PocketID user.
