@@ -97,4 +97,4 @@ If you want to pass the version in a second survey, there's no way to get this i
 
 I've put the code in a Github [repo](https://github.com/sebw/AAP2-almost-dynamic-surveys/). Feel free to contribute and improve this quick and dirty playbook.
 
-If you feel need dynamic surveys, let Red Hat (through RFE with support) and the AWX project know (by adding a comment on the issue)!
+If you need dynamic surveys, let Red Hat (RFE through support) and the AWX project know (by adding a comment on the [issue](https://github.com/ansible/awx/issues/20))!
