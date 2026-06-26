@@ -87,13 +87,13 @@ https://blog.wains.be/2007/2007-10-01-tcpdump-advanced-filters/
 
 ### This blog doesn't track you!
 
-So much so that I don't even know how many visitors I get.
+So much so that I don't even know how many visitors I get. I used to know but I stopped tracking.
 
 - No third party cookies
+- No tracking whatsoever
 - Javascript is needed for search and comments
-- A cookie is needed for comments
-- No tracking whatsoever (I have no idea how many visitors I get actually)
-- The site can work with Javascript and cookies disabled. Search and comments will just not work.
+- A cookie is used for the comments section
+- The site can work with Javascript and cookies disabled. Search will just not work and comments will not remember your info.
 
 ## You found a mistake on this site?
 
