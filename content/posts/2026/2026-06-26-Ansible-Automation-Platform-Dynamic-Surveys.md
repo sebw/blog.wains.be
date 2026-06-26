@@ -49,7 +49,7 @@ The survey can be programmed using AWX/AAP's API or using the Ansible Controller
 
 Here's an example:
 
-```
+```yaml
 ---
 - name: Update Survey
   hosts: localhost
@@ -77,9 +77,9 @@ Here's an example:
           default: "{{ survey_choices[0] }}"
 ```
 
-You can pass the job a JSON payload:
+You can pass the job this payload:
 
-```
+```yaml
 target_job_template: "Software deployment"
 survey_choices:
   - artifact1
