@@ -17,16 +17,17 @@ My name is Sebastien Wains.
 
 I'm the automation strategist for Belgium and Luxembourg at Red Hat, the leading provider of enterprise open source solutions.
 
+I advise customers on their automation journeys. I'm at the cross road of technology (through some solid technical background) and business (through my education in business management).
+
 ![](https://blog.wains.be/images/redhatibm.png)
 
-I've been Red Hat Certified Engineer (RHCE) since April 2007 and Red Hat Certified Architect (RHCA) since March 2019.
+I've earned some Red Hat certifications over the years. In April 2007, I gained my Red Hat Certified Engineer (RHCE) badge and a few months after joining Red Hat, I've earned the Red Hat Certified Architect (RHCA) title (March 2019 to be precise).
 
 ![](https://blog.wains.be/images/rhca.png)
 
 [My certification ID is 110-643-822](https://www.redhat.com/rhtapps/services/verify/?certId=110-643-822).
 
-My certifications have expired for a while now.
-
+All those certifications have expired now as they are not super essentials to my current role.
 
 
 ## A bit more about me
@@ -37,11 +38,11 @@ I like building simple, fast, powerful, resilient, secure and automated infrastr
 
 ### Automation Nerd
 
-I automate things whenever I can! I'm a big fan of IT and home automation tools. I've used many: [Ansible], [Terraform], [SaltStack], [Node-RED], [Home Assistant], [Domoticz], [Automagic], [MacroDroid], etc.
+I automate things whenever I can! I've been a big fan of many IT and home automation tools. I've used a bunch: [Ansible], [Terraform], [SaltStack], [Node-RED], [Home Assistant], [Domoticz], [Automagic], [MacroDroid], Homebridge, etc.
 
 ### Linux Nerd
 
-I'm a heavy keyboard user and as such, [bspwm] is my current window manager. I  wrote about my [bspwm](https://blog.wains.be/2021/2021-10-10-my-desktop-environment/) desktop environment. Before that I've used [i3wm] for about 6 years and wrote about it [here](https://blog.wains.be/2019/2019-12-11-my-linux-desktop-environment/). I use [Ulauncher] with workflows to automate things around the desktop and around the house.
+I'm a heavy keyboard user and as such, [bspwm] is my current window manager. I wrote about my [bspwm](https://blog.wains.be/2021/2021-10-10-my-desktop-environment/) desktop environment. Before that I've used [i3wm] for about 6 years and wrote about it [here](https://blog.wains.be/2019/2019-12-11-my-linux-desktop-environment/). I use [Ulauncher] with workflows to automate things around the desktop and around the house.
 
 ### Besides computers
 
@@ -63,7 +64,7 @@ I'm an [INTJ]: INTJs are known as the "Systems Builders" of the types, perhaps i
 
 2022-05-31: Ansible Automation Platform live demo at Ansible Automates 2022 in Vilvoorde
 
-2023-now: Red Hat Tech Day (Belgium and Luxemboug), Red Hat Summit Connect (Brussels), Voxxed Days Luxembourg
+2023-now: Red Hat Tech Day (Belgium and Luxemboug), Red Hat Summit Connect (Brussels), Voxxed Days Luxembourg, Arrow events, etc.
 
 ## About this blog
 
