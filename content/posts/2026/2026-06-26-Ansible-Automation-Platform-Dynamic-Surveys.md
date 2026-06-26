@@ -3,7 +3,7 @@ date: 2026-06-26
 title: "Ansible Automation Platform and dynamic surveys"
 ---
 
-As some of you may know, I work for Red Hat as an automation advocate.
+As some of you may know, I work for Red Hat as an automation advocate in Belgium and Luxembourg.
 
 My work is to assist customers leveraging automation to achieve their business objectives, and Ansible Automation Platform (AAP) can be instrumental in achieving those goals.
 
@@ -95,4 +95,6 @@ There is a severe limitation to this, it is limited to a single survey.
 
 If you want to pass the version in a second survey, there's no way to get this implemented in this almost dynamic way.
 
-I've put the code in a Github [repo](https://github.com/sebw/AAP2-almost-dynamic-surveys/)
+I've put the code in a Github [repo](https://github.com/sebw/AAP2-almost-dynamic-surveys/). Feel free to contribute and improve this quick and dirty playbook.
+
+If you feel need dynamic surveys, let Red Hat (through RFE with support) and the AWX project know (by adding a comment on the issue)!
