@@ -29,7 +29,7 @@ If things were dynamic, when starting a job template:
 
 Rundeck does exactly that and left the users figure out the logic of getting the values. Rundeck simply needs a properly formatted JSON output.
 
-![](https://blog.wains.be/images/rundeck-option.jpg)
+![](https://blog.wains.be/images/rundeck-option.png)
 
 ## Why is it so complicated to get this feature?
 
