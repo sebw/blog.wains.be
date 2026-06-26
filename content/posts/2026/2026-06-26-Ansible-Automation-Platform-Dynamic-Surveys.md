@@ -66,7 +66,7 @@ Here's an example:
       survey_enabled: true
       survey_spec:
         name: Dynamic Environment Survey
-        description: Generated from external API
+        description: This survey is semi automated
         spec:
         - question_name: Environment
           question_description: Select deployment target
@@ -89,11 +89,15 @@ survey_choices:
 
 Run the job template and the survey for the "Environment" survey for the job "Software deployment" will be updated.
 
-Now you can extend the playbook to call remote URL/APIs and construct the choices under `spec`.
+Now schedule the job template as often as you need.
+
+You can extend the playbook to call remote URL/APIs, gather values and construct the "choices" under `spec`.
 
 There is a severe limitation to this, it is limited to a single survey.
 
-If you want to pass the version in a second survey, there's no way to get this implemented in this almost dynamic way.
+If you want to pass the version in a second survey, there's no way to get this implemented in a single job.
+
+The other option is to create a job template per artifact, but if you have hundred of softwares, that's probably super tedious.
 
 I've put the code in a Github [repo](https://github.com/sebw/AAP2-almost-dynamic-surveys/). Feel free to contribute and improve this quick and dirty playbook.
 
