@@ -11,7 +11,7 @@ A request I hear from many customers is the desire for dynamic or programmable "
 
 The request has actually [existed in the upstream AWX since 2017](https://github.com/ansible/awx/issues/20) and to this day hasn't been delivered. I ask customers to pitch in on the github issue and make a request for enhancement (RFE) to our Red Hat support.
 
-It's interesting because alternatives like Rundeck has had the challenged solved for as long as I recall (at last 2010 when I started using it at my previous job) with the Remote URL job option.
+It's interesting because alternatives like Rundeck has had the challenged solved for as long as I recall (at least 2010 when I started using it at my previous job) with the "Remote URL" job option.
 
 ## But what are dynamic or programmable surveys? 
 
@@ -19,12 +19,12 @@ Use case: you want to use AAP/AWX to deploy softwares.
 
 The job template gives you two options/surveys: 
 
-- a dropdown list of available software ready to deploy
-- the version of the software you want to deploy
+- a dropdown list of available softwares ready to deploy
+- when software is selected, you get the versions available for that specific software
 
 If things were dynamic, when starting a job template:
 
-1. AAP would query the API of the software repository (Nexus, Artifactory, etc.) and would create a dropdown list of softwares in almost real time (unless your API is down or slow)
+1. AAP would query an API (with Nexus, Artifactory, etc. behind the scene) and would create a dropdown list of softwares in almost real time (unless your API is down or slow)
 2. AAP would query the API again with the software name as parameter, the Web UI field now shows the available versions for the selected software
 
 Rundeck does exactly that and left the users figure out the logic of getting the values. Rundeck simply needs a properly formatted JSON output.
@@ -35,11 +35,11 @@ Rundeck does exactly that and left the users figure out the logic of getting the
 
 I'm not part of Red Hat software engineering but I believe we're looking a little too much into the Github request.
 
-I hear argumentations how to make AAP/AWX talk to ANY API and return properly structured values something very challenging to implement.
+I hear argumentations how to make AAP/AWX talk to ANY API and return properly structured data something very challenging to implement.
 
-But why should we go there in the first place? Rundeck approach is the most sensible tradeoff. Point Rundeck to a remote URL, expect URL to return a properly structured JSON. Basta.
+But why should we go there in the first place? Rundeck approach is the most sensible tradeoff. You point Rundeck to a remote URL, you expect the URL to return a properly structured JSON. Basta.
 
-If you have APIs that do not talk JSON the way Rundeck wants, you need to develop something in between. It shouldn't be the job of Rundeck or AWX or AAP to manipulate the data.
+If your API doesn't return a JSON in the structured way Rundeck needs, you need to manipulate the data in between. I've done exactly that with some PHP back in the days, facing Artifactory. It shouldn't be the job of Rundeck, AWX or AAP to perform data manipulation and parsing.
 
 ## "Almost dynamic" surveys
 
